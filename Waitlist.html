@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Waitlist-specific styles */
-		        * {
+		* {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
         }
         .waitlist-container {
@@ -210,7 +210,7 @@
 </head>
 <body>
     <a href="/" class="back-link">
-          <i class="fas fa-arrow-left"></i>
+        <i class="fas fa-arrow-left"></i>
         Back to Home
     </a>
 
@@ -221,8 +221,8 @@
                     <span class="logo-text">SavvyPro JOT</span>
                     <span class="logo-symbol">®</span>
                 </div>
-                <h1 class="waitlist-title">Join the Exclusive Waitlist!</h1>
-                <p class="waitlist-subtitle">Be among the first to experience the SavvyPro JOT when  launched. Get early access, exclusive updates, and special launch pricing.</p>
+                <h1 class="waitlist-title">Join the Waitlist</h1>
+                <p class="waitlist-subtitle">Be among the first to experience SavvyPro JOT when we launch. Get early access, exclusive updates, and special launch pricing.</p>
             </div>
 
             <div class="success-message" id="successMessage">
@@ -232,40 +232,31 @@
 
             <form class="waitlist-form" id="waitlistForm">
                 <div class="form-group">
-                    <input type="text" class="form-input" id="name" placeholder="Your Full Name" required>
+                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-input" id="email" placeholder="Your Email" required>
                 </div>
-				<div class="form-group">
-                    <label for="jobTitle">Current Job Title</label>
-                    <input type="text" id="jobTitle" name="jobTitle" class="form-input" placeholder="e.g., Software Engineer, Marketing Manager">
-                </div>
-        <div class="form-group">
-                    <label for="experience">Years of Experience</label>
-                    <select id="experience" name="experience" class="form-input">
-                        <option value="">Select experience level</option>
+                <div class="form-group">
+                    <select class="form-input" id="experience" required>
+                        <option value="">Years of Experience</option>
                         <option value="0-1">0-1 years</option>
                         <option value="2-5">2-5 years</option>
                         <option value="6-10">6-10 years</option>
                         <option value="10+">10+ years</option>
                     </select>
-				</div>
+                </div>
                 <div class="form-group">
                     <select class="form-input" id="interest" required>
                         <option value="">What interests you most?</option>
                         <option value="job-tracking">Job Tracking & Organization</option>
                         <option value="wellness-tools">Wellness & Mindset Tools</option>
                         <option value="career-development">Career Development</option>
-                        <option value="kanban-board">Kanban Board Management</option>
-                        <option value="calendar-view">Calendar & Timeline Management</option>
-                        <option value="document-management">Document Organization</option>
-                        <option value="analytics">Progress Analytics & Insights</option>
                         <option value="all">All of the Above</option>
                     </select>
                 </div>
                 <button type="submit" class="join-waitlist-btn">
-                                   Join the Waitlist
+                    Join the Waitlist
                 </button>
             </form>
 
@@ -294,6 +285,7 @@
             // Get form data
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const experience = document.getElementById('experience').value;
             const interest = document.getElementById('interest').value;
             
             // Show success message
@@ -304,7 +296,7 @@
             
             // Here you can add code to send the data to your backend
             // For now, we'll just show the success message
-            console.log('Waitlist signup:', { name, email, interest });
+            console.log('Waitlist signup:', { name, email, experience, interest });
             
             // Optional: Send to your email or database
             // You can integrate this with services like:
@@ -315,3 +307,4 @@
     </script>
 </body>
 </html>
+>
