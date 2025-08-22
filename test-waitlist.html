@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Waitlist Integration - SavvyPro JOT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .test-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #28a745;
+        }
+        .test-info h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        .test-info ul {
+            margin-left: 1.5rem;
+        }
+        .test-info li {
+            margin-bottom: 0.5rem;
+        }
+        .test-button {
+            display: inline-block;
+            background: #6a1d58;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        .test-button:hover {
+            background: #421237;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Waitlist Integration Test</h1>
+        
+        <div class="test-info">
+            <h3>✅ Setup Checklist</h3>
+            <ul>
+                <li>Google Sheet created with correct columns (Name, Email, Experience, Current Position, Interest, Date)</li>
+                <li>Google Apps Script deployed as web app</li>
+                <li>Web app URL copied to config.js</li>
+                <li>Website files updated</li>
+            </ul>
+        </div>
+
+        <h2>Test Your Integration</h2>
+        <p>Click the button below to test your waitlist modal and form submission:</p>
+        
+        <button class="test-button" onclick="openTestModal()">
+            <i class="fas fa-rocket"></i> Test Waitlist Modal
+        </button>
+
+        <h2>What to Test</h2>
+        <ul>
+            <li>Modal opens correctly</li>
+            <li>Form validation works</li>
+            <li>Data submits to Google Sheets</li>
+            <li>Success message displays</li>
+            <li>New row appears in your Google Sheet</li>
+        </ul>
+
+        <h2>Debugging</h2>
+        <p>Open your browser's Developer Tools (F12) and check the Console tab for any error messages.</p>
+        
+        <div class="test-info">
+            <h3>🔗 Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Main Website</a></li>
+                <li><a href="GOOGLE_SHEETS_SETUP.md">Setup Guide</a></li>
+                <li><a href="config.js">Configuration File</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Test Modal -->
+    <div class="modal" id="testModal" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <span class="logo-text">SavvyPro JOT</span>
+                    <span class="logo-symbol">®</span>
+                </div>
+                <button type="button" class="close" onclick="closeTestModal()">&times;</button>
+            </div>
+            
+            <form class="waitlist-form" id="testWaitlistForm">
+                <div class="form-group">
+                    <label for="testName">Full Name</label>
+                    <input type="text" class="form-input" id="testName" name="name" placeholder="Test User" required>
+                </div>
+                <div class="form-group">
+                    <label for="testEmail">Email</label>
+                    <input type="email" class="form-input" id="testEmail" name="email" placeholder="test@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="testExperience">Years of Experience</label>
+                    <select class="form-input" id="testExperience" name="experience" required>
+                        <option value="">Years of Experience</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-5">2-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="testCurrentPosition">Current Position</label>
+                    <input type="text" class="form-input" id="testCurrentPosition" name="currentPosition" placeholder="e.g., Software Engineer, Product Manager, Student" required>
+                </div>
+                <div class="form-group">
+                    <label for="testInterest">Interest</label>
+                    <select class="form-input" id="testInterest" name="interest" required>
+                        <option value="">What interests you most?</option>
+                        <option value="job-tracking">Job Tracking & Organization</option>
+                        <option value="wellness-tools">Wellness & Mindset Tools</option>
+                        <option value="career-development">Career Development</option>
+                        <option value="all">All of the Above</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="testConsent" name="consent" required>
+                        I agree to the Privacy Policy and to receive waitlist emails.
+                    </label>
+                </div>
+                <button type="submit" class="join-waitlist-btn">
+                    <i class="fas fa-rocket"></i> Test Submission
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        // Test modal functions
+        function openTestModal() {
+            document.getElementById('testModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTestModal() {
+            document.getElementById('testModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Test form submission
+        document.getElementById('testWaitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('testName').value,
+                email: document.getElementById('testEmail').value,
+                experience: document.getElementById('testExperience').value,
+                currentPosition: document.getElementById('testCurrentPosition').value,
+                interest: document.getElementById('testInterest').value
+            };
+
+            console.log('Test form data:', formData);
+            
+            if (!CONFIG.GOOGLE_SHEETS_URL || CONFIG.GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                alert('⚠️ Google Sheets URL not configured!\n\nPlease update config.js with your Google Apps Script URL first.');
+                return;
+            }
+
+            // Test the actual submission
+            fetch(CONFIG.GOOGLE_SHEETS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                alert('✅ Test submission sent!\n\nCheck your Google Sheet to see if the data was saved.');
+                closeTestModal();
+            })
+            .catch(error => {
+                console.error('Test submission error:', error);
+                alert('❌ Test submission failed. Check console for details.');
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('testModal')) {
+                closeTestModal();
+            }
+        });
+    </script>
+</body>
+</html>

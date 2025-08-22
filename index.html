@@ -26,25 +26,21 @@
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#demo">Live Demo</a></li>
             </ul>
-                <div class="nav-actions">
-                    <button type="button"
-                            class="btn btn-primary"
-                            data-open="waitlistModal"
-                            aria-controls="waitlistModal"
-                            aria-expanded="false">
-                        Join Waitlist
-                    </button>                            class="btn btn-primary"
-                            data-open="waitlistModal"
-                            aria-controls="waitlistModal"
-                            aria-expanded="false">
-                        Join Waitlist
-                    </button>
-                    <button class="btn btn-secondary"
-                            type="button"
-                            aria-label="Account">
-                        <i class="fas fa-user" aria-hidden="true"></i>
-                    </button>
-                </div>            <div class="hamburger">
+            <div class="nav-actions">
+                <button type="button"
+                        class="btn btn-primary"
+                        data-open="waitlistModal"
+                        aria-controls="waitlistModal"
+                        aria-expanded="false">
+                    Join Waitlist
+                </button>
+                <button class="btn btn-secondary"
+                        type="button"
+                        aria-label="Account">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -107,16 +103,11 @@
                         </div>
                         <p>Pipeline Progress</p>
                     </div>
-                                        <div class="signup-cta">
-                    <h3>Get Started in Minutes</h3>
-                    <button type="button"
-                            class="btn btn-primary"
-                            data-open="waitlistModal"
-                            aria-controls="waitlistModal"
-                            aria-expanded="false">
-                        Join Waitlist
-                    </button>
                 </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Unique Value Proposition -->
     <section class="value-proposition">
         <div class="container">
@@ -353,10 +344,10 @@
             <div class="works-content">
                 <div class="works-visual">
                     <div class="signup-preview">
-                                        <div class="signup-form">
-                    <h3>Get Started in Minutes</h3>
-                    <a href="/waitlist.html" class="btn btn-primary">Join Waitlist</a>
-                </div>
+                        <div class="signup-form">
+                            <h3>Get Started in Minutes</h3>
+                            <a href="/waitlist.html" class="btn btn-primary">Join Waitlist</a>
+                        </div>
                     </div>
                 </div>
                 <div class="works-steps">
@@ -543,18 +534,11 @@
         </div>
     </section>
 
-                            <div class="cta-actions">
-                                <button type="button"
-                                        class="btn btn-primary btn-large"
-                                        data-open="waitlistModal"
-                                        aria-controls="waitlistModal"
-                                        aria-expanded="false">
-                                    Join Waitlist
-                                </button>
-                                <button class="btn btn-outline btn-large">
-                                    Schedule Demo
-                                </button>
-                            </div>            <p>Experience SavvyPro JOT in action with our interactive demo</p>
+    <!-- Live Demo Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <h2>Experience SavvyPro JOT in Action</h2>
+            <p>Experience SavvyPro JOT in action with our interactive demo</p>
             <div class="demo-actions">
                 <button class="btn btn-primary btn-large">Try Interactive Demo</button>
                 <button class="btn btn-outline btn-large">Schedule Personal Demo</button>
@@ -567,10 +551,10 @@
         <div class="container">
             <h2>Ready to Transform Your Job Search?</h2>
             <p>Join thousands of professionals who have landed their dream jobs with SavvyPro JOT</p>
-                            <div class="cta-actions">
-                    <a href="/waitlist.html" class="btn btn-primary btn-large">Join Waitlist</a>
-                    <button class="btn btn-outline btn-large">Schedule Demo</button>
-                </div>
+            <div class="cta-actions">
+                <a href="/waitlist.html" class="btn btn-primary btn-large">Join Waitlist</a>
+                <button class="btn btn-outline btn-large">Schedule Demo</button>
+            </div>
         </div>
     </section>
 
@@ -624,21 +608,36 @@
                             <li><a href="#help">Help & Support</a></li>
                             <li><a href="#status">System Status</a></li>
                             <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Waitlist Modal -->
+    <div class="modal" id="waitlistModal" aria-hidden="true">
+        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-logo">
                     <span class="logo-text">SavvyPro JOT</span>
                     <span class="logo-symbol">®</span>
                 </div>
                 <button type="button"
-                        class="modal__close"
+                        class="close"
                         aria-label="Close modal"
                         data-close="waitlistModal">
                     &times;
                 </button>
-            </div>                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            
             <form class="waitlist-form" id="waitlistForm" method="post" action="/waitlist.html">
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -678,6 +677,18 @@
                         <option value="6-10">6-10 years</option>
                         <option value="10+">10+ years</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="currentPosition">Current Position</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        id="currentPosition"
+                        name="currentPosition"
+                        placeholder="e.g., Software Engineer, Product Manager, Student"
+                        autocomplete="organization-title"
+                        required
+                    >
                 </div>
                 <div class="form-group">
                     <label for="interest">Interest</label>
@@ -725,33 +736,6 @@
                     <i class="fas fa-rocket"></i>
                     Join the Waitlist
                 </button>
-            </form>                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" id="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <select class="form-input" id="experience" required>
-                        <option value="">Years of Experience</option>
-                        <option value="0-1">0-1 years</option>
-                        <option value="2-5">2-5 years</option>
-                        <option value="6-10">6-10 years</option>
-                        <option value="10+">10+ years</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-input" id="interest" required>
-                        <option value="">What interests you most?</option>
-                        <option value="job-tracking">Job Tracking & Organization</option>
-                        <option value="wellness-tools">Wellness & Mindset Tools</option>
-                        <option value="career-development">Career Development</option>
-                        <option value="all">All of the Above</option>
-                    </select>
-                </div>
-                <button type="submit" class="join-waitlist-btn">
-                    <i class="fas fa-rocket"></i>
-                    Join the Waitlist
-                </button>
             </form>
             
             <div class="waitlist-benefits">
@@ -767,6 +751,7 @@
         </div>
     </div>
 
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

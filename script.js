@@ -449,11 +449,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close');
     const waitlistForm = document.getElementById('waitlistForm');
     const successMessage = document.getElementById('successMessage');
+    
+    // Debug logging for modal elements
+    console.log('Modal elements found:', {
+        modal: modal,
+        closeBtn: closeBtn,
+        waitlistForm: waitlistForm,
+        successMessage: successMessage
+    });
+    
+    if (!modal) console.error('Modal not found!');
+    if (!waitlistForm) console.error('Waitlist form not found!');
+    if (!closeBtn) console.error('Close button not found!');
 
     // Open modal when any "Join Waitlist" button is clicked
     document.addEventListener('click', function(e) {
         if (e.target.textContent.includes('Join Waitlist') || 
-            e.target.closest('a[href="/waitlist.html"]')) {
+            e.target.closest('a[href="/waitlist.html"]') ||
+            e.target.getAttribute('data-open') === 'waitlistModal' ||
+            e.target.closest('[data-open="waitlistModal"]')) {
             e.preventDefault();
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -474,17 +488,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Global function to close modal (for success message button)
+    window.closeModal = function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Reset form and show it again for next use
+        setTimeout(() => {
+            waitlistForm.style.display = 'block';
+            waitlistForm.reset();
+            
+            // Remove success message if it exists
+            const successMessage = modal.querySelector('.success-message');
+            if (successMessage) {
+                successMessage.remove();
+            }
+        }, 300);
+    };
+
     // Handle form submission
     waitlistForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log('Form submitted!');
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const experience = document.getElementById('experience').value;
-        const interest = document.getElementById('interest').value;
+        // Get form elements
+        const nameField = document.getElementById('name');
+        const emailField = document.getElementById('email');
+        const experienceField = document.getElementById('experience');
+        const currentPositionField = document.getElementById('currentPosition');
+        const interestField = document.getElementById('interest');
+        
+        console.log('Form elements found:', {
+            name: nameField,
+            email: emailField,
+            experience: experienceField,
+            currentPosition: currentPositionField,
+            interest: interestField
+        });
+        
+        // Get values
+        const name = nameField ? nameField.value : '';
+        const email = emailField ? emailField.value : '';
+        const experience = experienceField ? experienceField.value : '';
+        const currentPosition = currentPositionField ? currentPositionField.value : '';
+        const interest = interestField ? interestField.value : '';
+        
+        // Debug logging
+        console.log('Form values:', { name, email, experience, currentPosition, interest });
         
         // Basic validation
         if (!name.trim() || !email.trim()) {
+            console.log('Validation failed - name:', name, 'email:', email);
             alert('Please fill in all required fields.');
             return;
         }
@@ -496,18 +550,77 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Show success message
-        successMessage.style.display = 'block';
+        // Show loading state
+        const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        submitBtn.disabled = true;
         
-        // Hide form
-        waitlistForm.style.display = 'none';
+        // Prepare data for Google Sheets
+        const formData = {
+            name: name.trim(),
+            email: email.trim(),
+            experience: experience,
+            currentPosition: currentPosition.trim(),
+            interest: interest
+        };
         
-        // Log the data (replace with actual backend integration later)
-        console.log('Waitlist signup:', { name, email, experience, interest });
-        
-        // Optional: Send to your email or database
-        // You can integrate this with services like:
-        // - EmailJS for email notifications
-        // - Airtable for database storage
-        // - Your own backend API
-    });});
+        // Check if Google Sheets URL is configured
+        if (!CONFIG.GOOGLE_SHEETS_URL || CONFIG.GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            alert('Google Sheets integration not configured. Please update config.js with your Google Apps Script URL.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            return;
+        }
+
+        // Send to Google Sheets
+        fetch(CONFIG.GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Important for Google Apps Script
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.innerHTML = `
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Welcome to the Waitlist!</h3>
+                    <p>Thank you, ${name}! You've been successfully added to our waitlist. We'll notify you as soon as SavvyPro JOT launches.</p>
+                    <button class="btn btn-outline" onclick="closeModal()" style="margin-top: 1rem;">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            `;
+            
+            // Hide form and show success message
+            waitlistForm.style.display = 'none';
+            modal.querySelector('.modal-content').appendChild(successMessage);
+            
+            // Log success
+            console.log('Waitlist signup successful:', formData);
+            
+            // Optional: Track with Google Analytics or other analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'engagement',
+                    'event_label': interest
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error saving to waitlist:', error);
+            
+            // Show error message
+            alert('Sorry, there was an error saving your information. Please try again or contact support.');
+            
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
+    });
+});
