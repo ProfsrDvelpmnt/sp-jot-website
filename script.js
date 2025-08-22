@@ -442,3 +442,60 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Waitlist Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('waitlistModal');
+    const closeBtn = document.querySelector('.close');
+    const waitlistForm = document.getElementById('waitlistForm');
+    const successMessage = document.getElementById('successMessage');
+
+    // Open modal when any "Join Waitlist" button is clicked
+    document.addEventListener('click', function(e) {
+        if (e.target.textContent.includes('Join Waitlist') || 
+            e.target.closest('a[href="/waitlist.html"]')) {
+            e.preventDefault();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    });
+
+    // Close modal when X is clicked
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Handle form submission
+    waitlistForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const experience = document.getElementById('experience').value;
+        const interest = document.getElementById('interest').value;
+        
+        // Show success message
+        successMessage.style.display = 'block';
+        
+        // Hide form
+        waitlistForm.style.display = 'none';
+        
+        // Log the data (replace with actual backend integration later)
+        console.log('Waitlist signup:', { name, email, experience, interest });
+        
+        // Optional: Send to your email or database
+        // You can integrate this with services like:
+        // - EmailJS for email notifications
+        // - Airtable for database storage
+        // - Your own backend API
+    });
+});

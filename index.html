@@ -620,6 +620,69 @@
         </div>
     </footer>
 
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <span class="logo-text">SavvyPro JOT</span>
+                    <span class="logo-symbol">®</span>
+                </div>
+                <span class="close">&times;</span>
+            </div>
+            
+            <h2 class="modal-title">Join the Exclusive Waitlist</h2>
+            <p class="modal-subtitle">Be among the first to experience SavvyPro JOT when we launch. Get early access, exclusive updates, and special launch pricing.</p>
+            
+            <div class="success-message" id="successMessage" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <strong>Welcome to the waitlist!</strong> We'll notify you as soon as SavvyPro JOT launches.
+            </div>
+            
+            <form class="waitlist-form" id="waitlistForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-input" id="experience" required>
+                        <option value="">Years of Experience</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-5">2-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-input" id="interest" required>
+                        <option value="">What interests you most?</option>
+                        <option value="job-tracking">Job Tracking & Organization</option>
+                        <option value="wellness-tools">Wellness & Mindset Tools</option>
+                        <option value="career-development">Career Development</option>
+                        <option value="all">All of the Above</option>
+                    </select>
+                </div>
+                <button type="submit" class="join-waitlist-btn">
+                    <i class="fas fa-rocket"></i>
+                    Join the Waitlist
+                </button>
+            </form>
+            
+            <div class="waitlist-benefits">
+                <h3>What You'll Get:</h3>
+                <ul>
+                    <li><span class="check">✓</span> Early access to SavvyPro JOT</li>
+                    <li><span class="check">✓</span> Exclusive launch pricing</li>
+                    <li><span class="check">✓</span> Priority support access</li>
+                    <li><span class="check">✓</span> Behind-the-scenes updates</li>
+                    <li><span class="check">✓</span> Beta testing opportunities</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
