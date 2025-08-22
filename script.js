@@ -483,6 +483,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const experience = document.getElementById('experience').value;
         const interest = document.getElementById('interest').value;
         
+        // Basic validation
+        if (!name.trim() || !email.trim()) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        
         // Show success message
         successMessage.style.display = 'block';
         
@@ -497,5 +510,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // - EmailJS for email notifications
         // - Airtable for database storage
         // - Your own backend API
-    });
-});
+    });});

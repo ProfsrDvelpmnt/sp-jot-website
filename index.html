@@ -26,13 +26,25 @@
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#demo">Live Demo</a></li>
             </ul>
-                            <div class="nav-actions">
-                    <a href="/waitlist.html" class="btn btn-primary">Join Waitlist</a>
-                    <button class="btn btn-secondary">
-                        <i class="fas fa-user"></i>
+                <div class="nav-actions">
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-open="waitlistModal"
+                            aria-controls="waitlistModal"
+                            aria-expanded="false">
+                        Join Waitlist
+                    </button>                            class="btn btn-primary"
+                            data-open="waitlistModal"
+                            aria-controls="waitlistModal"
+                            aria-expanded="false">
+                        Join Waitlist
                     </button>
-                </div>
-            <div class="hamburger">
+                    <button class="btn btn-secondary"
+                            type="button"
+                            aria-label="Account">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </button>
+                </div>            <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -95,11 +107,16 @@
                         </div>
                         <p>Pipeline Progress</p>
                     </div>
+                                        <div class="signup-cta">
+                    <h3>Get Started in Minutes</h3>
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-open="waitlistModal"
+                            aria-controls="waitlistModal"
+                            aria-expanded="false">
+                        Join Waitlist
+                    </button>
                 </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Unique Value Proposition -->
     <section class="value-proposition">
         <div class="container">
@@ -526,11 +543,18 @@
         </div>
     </section>
 
-    <!-- Demo Section -->
-    <section id="demo" class="demo-section">
-        <div class="container">
-            <h2>Live Demo</h2>
-            <p>Experience SavvyPro JOT in action with our interactive demo</p>
+                            <div class="cta-actions">
+                                <button type="button"
+                                        class="btn btn-primary btn-large"
+                                        data-open="waitlistModal"
+                                        aria-controls="waitlistModal"
+                                        aria-expanded="false">
+                                    Join Waitlist
+                                </button>
+                                <button class="btn btn-outline btn-large">
+                                    Schedule Demo
+                                </button>
+                            </div>            <p>Experience SavvyPro JOT in action with our interactive demo</p>
             <div class="demo-actions">
                 <button class="btn btn-primary btn-large">Try Interactive Demo</button>
                 <button class="btn btn-outline btn-large">Schedule Personal Demo</button>
@@ -600,48 +624,108 @@
                             <li><a href="#help">Help & Support</a></li>
                             <li><a href="#status">System Status</a></li>
                             <li><a href="#privacy">Privacy Policy</a></li>
-                            <li><a href="#terms">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-                <div class="copyright">
-                    <p>© 2024 SavvyPro Holdings Inc. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Waitlist Modal -->
-    <div id="waitlistModal" class="modal">
-        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-logo">
                     <span class="logo-text">SavvyPro JOT</span>
                     <span class="logo-symbol">®</span>
                 </div>
-                <span class="close">&times;</span>
-            </div>
-            
-            <h2 class="modal-title">Join the Exclusive Waitlist</h2>
-            <p class="modal-subtitle">Be among the first to experience SavvyPro JOT when we launch. Get early access, exclusive updates, and special launch pricing.</p>
-            
-            <div class="success-message" id="successMessage" style="display: none;">
-                <i class="fas fa-check-circle"></i>
-                <strong>Welcome to the waitlist!</strong> We'll notify you as soon as SavvyPro JOT launches.
-            </div>
-            
-            <form class="waitlist-form" id="waitlistForm">
+                <button type="button"
+                        class="modal__close"
+                        aria-label="Close modal"
+                        data-close="waitlistModal">
+                    &times;
+                </button>
+            </div>                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+            <form class="waitlist-form" id="waitlistForm" method="post" action="/waitlist.html">
                 <div class="form-group">
-                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        class="form-input"
+                        id="name"
+                        name="name"
+                        placeholder="Your Name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        class="form-input"
+                        id="email"
+                        name="email"
+                        placeholder="Your Email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <select
+                        class="form-input"
+                        id="experience"
+                        name="experience"
+                        required
+                    >
+                        <option value="">Years of Experience</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-5">2-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Interest</label>
+                    <select
+                        class="form-input"
+                        id="interest"
+                        name="interest"
+                        required
+                    >
+                        <option value="">What interests you most?</option>
+                        <option value="job-tracking">Job Tracking & Organization</option>
+                        <option value="wellness-tools">Wellness & Mindset Tools</option>
+                        <option value="career-development">Career Development</option>
+                        <option value="all">All of the Above</option>
+                    </select>
+                </div>
+                <!-- Honeypot (spam protection) -->
+                <div
+                    class="form-group"
+                    aria-hidden="true"
+                    style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"
+                >
+                    <label for="company">Company</label>
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        tabindex="-1"
+                        autocomplete="off"
+                    >
+                </div>
+                <!-- Consent -->
+                <div class="form-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="consent"
+                            name="consent"
+                            required
+                        >
+                        I agree to the <a href="#privacy">Privacy Policy</a> and to receive waitlist emails.
+                    </label>
+                </div>
+                <button type="submit" class="join-waitlist-btn">
+                    <i class="fas fa-rocket"></i>
+                    Join the Waitlist
+                </button>
+            </form>                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-input" id="email" placeholder="Your Email" required>
