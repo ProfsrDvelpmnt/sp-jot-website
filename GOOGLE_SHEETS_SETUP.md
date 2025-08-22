@@ -59,6 +59,9 @@ function doPost(e) {
     // Append the data to the sheet
     sheet.appendRow(rowData);
     
+    // Send email notification
+    sendWaitlistNotification(data);
+    
     // Return success response
     return ContentService
       .createTextOutput(JSON.stringify({ success: true, message: 'Data saved successfully' }))
@@ -72,9 +75,80 @@ function doPost(e) {
   }
 }
 
+// Function to send email notifications
+function sendWaitlistNotification(data) {
+  try {
+    // ⚠️ CUSTOMIZE THIS: Replace with your email address
+    const NOTIFICATION_EMAIL = 'your-email@gmail.com';
+    const APP_NAME = 'SavvyPro JOT';
+    
+    // Create email subject
+    const subject = `🎉 New Waitlist Signup: ${data.name}`;
+    
+    // Create email body
+    const body = `
+      <h2>🎉 New Waitlist Signup!</h2>
+      
+      <h3>👤 Signup Details:</h3>
+      <ul>
+        <li><strong>Name:</strong> ${data.name}</li>
+        <li><strong>Email:</strong> ${data.email}</li>
+        <li><strong>Experience:</strong> ${data.experience}</li>
+        <li><strong>Current Position:</strong> ${data.currentPosition}</li>
+        <li><strong>Interest:</strong> ${data.interest}</li>
+        <li><strong>Date:</strong> ${new Date().toLocaleString()}</li>
+      </ul>
+      
+      <h3>📊 Total Waitlist Size:</h3>
+      <p>Your waitlist now has <strong>${getWaitlistCount()}</strong> people!</p>
+      
+      <hr>
+      <p><em>This notification was sent automatically by ${APP_NAME}.</em></p>
+    `;
+    
+    // Send the email
+    MailApp.sendEmail({
+      to: NOTIFICATION_EMAIL,
+      subject: subject,
+      htmlBody: body
+    });
+    
+    console.log('Email notification sent successfully');
+    
+  } catch (error) {
+    console.error('Error sending email notification:', error);
+  }
+}
+
+// Function to get current waitlist count
+function getWaitlistCount() {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const lastRow = sheet.getLastRow();
+    // Subtract 1 for header row
+    return Math.max(0, lastRow - 1);
+  } catch (error) {
+    return 'Unknown';
+  }
+}
+
+// Optional: Test function to verify email works
+function testEmailNotification() {
+  const testData = {
+    name: 'Test User',
+    email: 'test@example.com',
+    experience: '2-5 years',
+    currentPosition: 'Software Engineer',
+    interest: 'Job Tracking'
+  };
+  
+  sendWaitlistNotification(testData);
+}
+
 function doGet() {
   return ContentService.createTextOutput('Waitlist API is running');
 }
+```
 ```
 
 3. **Click "Save" (Ctrl+S)**
@@ -98,12 +172,12 @@ function doGet() {
 ## **🔗 Step 4: Update Your Website**
 
 1. **Open `config.js` in your project**
-2. **Replace `https://script.google.com/macros/s/AKfycbxGf7k7oxpek1hS0QN1qdmiKTsOUeY9iFmXciS8oSuTcFFSv0YWm3ug-tr4MPuDhfaEGQ/exec` with your actual URL:**
+2. **Replace `https://script.google.com/macros/s/AKfycbxzHXU6kIzKo-Fu8WdgaE52ACUqOSJrc4Q0N6Yj9UZNB80hPN7QltRiCB152NY7CM2RzA/exec` with your actual URL:**
 
 ```javascript
 const CONFIG = {
-    GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbxGf7k7oxpek1hS0QN1qdmiKTsOUeY9iFmXciS8oSuTcFFSv0YWm3ug-tr4MPuDhfaEGQ/exec',
-    // ... rest of config
+    GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbxzHXU6kIzKo-Fu8WdgaE52ACUqOSJrc4Q0N6Yj9UZNB80hPN7QltRiCB152NY7CM2RzA/exec',
+    // ... rest of config 
 };
 ```
 
@@ -120,6 +194,18 @@ const CONFIG = {
 
 ---
 
+## **📧 Step 6: Test Email Notifications**
+
+1. **In Google Apps Script, find the `testEmailNotification` function**
+2. **Click the dropdown next to it and select "Run"**
+3. **Authorize the app if prompted**
+4. **Check your email for a test notification**
+5. **If successful, you'll get emails for every real signup!**
+
+**⚠️ Important:** Make sure to update `NOTIFICATION_EMAIL` in the script with your actual email address!
+
+---
+
 ## **📊 What You'll See**
 
 After a successful submission, your Google Sheet will automatically add a new row:
@@ -127,6 +213,34 @@ After a successful submission, your Google Sheet will automatically add a new ro
 | Name | Email | Experience | Current Position | Interest | Date |
 |------|-------|------------|------------------|----------|------|
 | John Doe | john@email.com | 2-5 years | Software Engineer | Job Tracking | 2024-01-15 |
+
+---
+
+## **🔔 Advanced Notification Options**
+
+### **Email Notifications (Already Implemented)**
+✅ **Instant emails** for every signup  
+✅ **Professional formatting** with all signup details  
+✅ **Waitlist count** included in each email  
+✅ **Free** with Google Apps Script  
+
+### **Slack/Discord Notifications**
+Want team notifications? Use **Zapier** or **Make.com**:
+1. **Connect Google Sheets** to your Slack/Discord
+2. **Set up webhook** for instant messages
+3. **Get notified** in your team chat
+
+### **SMS Notifications**
+For urgent alerts, use **Twilio** integration:
+1. **Sign up for Twilio** (free trial available)
+2. **Add SMS function** to your Google Apps Script
+3. **Get text messages** for each signup
+
+### **Dashboard Notifications**
+Create a **real-time dashboard**:
+1. **Use Google Data Studio** (free)
+2. **Connect to your sheet**
+3. **View live updates** and analytics
 
 ---
 

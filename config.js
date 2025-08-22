@@ -1,7 +1,7 @@
 // Configuration file for SavvyPro JOT
 const CONFIG = {
     // Google Apps Script URL - Replace with your actual deployed script URL
-    GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbxGf7k7oxpek1hS0QN1qdmiKTsOUeY9iFmXciS8oSuTcFFSv0YWm3ug-tr4MPuDhfaEGQ/exec',
+    GOOGLE_SHEETS_URL: 'https://script.google.com/macros/s/AKfycbxzHXU6kIzKo-Fu8WdgaE52ACUqOSJrc4Q0N6Yj9UZNB80hPN7QltRiCB152NY7CM2RzA/exec',
     
     // App settings
     APP_NAME: 'SavvyPro JOT',
