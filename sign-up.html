@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Waitlist-specific styles */
+		        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
         .waitlist-container {
             min-height: 100vh;
             display: flex;
@@ -93,20 +96,20 @@
         .join-waitlist-btn {
             width: 100%;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #C99383, #d8b2a7);
-            color: #1a0716;
+            background: linear-gradient(135deg, #421237 0%, #6a1d58 100%);
+            color: white;
             border: none;
             border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(201, 147, 131, 0.3);
+            box-shadow: 0 4px 15px rgba(66, 18, 55, 0.3);
         }
 
         .join-waitlist-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201, 147, 131, 0.4);
+            box-shadow: 0 6px 20px rgba(66, 18, 55, 0.4);
         }
 
         .waitlist-benefits {
@@ -207,7 +210,7 @@
 </head>
 <body>
     <a href="/" class="back-link">
-        <i class="fas fa-arrow-left"></i>
+          <i class="fas fa-arrow-left"></i>
         Back to Home
     </a>
 
@@ -218,8 +221,8 @@
                     <span class="logo-text">SavvyPro JOT</span>
                     <span class="logo-symbol">®</span>
                 </div>
-                <h1 class="waitlist-title">Join the Waitlist</h1>
-                <p class="waitlist-subtitle">Be among the first to experience SavvyPro JOT when we launch. Get early access, exclusive updates, and special launch pricing.</p>
+                <h1 class="waitlist-title">Join the Exclusive Waitlist!</h1>
+                <p class="waitlist-subtitle">Be among the first to experience the SavvyPro JOT when  launched. Get early access, exclusive updates, and special launch pricing.</p>
             </div>
 
             <div class="success-message" id="successMessage">
@@ -229,23 +232,40 @@
 
             <form class="waitlist-form" id="waitlistForm">
                 <div class="form-group">
-                    <input type="text" class="form-input" id="name" placeholder="Your Name" required>
+                    <input type="text" class="form-input" id="name" placeholder="Your Full Name" required>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-input" id="email" placeholder="Your Email" required>
                 </div>
+				<div class="form-group">
+                    <label for="jobTitle">Current Job Title</label>
+                    <input type="text" id="jobTitle" name="jobTitle" class="form-input" placeholder="e.g., Software Engineer, Marketing Manager">
+                </div>
+        <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <select id="experience" name="experience" class="form-input">
+                        <option value="">Select experience level</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-5">2-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+				</div>
                 <div class="form-group">
                     <select class="form-input" id="interest" required>
                         <option value="">What interests you most?</option>
                         <option value="job-tracking">Job Tracking & Organization</option>
                         <option value="wellness-tools">Wellness & Mindset Tools</option>
                         <option value="career-development">Career Development</option>
+                        <option value="kanban-board">Kanban Board Management</option>
+                        <option value="calendar-view">Calendar & Timeline Management</option>
+                        <option value="document-management">Document Organization</option>
+                        <option value="analytics">Progress Analytics & Insights</option>
                         <option value="all">All of the Above</option>
                     </select>
                 </div>
                 <button type="submit" class="join-waitlist-btn">
-                    <i class="fas fa-rocket"></i>
-                    Join the Waitlist
+                                   Join the Waitlist
                 </button>
             </form>
 
