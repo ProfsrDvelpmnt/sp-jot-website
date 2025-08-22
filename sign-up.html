@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SavvyPro JOT | Get Started Today</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signup-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 3rem;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #421237;
+        }
+
+        .logo-symbol {
+            font-size: 1.5rem;
+            color: #C99383;
+            margin-left: 0.25rem;
+        }
+
+        .main-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a0716;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .sub-heading {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-btn.google {
+            background: #4285f4;
+            color: white;
+        }
+
+        .social-btn.google:hover {
+            background: #3367d6;
+            transform: translateY(-1px);
+        }
+
+        .social-btn.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .social-btn.linkedin:hover {
+            background: #005885;
+            transform: translateY(-1px);
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .separator span {
+            padding: 0 1rem;
+        }
+
+        .email-form {
+            margin-bottom: 2rem;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #6a1d58;
+        }
+
+        .get-started-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #C99383, #d8b2a7);
+            color: #1a0716;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(201, 147, 131, 0.3);
+        }
+
+        .signin-link {
+            margin-bottom: 2rem;
+        }
+
+        .signin-link a {
+            color: #6a1d58;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        .disclaimer a {
+            color: #6a1d58;
+            text-decoration: none;
+        }
+
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #6a1d58;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 1.5rem;
+            }
+            
+            .main-heading {
+                font-size: 1.75rem;
+            }
+            
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="signup-container">
+        <div class="logo">
+            <span class="logo-text">SavvyPro JOT</span>
+            <span class="logo-symbol">®</span>
+        </div>
+
+        <h1 class="main-heading">Are you ready to get hired sooner?</h1>
+        <p class="sub-heading">Join over 1 Million SavvyPro Members and unlock your full career potential.</p>
+
+        <div class="social-buttons">
+            <a href="#" class="social-btn google">
+                <i class="fab fa-google"></i>
+                Continue with Google
+            </a>
+            <a href="#" class="social-btn linkedin">
+                <i class="fab fa-linkedin-in"></i>
+                Continue with LinkedIn
+            </a>
+        </div>
+
+        <div class="separator">
+            <span>or sign up with your email</span>
+        </div>
+
+        <form class="email-form">
+            <input type="email" class="email-input" placeholder="Email" required>
+            <button type="submit" class="get-started-btn">Get Started</button>
+        </form>
+
+        <div class="signin-link">
+            Already a Member? <a href="/sign-in">Sign In</a>
+        </div>
+
+        <p class="disclaimer">
+            By signing up, I agree to the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>
+        </p>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.querySelector('.email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.querySelector('.email-input').value;
+            if (email) {
+                // Show loading state
+                const button = document.querySelector('.get-started-btn');
+                const originalText = button.textContent;
+                button.textContent = 'Creating Account...';
+                button.disabled = true;
+                
+                // Simulate account creation
+                setTimeout(() => {
+                    // Redirect to dashboard or show success message
+                    alert('Account created successfully! Welcome to SavvyPro JOT!');
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }, 2000);
+            }
+        });
+
+        // Social button click handlers
+        document.querySelector('.social-btn.google').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Google sign-up functionality would be implemented here');
+        });
+
+        document.querySelector('.social-btn.linkedin').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('LinkedIn sign-up functionality would be implemented here');
+        });
+    </script>
+</body>
+</html>
