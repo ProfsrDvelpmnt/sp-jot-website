@@ -3,178 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - SavvyPro JOT | Get Started Today</title>
+    <title>Join the Waitlist - SavvyPro JOT | Be First to Access</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background: #ffffff;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
+        /* Waitlist-specific styles */
+		        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        .waitlist-container {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .signup-container {
-            max-width: 400px;
-            width: 100%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
             padding: 2rem;
-            text-align: center;
         }
 
-        .logo {
-            margin-bottom: 3rem;
+        .waitlist-card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .waitlist-header {
+            margin-bottom: 2rem;
+        }
+
+        .waitlist-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 1.5rem;
         }
 
         .logo-text {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #421237;
         }
 
         .logo-symbol {
-            font-size: 1.5rem;
-            color: #C99383;
-            margin-left: 0.25rem;
+            font-size: 1rem;
+            color: #666;
         }
 
-        .main-heading {
-            font-size: 2rem;
+        .waitlist-title {
+            font-size: 2.5rem;
             font-weight: 700;
             color: #1a0716;
             margin-bottom: 1rem;
             line-height: 1.2;
         }
 
-        .sub-heading {
+        .waitlist-subtitle {
             font-size: 1.1rem;
             color: #666;
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
-        }
-
-        .social-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            line-height: 1.6;
             margin-bottom: 2rem;
         }
 
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0.875rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .social-btn.google {
-            background: #4285f4;
-            color: white;
-        }
-
-        .social-btn.google:hover {
-            background: #3367d6;
-            transform: translateY(-1px);
-        }
-
-        .social-btn.linkedin {
-            background: #0077b5;
-            color: white;
-        }
-
-        .social-btn.linkedin:hover {
-            background: #005885;
-            transform: translateY(-1px);
-        }
-
-        .separator {
-            display: flex;
-            align-items: center;
-            margin: 2rem 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .separator::before,
-        .separator::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #e0e0e0;
-        }
-
-        .separator span {
-            padding: 0 1rem;
-        }
-
-        .email-form {
+        .waitlist-form {
             margin-bottom: 2rem;
         }
 
-        .email-input {
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
             width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
             font-size: 1rem;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
             box-sizing: border-box;
-            transition: border-color 0.2s ease;
         }
 
-        .email-input:focus {
+        .form-input:focus {
             outline: none;
             border-color: #6a1d58;
+            box-shadow: 0 0 0 3px rgba(106, 29, 88, 0.1);
         }
 
-        .get-started-btn {
+        .join-waitlist-btn {
             width: 100%;
-            background: linear-gradient(135deg, #C99383, #d8b2a7);
-            color: #1a0716;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #421237 0%, #6a1d58 100%);
+            color: white;
             border: none;
-            padding: 0.875rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(66, 18, 55, 0.3);
         }
 
-        .get-started-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(201, 147, 131, 0.3);
+        .join-waitlist-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 18, 55, 0.4);
         }
 
-        .signin-link {
+        .waitlist-benefits {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .signin-link a {
-            color: #6a1d58;
-            text-decoration: none;
-            font-weight: 500;
+        .benefits-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #421237;
+            margin-bottom: 1rem;
         }
 
-        .signin-link a:hover {
-            text-decoration: underline;
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .benefits-list .check {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #6a1d58;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
         }
 
         .disclaimer {
-            font-size: 0.8rem;
-            color: #999;
-            line-height: 1.4;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
         }
 
         .disclaimer a {
@@ -186,36 +188,21 @@
             text-decoration: underline;
         }
 
-        .back-link {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            color: #6a1d58;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 480px) {
-            .signup-container {
-                padding: 1.5rem;
+        @media (max-width: 768px) {
+            .waitlist-card {
+                padding: 2rem;
+                margin: 1rem;
             }
             
-            .main-heading {
-                font-size: 1.75rem;
+            .waitlist-title {
+                font-size: 2rem;
             }
             
             .back-link {
                 position: relative;
                 top: auto;
                 left: auto;
-                margin-bottom: 2rem;
+                margin-bottom: 1rem;
                 justify-content: center;
             }
         }
@@ -223,80 +210,107 @@
 </head>
 <body>
     <a href="/" class="back-link">
-        <i class="fas fa-arrow-left"></i>
+          <i class="fas fa-arrow-left"></i>
         Back to Home
     </a>
 
-    <div class="signup-container">
-        <div class="logo">
-            <span class="logo-text">SavvyPro JOT</span>
-            <span class="logo-symbol">®</span>
+    <div class="waitlist-container">
+        <div class="waitlist-card">
+            <div class="waitlist-header">
+                <div class="waitlist-logo">
+                    <span class="logo-text">SavvyPro JOT</span>
+                    <span class="logo-symbol">®</span>
+                </div>
+                <h1 class="waitlist-title">Join the Exclusive Waitlist!</h1>
+                <p class="waitlist-subtitle">Be among the first to experience the SavvyPro JOT when  launched. Get early access, exclusive updates, and special launch pricing.</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                You're on the waitlist! We'll notify you when we launch.
+            </div>
+
+            <form class="waitlist-form" id="waitlistForm">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="name" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" id="email" placeholder="Your Email" required>
+                </div>
+				<div class="form-group">
+                    <label for="jobTitle">Current Job Title</label>
+                    <input type="text" id="jobTitle" name="jobTitle" class="form-input" placeholder="e.g., Software Engineer, Marketing Manager">
+                </div>
+        <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <select id="experience" name="experience" class="form-input">
+                        <option value="">Select experience level</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-5">2-5 years</option>
+                        <option value="6-10">6-10 years</option>
+                        <option value="10+">10+ years</option>
+                    </select>
+				</div>
+                <div class="form-group">
+                    <select class="form-input" id="interest" required>
+                        <option value="">What interests you most?</option>
+                        <option value="job-tracking">Job Tracking & Organization</option>
+                        <option value="wellness-tools">Wellness & Mindset Tools</option>
+                        <option value="career-development">Career Development</option>
+                        <option value="kanban-board">Kanban Board Management</option>
+                        <option value="calendar-view">Calendar & Timeline Management</option>
+                        <option value="document-management">Document Organization</option>
+                        <option value="analytics">Progress Analytics & Insights</option>
+                        <option value="all">All of the Above</option>
+                    </select>
+                </div>
+                <button type="submit" class="join-waitlist-btn">
+                                   Join the Waitlist
+                </button>
+            </form>
+
+            <div class="waitlist-benefits">
+                <h3 class="benefits-title">What You'll Get:</h3>
+                <ul class="benefits-list">
+                    <li><span class="check">✓</span> Early access to SavvyPro JOT</li>
+                    <li><span class="check">✓</span> Exclusive launch pricing</li>
+                    <li><span class="check">✓</span> Priority support access</li>
+                    <li><span class="check">✓</span> Behind-the-scenes updates</li>
+                    <li><span class="check">✓</span> Beta testing opportunities</li>
+                </ul>
+            </div>
+
+            <p class="disclaimer">
+                By joining the waitlist, you'll receive updates about SavvyPro JOT. 
+                <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms</a>
+            </p>
         </div>
-
-        <h1 class="main-heading">Are you ready to get hired sooner?</h1>
-        <p class="sub-heading">Join over 1 Million SavvyPro Members and unlock your full career potential.</p>
-
-        <div class="social-buttons">
-            <a href="#" class="social-btn google">
-                <i class="fab fa-google"></i>
-                Continue with Google
-            </a>
-            <a href="#" class="social-btn linkedin">
-                <i class="fab fa-linkedin-in"></i>
-                Continue with LinkedIn
-            </a>
-        </div>
-
-        <div class="separator">
-            <span>or sign up with your email</span>
-        </div>
-
-        <form class="email-form">
-            <input type="email" class="email-input" placeholder="Email" required>
-            <button type="submit" class="get-started-btn">Get Started</button>
-        </form>
-
-        <div class="signin-link">
-            Already a Member? <a href="/sign-in">Sign In</a>
-        </div>
-
-        <p class="disclaimer">
-            By signing up, I agree to the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>
-        </p>
     </div>
 
     <script>
-        // Form submission handling
-        document.querySelector('.email-form').addEventListener('submit', function(e) {
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = document.querySelector('.email-input').value;
-            if (email) {
-                // Show loading state
-                const button = document.querySelector('.get-started-btn');
-                const originalText = button.textContent;
-                button.textContent = 'Creating Account...';
-                button.disabled = true;
-                
-                // Simulate account creation
-                setTimeout(() => {
-                    // Redirect to dashboard or show success message
-                    alert('Account created successfully! Welcome to SavvyPro JOT!');
-                    button.textContent = originalText;
-                    button.disabled = false;
-                }, 2000);
-            }
-        });
-
-        // Social button click handlers
-        document.querySelector('.social-btn.google').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Google sign-up functionality would be implemented here');
-        });
-
-        document.querySelector('.social-btn.linkedin').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('LinkedIn sign-up functionality would be implemented here');
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const interest = document.getElementById('interest').value;
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Hide form
+            document.getElementById('waitlistForm').style.display = 'none';
+            
+            // Here you can add code to send the data to your backend
+            // For now, we'll just show the success message
+            console.log('Waitlist signup:', { name, email, interest });
+            
+            // Optional: Send to your email or database
+            // You can integrate this with services like:
+            // - EmailJS for email notifications
+            // - Airtable for database storage
+            // - Your own backend API
         });
     </script>
 </body>
