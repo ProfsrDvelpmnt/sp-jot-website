@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please confirm your email - SavvyPro JOT™</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-content">
+                <div class="text-center mb-5">
+                    <div class="logo-section">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                    <h1 class="confirmation-title">Email Confirmation Required</h1>
+                </div>
+
+                <div class="confirmation-panel">
+                    <div class="text-center">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3 class="confirmation-heading">💌 One last step!</h3>
+                        <div class="confirmation-message">
+                            <p>We've sent a confirmation link to your email address.</p>
+                            <p>Please check your email to confirm your address.</p>
+                        </div>
+
+                        <div class="confirmation-help">
+                            <p>If the email hasn't arrived after a few minutes, please check your spam folder or request a new <a href="#resend" id="resendLink">confirmation email</a>.</p>
+                            <p>Confirming your email address helps us prevent spam and fraud. Thank you!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="resendEmailBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Resend Confirmation Email
+                        </button>
+                        <a href="index.html" class="btn btn-outline">
+                            <i class="fas fa-home"></i>
+                            Return to Home
+                        </a>
+                    </div>
+                </div>
+
+                <div class="confirmation-footer">
+                    <p class="help-text">
+                        <i class="fas fa-info-circle"></i>
+                        Need help? <a href="mailto:support@savvyprojot.com?subject=Email Confirmation Help">Contact our support team</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy-policy.html#privacy-rights">Privacy Rights</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SavvyPro JOT™. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Resend email functionality
+        document.getElementById('resendEmailBtn').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            
+            // Show loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Confirmation email has been resent! Please check your inbox and spam folder.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        });
+
+        // Resend link functionality
+        document.getElementById('resendLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('resendEmailBtn').click();
+        });
+
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Auto-resend after 30 seconds if user hasn't clicked anything
+        let autoResendTimer = setTimeout(() => {
+            if (confirm('Would you like us to resend the confirmation email?')) {
+                document.getElementById('resendEmailBtn').click();
+            }
+        }, 30000);
+
+        // Clear timer if user interacts with the page
+        document.addEventListener('click', function() {
+            clearTimeout(autoResendTimer);
+        });
+    </script>
+</body>
+</html>

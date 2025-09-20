@@ -464,11 +464,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Open modal when any "Join Waitlist" button is clicked
     document.addEventListener('click', function(e) {
-        if (e.target.textContent.includes('Join Waitlist') || 
-            e.target.closest('a[href="/waitlist.html"]') ||
-            e.target.getAttribute('data-open') === 'waitlistModal' ||
+        console.log('🖱️ Waitlist button clicked:', e.target);
+        console.log('🖱️ data-open attribute:', e.target.getAttribute('data-open'));
+        console.log('🖱️ data-plan attribute:', e.target.getAttribute('data-plan'));
+        
+        if (e.target.getAttribute('data-open') === 'waitlistModal' ||
             e.target.closest('[data-open="waitlistModal"]')) {
+            console.log('✅ Waitlist modal button clicked!');
             e.preventDefault();
+            
+            // Get the selected plan from the button
+            const selectedPlan = e.target.getAttribute('data-plan') || 'General Interest';
+            console.log('📋 Selected plan:', selectedPlan);
+            
+            // Update the hidden plan field
+            const planField = document.getElementById('selectedPlan');
+            if (planField) {
+                planField.value = selectedPlan;
+                console.log('✅ Plan field updated:', planField.value);
+            }
+            
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
@@ -517,13 +532,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const experienceField = document.getElementById('experience');
         const currentPositionField = document.getElementById('currentPosition');
         const interestField = document.getElementById('interest');
+        const planField = document.getElementById('selectedPlan');
         
         console.log('Form elements found:', {
             name: nameField,
             email: emailField,
             experience: experienceField,
             currentPosition: currentPositionField,
-            interest: interestField
+            interest: interestField,
+            plan: planField
         });
         
         // Get values
@@ -532,9 +549,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const experience = experienceField ? experienceField.value : '';
         const currentPosition = currentPositionField ? currentPositionField.value : '';
         const interest = interestField ? interestField.value : '';
+        const plan = planField ? planField.value : 'General Interest';
         
         // Debug logging
-        console.log('Form values:', { name, email, experience, currentPosition, interest });
+        console.log('Form values:', { name, email, experience, currentPosition, interest, plan });
         
         // Basic validation
         if (!name.trim() || !email.trim()) {
@@ -562,7 +580,8 @@ document.addEventListener('DOMContentLoaded', function() {
             email: email.trim(),
             experience: experience,
             currentPosition: currentPosition.trim(),
-            interest: interest
+            interest: interest,
+            plan: plan
         };
         
         // Check if Google Sheets URL is configured
@@ -624,3 +643,699 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Helper function to get the next weekday (kept for potential future use)
+function getNextWeekday(date) {
+    const nextDay = new Date(date);
+    nextDay.setDate(nextDay.getDate() + 1);
+    
+    // If it's Saturday (6), move to Monday (2)
+    if (nextDay.getDay() === 6) {
+        nextDay.setDate(nextDay.getDate() + 2);
+    }
+    // If it's Sunday (0), move to Monday (1)
+    else if (nextDay.getDay() === 0) {
+        nextDay.setDate(nextDay.getDate() + 1);
+    }
+    
+    return nextDay;
+}
+
+// Schedule Demo Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM Content Loaded - Setting up modals');
+    
+    const scheduleModal = document.getElementById('scheduleModal');
+    const scheduleForm = document.getElementById('scheduleForm');
+    const scheduleDateInput = document.getElementById('scheduleDate');
+    
+    // Debug modal elements
+    console.log('🔍 Modal elements found:', {
+        scheduleModal: scheduleModal,
+        scheduleForm: scheduleForm,
+        scheduleDateInput: scheduleDateInput
+    });
+    
+    if (!scheduleModal) {
+        console.error('❌ Schedule modal not found! Check HTML structure.');
+        return;
+    }
+    
+    // FullCalendar instance
+    let calendar = null;
+    
+    // Booked appointments storage
+    const BOOKED_APPOINTMENTS_KEY = 'savvypro_booked_appointments';
+    
+    // Function to get booked appointments
+    function getBookedAppointments() {
+        const stored = localStorage.getItem(BOOKED_APPOINTMENTS_KEY);
+        return stored ? JSON.parse(stored) : [];
+    }
+    
+    // Function to save booked appointments
+    function saveBookedAppointment(appointment) {
+        const appointments = getBookedAppointments();
+        appointments.push(appointment);
+        localStorage.setItem(BOOKED_APPOINTMENTS_KEY, JSON.stringify(appointments));
+    }
+    
+    // Function to check if a time slot is booked (server-side check)
+    async function isTimeSlotBooked(date, time) {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'check_availability',
+                    date: date,
+                    time: time
+                })
+            });
+            
+            const result = await response.json();
+            return result.booked || false;
+        } catch (error) {
+            console.error('Error checking availability:', error);
+            // Fallback to localStorage for offline/error cases
+            const appointments = getBookedAppointments();
+            return appointments.some(apt => apt.date === date && apt.time === time);
+        }
+    }
+    
+    // Function to get booked time slots for a specific date (server-side)
+    async function getBookedTimeSlotsForDate(date) {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'get_booked_times',
+                    date: date
+                })
+            });
+            
+            const result = await response.json();
+            return result.booked_times || [];
+        } catch (error) {
+            console.error('Error getting booked times:', error);
+            // Fallback to localStorage
+            const appointments = getBookedAppointments();
+            return appointments
+                .filter(apt => apt.date === date)
+                .map(apt => apt.time);
+        }
+    }
+    
+    // Function to display all booked appointments (for admin/debugging)
+    function displayBookedAppointments() {
+        const appointments = getBookedAppointments();
+        console.log('📅 All booked appointments:', appointments);
+        return appointments;
+    }
+    
+    // Make functions globally available for debugging
+    window.getBookedAppointments = getBookedAppointments;
+    window.displayBookedAppointments = displayBookedAppointments;
+    
+    // Function to update time slot availability based on selected date
+    async function updateTimeSlotAvailability(selectedDate) {
+        const timeSelect = document.getElementById('scheduleTime');
+        if (!timeSelect) return;
+        
+        // Show loading state
+        timeSelect.disabled = true;
+        const loadingOption = document.createElement('option');
+        loadingOption.value = '';
+        loadingOption.textContent = 'Loading availability...';
+        loadingOption.disabled = true;
+        timeSelect.appendChild(loadingOption);
+        
+        try {
+            // Get booked time slots for the selected date
+            const bookedTimes = await getBookedTimeSlotsForDate(selectedDate);
+            console.log('📅 Booked times for', selectedDate, ':', bookedTimes);
+            
+            // Remove loading option
+            timeSelect.removeChild(loadingOption);
+            
+            // Reset all options
+            const options = timeSelect.querySelectorAll('option');
+            options.forEach(option => {
+                if (option.value) { // Skip the placeholder option
+                    const isBooked = bookedTimes.includes(option.value);
+                    option.disabled = isBooked;
+                    option.style.color = isBooked ? '#999' : '';
+                    option.style.backgroundColor = isBooked ? '#f5f5f5' : '';
+                    
+                    if (isBooked) {
+                        option.textContent = option.textContent.replace(' (Booked)', '') + ' (Booked)';
+                    } else {
+                        // Remove "(Booked)" text if it exists
+                        option.textContent = option.textContent.replace(' (Booked)', '');
+                    }
+                }
+            });
+            
+            // Clear selection if current selection is now booked
+            if (timeSelect.value && bookedTimes.includes(timeSelect.value)) {
+                timeSelect.value = '';
+                console.log('⚠️ Previously selected time is now booked, cleared selection');
+            }
+        } catch (error) {
+            console.error('Error updating time slots:', error);
+            // Remove loading option and show error
+            timeSelect.removeChild(loadingOption);
+            const errorOption = document.createElement('option');
+            errorOption.value = '';
+            errorOption.textContent = 'Error loading availability';
+            errorOption.disabled = true;
+            timeSelect.appendChild(errorOption);
+        } finally {
+            timeSelect.disabled = false;
+        }
+    }
+    
+    // Function to setup FullCalendar
+    function setupFullCalendar() {
+        console.log('🔧 Setting up FullCalendar');
+        
+        const calendarEl = document.getElementById('schedule-calendar');
+        const scheduleDateInput = document.getElementById('scheduleDate');
+        
+        if (!calendarEl) {
+            console.log('❌ Calendar element not found');
+            return;
+        }
+        
+        console.log('📅 Calendar element found:', calendarEl);
+        console.log('📅 FullCalendar available:', typeof FullCalendar !== 'undefined');
+        
+        // Check if FullCalendar is loaded
+        if (typeof FullCalendar === 'undefined') {
+            console.log('❌ FullCalendar not loaded, retrying in 500ms...');
+            setTimeout(setupFullCalendar, 500);
+            return;
+        }
+        
+        // Destroy existing calendar if it exists
+        if (calendar) {
+            calendar.destroy();
+        }
+        
+        // Get today's date
+        const today = new Date();
+        const todayStr = today.toISOString().split('T')[0];
+        
+        // Initialize FullCalendar
+        calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: today,
+            headerToolbar: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
+            height: 280, // Fixed smaller height
+            aspectRatio: 1.2, // Make it more compact
+            selectable: true,
+            selectMirror: true,
+            dayMaxEvents: true,
+            weekends: false, // This automatically disables weekends!
+            validRange: {
+                start: todayStr // Disable past dates
+            },
+            select: function(info) {
+                console.log('📅 Date selected:', info.startStr);
+                
+                // Update the hidden input
+                scheduleDateInput.value = info.startStr;
+                
+                // Update time slot availability
+                updateTimeSlotAvailability(info.startStr);
+                
+                console.log('✅ Date selected and input updated:', info.startStr);
+            },
+            selectAllow: function(selectInfo) {
+                // Only allow selection of weekdays (this is redundant since weekends: false, but good for safety)
+                const dayOfWeek = selectInfo.start.getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                
+                if (isWeekend) {
+                    console.log('🚫 Weekend selection blocked');
+                    return false;
+                }
+                
+                console.log('✅ Weekday selection allowed');
+                return true;
+            },
+            dayCellDidMount: function(info) {
+                // Add custom styling for weekends
+                const dayOfWeek = info.date.getDay();
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    info.el.classList.add('fc-day-disabled');
+                    info.el.style.cursor = 'not-allowed';
+                }
+            }
+        });
+        
+        // Render the calendar
+        calendar.render();
+        console.log('✅ FullCalendar initialized successfully');
+        console.log('📅 Calendar element after render:', calendarEl);
+        console.log('📅 Calendar element innerHTML:', calendarEl.innerHTML);
+    }
+    
+    // Open schedule modal when button is clicked
+    document.addEventListener('click', function(e) {
+        console.log('🖱️ Button clicked:', e.target);
+        console.log('🖱️ data-open attribute:', e.target.getAttribute('data-open'));
+        console.log('🖱️ closest data-open:', e.target.closest('[data-open="scheduleModal"]'));
+        
+        if (e.target.getAttribute('data-open') === 'scheduleModal' ||
+            e.target.closest('[data-open="scheduleModal"]')) {
+            console.log('✅ Schedule modal button clicked!');
+            e.preventDefault();
+            
+            if (scheduleModal) {
+                scheduleModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Setup FullCalendar when modal opens
+                setupFullCalendar();
+            } else {
+                console.error('❌ Schedule modal not found!');
+            }
+        }
+    });
+    
+    // Close schedule modal when X is clicked
+    const scheduleCloseBtn = scheduleModal.querySelector('.close');
+    if (scheduleCloseBtn) {
+        scheduleCloseBtn.addEventListener('click', function() {
+            scheduleModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close schedule modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === scheduleModal) {
+            scheduleModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Handle schedule form submission
+    if (scheduleForm) {
+        scheduleForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(scheduleForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Validate required fields
+            if (!data.name || !data.email || !data.phone || !data.date || !data.time || !data.consent) {
+                alert('Please fill in all required fields and accept the terms.');
+                return;
+            }
+            
+            // Validate that selected date is not a weekend
+            const selectedDate = new Date(data.date);
+            const dayOfWeek = selectedDate.getDay();
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                alert('Please select a weekday (Monday-Friday) for your demo.');
+                return;
+            }
+            
+            // Check for double booking (server-side check)
+            const isBooked = await isTimeSlotBooked(data.date, data.time);
+            if (isBooked) {
+                alert('Sorry, this time slot is already booked. Please select a different time.');
+                await updateTimeSlotAvailability(data.date); // Refresh availability
+                return;
+            }
+            
+            // Create appointment object
+            const appointment = {
+                id: Date.now(), // Simple unique ID
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                company: data.company || 'Not provided',
+                date: data.date,
+                time: data.time,
+                message: data.message || 'None',
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // Save appointment to prevent double booking
+            saveBookedAppointment(appointment);
+            console.log('📅 Appointment saved:', appointment);
+            
+            // Create Outlook calendar event
+            createOutlookEvent(data);
+            
+            // Save to Google Sheets
+            saveToGoogleSheets(data);
+            
+            // Show success message
+            showScheduleSuccess(data);
+        });
+    }
+});
+
+// Function to save demo request to Google Sheets
+async function saveToGoogleSheets(data) {
+    try {
+        // Add timestamp
+        const timestamp = new Date().toLocaleString();
+        
+        // Prepare data for Google Sheets
+        const sheetData = {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            company: data.company || 'Not provided',
+            date: data.date,
+            time: formatTime(data.time),
+            message: data.message || 'None',
+            timestamp: timestamp
+        };
+        
+        // Google Apps Script Web App URL (you'll need to replace this with your actual URL)
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec';
+        
+        // Send data to Google Sheets
+        console.log('🚀 Sending data to Google Sheets:', sheetData);
+        console.log('🔗 Using URL:', GOOGLE_SCRIPT_URL);
+        
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Required for Google Apps Script
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sheetData)
+        });
+        
+        console.log('✅ Response received:', response);
+        console.log('📊 Demo request saved to Google Sheets:', sheetData);
+        
+    } catch (error) {
+        console.error('Error saving to Google Sheets:', error);
+        // Don't show error to user as calendar event was still created
+    }
+}
+
+// Function to create and download ICS calendar file
+function createOutlookEvent(data) {
+    // Handle different date formats from FullCalendar
+    console.log('📅 Raw date data:', data.date, data.time);
+    
+    let dateStr = data.date;
+    if (dateStr.includes('T')) {
+        // FullCalendar returns full datetime, extract just the date part
+        dateStr = dateStr.split('T')[0];
+    }
+    
+    const startDate = new Date(dateStr + 'T' + data.time);
+    const endDate = new Date(startDate.getTime() + 30 * 60000); // 30 minutes later
+    
+    console.log('📅 Parsed dates:', startDate, endDate);
+    
+    // Format dates for ICS (YYYYMMDDTHHMMSSZ)
+    const formatICSDate = (date) => {
+        if (isNaN(date.getTime())) {
+            console.error('❌ Invalid date:', date);
+            return new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        }
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+    
+    const startTime = formatICSDate(startDate);
+    const endTime = formatICSDate(endDate);
+    const now = formatICSDate(new Date());
+    
+    // Generate unique UID for the event
+    const uid = `savvypro-demo-${Date.now()}-${Math.random().toString(36).substr(2, 9)}@savvypro.com`;
+    
+    // Create ICS content
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//SavvyPro JOT//Demo Scheduler//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:REQUEST',
+        'BEGIN:VEVENT',
+        `UID:${uid}`,
+        `DTSTAMP:${now}`,
+        `DTSTART:${startTime}`,
+        `DTEND:${endTime}`,
+        `SUMMARY:SavvyPro JOT Demo - ${data.name}`,
+        `DESCRIPTION:Demo scheduled with ${data.name} (${data.email})\\n\\nPhone: ${data.phone}\\nCompany: ${data.company || 'Not provided'}\\n\\nAdditional Notes:\\n${data.message || 'None'}\\n\\nThis is a 30-minute personalized demo of SavvyPro JOT.`,
+        `LOCATION:Online Meeting (Link will be sent separately)`,
+        `ORGANIZER:CN=SavvyPro JOT:MAILTO:info@savvypro.com`,
+        `ATTENDEE:CN=${data.name}:MAILTO:${data.email}`,
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+    
+    // Create and download the ICS file
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `SavvyPro-JOT-Demo-${data.name.replace(/\s+/g, '-')}-${dateStr}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    
+    console.log('✅ ICS calendar file downloaded:', link.download);
+}
+
+// Function to show success message
+function showScheduleSuccess(data) {
+    const scheduleModal = document.getElementById('scheduleModal');
+    const scheduleForm = document.getElementById('scheduleForm');
+    
+    // Hide the form
+    scheduleForm.style.display = 'none';
+    
+    // Create success message
+    const successMessage = document.createElement('div');
+    successMessage.className = 'success-message';
+    successMessage.innerHTML = `
+        <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; color: #C99383; margin-bottom: 1rem;">✓</div>
+            <h3 style="color: #421237; margin-bottom: 1rem;">Demo Scheduled Successfully!</h3>
+            <p style="color: #666; margin-bottom: 1.5rem;">
+                Thank you, ${data.name}! Your demo has been scheduled for ${new Date(data.date).toLocaleDateString()} at ${formatTime(data.time)}.
+            </p>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">
+                A calendar file (.ics) has been downloaded to your device. You can import it into any calendar application (Outlook, Google Calendar, Apple Calendar, etc.).
+            </p>
+            <p style="color: #666; margin-bottom: 2rem; font-size: 0.9rem;">
+                You'll also receive a confirmation email shortly.
+            </p>
+            <button onclick="closeScheduleModal()" style="
+                background: linear-gradient(135deg, #421237, #6a1d58);
+                color: white;
+                border: none;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                Close
+            </button>
+        </div>
+    `;
+    
+    // Add success message to modal
+    scheduleModal.querySelector('.modal-content').appendChild(successMessage);
+}
+
+// Function to format time for display
+function formatTime(timeString) {
+    const [hours, minutes] = timeString.split(':');
+    const hour = parseInt(hours);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const displayHour = hour % 12 || 12;
+    return `${displayHour}:${minutes} ${ampm}`;
+}
+
+// Global function to close schedule modal
+window.closeScheduleModal = function() {
+    const scheduleModal = document.getElementById('scheduleModal');
+    const scheduleForm = document.getElementById('scheduleForm');
+    
+    scheduleModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Reset form and show it again for next use
+    setTimeout(() => {
+        scheduleForm.style.display = 'block';
+        scheduleForm.reset();
+        
+        // Remove success message if it exists
+        const successMessage = scheduleModal.querySelector('.success-message');
+        if (successMessage) {
+            successMessage.remove();
+        }
+    }, 300);
+};
+
+// Counter animation for statistics
+function animateCounter(element, target, duration = 2000, suffix = '') {
+    console.log('Starting animation for:', element, 'target:', target, 'suffix:', suffix);
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+    
+    // Add animating class for visual feedback
+    element.classList.add('animating');
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+            // Remove animating class when done
+            element.classList.remove('animating');
+        }
+        
+        if (suffix === '%') {
+            element.textContent = Math.floor(current) + suffix;
+        } else if (suffix === 'K+') {
+            // Special handling for K+ - switch to actual numbers after 5K
+            if (Math.floor(current) >= 5) {
+                // Convert to actual numbers (5K = 5000, 6K = 6000, etc.)
+                const actualNumber = Math.floor(current) * 1000;
+                element.textContent = '$' + actualNumber.toLocaleString() + '+';
+            } else {
+                element.textContent = '$' + Math.floor(current) + suffix;
+            }
+        } else if (suffix === '+') {
+            element.textContent = Math.floor(current) + suffix;
+        } else if (suffix === '/7') {
+            element.textContent = '24' + suffix;
+        }
+    }, 16);
+}
+
+// Initialize counter animations when stats come into view
+function initCounters() {
+    console.log('Initializing counters...');
+    const statsSection = document.querySelector('.affiliate-stats');
+    console.log('Stats section found:', statsSection);
+    
+    if (!statsSection) {
+        console.log('No stats section found, trying alternative approach...');
+        // Fallback: try to find stats on any page
+        const statNumbers = document.querySelectorAll('.stat-number');
+        console.log('Found stat numbers:', statNumbers.length);
+        
+        if (statNumbers.length > 0) {
+            statNumbers.forEach((stat, index) => {
+                const targets = [30, 50, 500, 24];
+                const suffixes = ['%', 'K+', '+', '/7'];
+                
+                setTimeout(() => {
+                    console.log('Starting fallback animation for stat', index);
+                    animateCounter(stat, targets[index], 2000, suffixes[index]);
+                }, index * 200);
+            });
+        }
+        return;
+    }
+    
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Stats section is in view, starting animations...');
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    console.log('Found stat numbers:', statNumbers.length);
+                    
+                    statNumbers.forEach((stat, index) => {
+                        const targets = [30, 5, 500, 24];
+                        const suffixes = ['%', 'K+', '+', '/7'];
+                        
+                        setTimeout(() => {
+                            console.log('Starting animation for stat', index);
+                            animateCounter(stat, targets[index], 2000, suffixes[index]);
+                        }, index * 200);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    } else {
+        // Fallback for browsers without IntersectionObserver
+        console.log('IntersectionObserver not supported, using fallback...');
+        const statNumbers = statsSection.querySelectorAll('.stat-number');
+        statNumbers.forEach((stat, index) => {
+            const targets = [30, 50, 500, 24];
+            const suffixes = ['%', 'K+', '+', '/7'];
+            
+            setTimeout(() => {
+                console.log('Starting fallback animation for stat', index);
+                animateCounter(stat, targets[index], 2000, suffixes[index]);
+            }, index * 200);
+        });
+    }
+}
+
+// Initialize counters when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing counters...');
+    initCounters();
+});
+
+// Also try to initialize after a short delay as a fallback
+setTimeout(() => {
+    console.log('Fallback timer triggered...');
+    initCounters();
+}, 1000);
+
+// Test function - you can call this from browser console: testCounters()
+window.testCounters = function() {
+    console.log('Manual test triggered...');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    console.log('Found stat numbers for testing:', statNumbers.length);
+    
+    statNumbers.forEach((stat, index) => {
+        const targets = [30, 50, 500, 24];
+        const suffixes = ['%', 'K+', '+', '/7'];
+        
+        // Reset to 0 first
+        if (suffixes[index] === '%') {
+            stat.textContent = '0%';
+        } else if (suffixes[index] === 'K+') {
+            stat.textContent = '$0K+';
+        } else if (suffixes[index] === '+') {
+            stat.textContent = '0+';
+        } else if (suffixes[index] === '/7') {
+            stat.textContent = '24/7';
+        }
+        
+        setTimeout(() => {
+            console.log('Starting manual test animation for stat', index);
+            animateCounter(stat, targets[index], 2000, suffixes[index]);
+        }, index * 200);
+    });
+};

@@ -1,4 +1,25 @@
 /* Reset and Base Styles */
+
+/* Font Awesome Icon Fallbacks */
+.fas, .far, .fab {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "FontAwesome", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.far {
+    font-weight: 400;
+}
+
+.fab {
+    font-family: "Font Awesome 6 Brands", "FontAwesome", sans-serif;
+    font-weight: 400;
+}
 * {
     margin: 0;
     padding: 0;
@@ -62,10 +83,15 @@ p {
     font-family: inherit;
 }
 
+.btn i {
+    margin-right: 8px;
+}
+
 .btn-primary {
     background: linear-gradient(135deg, #C99383, #d8b2a7);
     color: #1a0716;
     box-shadow: 0 4px 15px rgba(201, 147, 131, 0.3);
+    border: 2px solid #333;
 }
 
 .btn-primary:hover {
@@ -80,7 +106,7 @@ p {
 }
 
 .btn-outline:hover {
-    background: #333;
+    background: #421237;
     color: white;
 }
 
@@ -109,6 +135,7 @@ p {
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid #f0f0f0;
+    padding: 0 1rem;
 }
 
 .nav {
@@ -116,18 +143,39 @@ p {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
 }
 
 .nav-brand .logo {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.nav-brand a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .logo-text {
     font-size: 1.75rem;
     font-weight: 700;
     color: #421237;
+    text-decoration: none;
 }
 
 .logo-symbol {
@@ -138,7 +186,11 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
 }
 
 .nav-menu a {
@@ -199,6 +251,7 @@ p {
 
 .hero-actions {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
 }
@@ -727,13 +780,23 @@ p {
 .signup-preview {
     background: white;
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .signup-form h3 {
     color: #6a1d58;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .form-field {
@@ -1305,6 +1368,22 @@ p {
     margin-bottom: 3rem;
 }
 
+/* Affiliate page specific footer centering */
+.affiliate-landing-page .footer-content,
+.affiliate-resources-page .footer-content,
+.affiliate-signup-page .footer-content,
+.affiliate-login-page .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand {
+    text-align: center;
+}
+
 .footer-brand .logo-text {
     color: white;
 }
@@ -1313,6 +1392,26 @@ p {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+}
+
+/* Affiliate page specific footer links centering */
+.affiliate-landing-page .footer-links,
+.affiliate-resources-page .footer-links,
+.affiliate-signup-page .footer-links,
+.affiliate-login-page .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #C99383;
 }
 
 .footer-column h4 {
@@ -1388,6 +1487,29 @@ p {
 /* Lock background scroll when modal is open */
 body.modal-open {
     overflow: hidden;
+}
+
+/* Waitlist Intro Styles */
+.waitlist-intro {
+    text-align: center;
+    padding: 1.5rem 2rem 1rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.waitlist-intro h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.waitlist-intro p {
+    color: #6c757d;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.4;
 }
 .modal-content {
     background-color: white;
@@ -1521,6 +1643,9 @@ body.modal-open {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .waitlist-benefits li {
@@ -1530,6 +1655,7 @@ body.modal-open {
     margin-bottom: 0.75rem;
     color: #666;
     font-size: 0.95rem;
+    justify-content: center;
 }
 
 .waitlist-benefits .check {
@@ -1789,8 +1915,34 @@ body.modal-open {
         padding: 0.75rem 1rem;
     }
     
+    .nav {
+        padding: 0.75rem 0;
+    }
+    
+    .affiliate-landing-page,
+    .affiliate-page,
+    .affiliate-login-page,
+    .affiliate-resources-page {
+        padding-top: 70px;
+    }
+    
+    .nav {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
     .header .logo {
         font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
     }
     
     .hero .container {
@@ -1845,8 +1997,29 @@ body.modal-open {
         padding: 2rem 1rem;
     }
     
+    /* Affiliate page specific responsive footer centering */
+    .affiliate-landing-page .footer-content,
+    .affiliate-resources-page .footer-content,
+    .affiliate-signup-page .footer-content,
+    .affiliate-login-page .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+    
     .footer-links {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    /* Affiliate page specific responsive footer links */
+    .affiliate-landing-page .footer-links,
+    .affiliate-resources-page .footer-links,
+    .affiliate-signup-page .footer-links,
+    .affiliate-login-page .footer-links {
+        flex-direction: column;
+        align-items: center;
         gap: 1rem;
     }
     
@@ -1941,8 +2114,9 @@ body.modal-open {
     }
     
     .footer-links {
-        grid-template-columns: 1fr;
-        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
     }
     
     .section-title {
@@ -1957,6 +2131,25 @@ body.modal-open {
 @media (max-width: 480px) {
     .container {
         padding: 0 1rem;
+    }
+    
+    .affiliate-landing-page,
+    .affiliate-page,
+    .affiliate-login-page,
+    .affiliate-resources-page {
+        padding-top: 60px;
+    }
+    
+    .nav {
+        padding: 0.5rem 0;
+    }
+    
+    .header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .nav-menu {
+        gap: 0.5rem;
     }
     
     .hero-title {
@@ -1996,8 +2189,17 @@ body.modal-open {
     
     .footer-links {
         grid-template-columns: 1fr;
-        text-align: center;
         gap: 0.75rem;
+    }
+    
+    /* Affiliate page specific responsive footer links */
+    .affiliate-landing-page .footer-links,
+    .affiliate-resources-page .footer-links,
+    .affiliate-signup-page .footer-links,
+    .affiliate-login-page .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
     
     .pricing-cards {
@@ -2046,6 +2248,11 @@ body.modal-open {
     
     .header .logo {
         font-size: 1.4rem;
+    }
+    
+    .logo-icon {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -2117,6 +2324,11 @@ body.modal-open {
     .header .logo {
         font-size: 1.3rem;
     }
+    
+    .logo-icon {
+        width: 22px;
+        height: 22px;
+    }
 }
 
 /* Extra small phones */
@@ -2186,6 +2398,11 @@ body.modal-open {
     
     .header .logo {
         font-size: 1.2rem;
+    }
+    
+    .logo-icon {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -2275,5 +2492,1950 @@ body.modal-open {
     .modal-content {
         margin: 2% auto;
         max-height: 96vh;
+    }
+}
+
+/* Schedule Demo Modal Styles */
+.schedule-modal {
+    max-width: 600px;
+    width: 90%;
+}
+
+.schedule-form-container {
+    padding: 2rem;
+}
+
+.schedule-form-container h3 {
+    color: #421237;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.schedule-form-container p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.schedule-form {
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.schedule-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.schedule-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #421237;
+}
+
+.schedule-form .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.schedule-form .form-input:focus {
+    outline: none;
+    border-color: #C99383;
+    box-shadow: 0 0 0 3px rgba(201, 147, 131, 0.1);
+}
+
+.schedule-form textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.schedule-form select.form-input {
+    cursor: pointer;
+}
+
+.schedule-form label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+}
+
+.schedule-demo-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #421237, #6a1d58);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.schedule-demo-btn:hover {
+    background: linear-gradient(135deg, #6a1d58, #421237);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 18, 55, 0.3);
+}
+
+.schedule-demo-btn:active {
+    transform: translateY(0);
+}
+
+.schedule-benefits {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #C99383;
+    text-align: center;
+}
+
+.schedule-benefits h4 {
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.schedule-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.schedule-benefits li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #666;
+    justify-content: center;
+}
+
+.schedule-benefits .check {
+    color: #C99383;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Responsive adjustments for schedule form */
+@media (max-width: 768px) {
+    .schedule-modal {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .schedule-form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .schedule-form-container h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-form-container {
+        padding: 1rem;
+    }
+    
+    .schedule-form .form-input {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+    
+    .schedule-demo-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* FullCalendar.js Styles */
+#calendar-container {
+    background: #fff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-height: 300px; /* Smaller calendar height */
+    max-width: 500px; /* Limit calendar width */
+    margin: 0 auto 1rem auto; /* Center the calendar */
+}
+
+/* Fallback styles in case FullCalendar CSS doesn't load */
+#schedule-calendar {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Custom FullCalendar styling */
+.fc {
+    font-family: 'Inter', sans-serif;
+}
+
+.fc-toolbar {
+    margin-bottom: 0.5rem; /* Reduced margin */
+}
+
+.fc-toolbar-title {
+    font-size: 1rem; /* Smaller title */
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Make calendar more compact */
+.fc-daygrid-day {
+    min-height: 2rem !important; /* Smaller day cells */
+}
+
+.fc-daygrid-day-number {
+    padding: 0.25rem !important; /* Smaller padding */
+    font-size: 0.875rem !important; /* Smaller font */
+}
+
+.fc-button {
+    background: #C99383 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+}
+
+.fc-button:hover {
+    background: #B8826F !important;
+}
+
+.fc-button:focus {
+    box-shadow: 0 0 0 2px rgba(201, 147, 131, 0.3) !important;
+}
+
+.fc-daygrid-day {
+    border: 1px solid #e5e7eb !important;
+}
+
+.fc-daygrid-day-number {
+    color: #374151 !important;
+    font-weight: 500 !important;
+    padding: 0.5rem !important;
+}
+
+.fc-daygrid-day:hover {
+    background: #f9fafb !important;
+}
+
+/* Weekend styling */
+.fc-day-sat,
+.fc-day-sun {
+    background: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+.fc-day-sat .fc-daygrid-day-number,
+.fc-day-sun .fc-daygrid-day-number {
+    color: #dc2626 !important;
+}
+
+/* Disabled weekend days */
+.fc-day-sat.fc-day-disabled,
+.fc-day-sun.fc-day-disabled {
+    background: #f3f4f6 !important;
+    color: #9ca3af !important;
+    cursor: not-allowed !important;
+}
+
+.fc-day-sat.fc-day-disabled .fc-daygrid-day-number,
+.fc-day-sun.fc-day-disabled .fc-daygrid-day-number {
+    color: #9ca3af !important;
+}
+
+/* Selected date styling */
+.fc-daygrid-day.fc-day-selected {
+    background: #C99383 !important;
+}
+
+.fc-daygrid-day.fc-day-selected .fc-daygrid-day-number {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Past dates styling */
+.fc-day-past {
+    background: #f9fafb !important;
+    color: #9ca3af !important;
+}
+
+.fc-day-past .fc-daygrid-day-number {
+    color: #9ca3af !important;
+}
+
+/* Disabled time slot styling */
+#scheduleTime option:disabled {
+    color: #999 !important;
+    background-color: #f5f5f5 !important;
+    font-style: italic;
+}
+
+#scheduleTime option:disabled:hover {
+    background-color: #f5f5f5 !important;
+}
+
+/* Legal Pages Styles */
+.legal-page {
+    padding: 2rem 0;
+    min-height: 80vh;
+    background: #f8f9fa;
+}
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.legal-content h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.last-updated {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.legal-section {
+    margin-bottom: 2.5rem;
+}
+
+.legal-section h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
+
+.legal-section h3 {
+    color: #495057;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.legal-section p {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.legal-section li {
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.legal-section a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.legal-section a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness for legal pages */
+@media (max-width: 768px) {
+    .legal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .legal-content h1 {
+        font-size: 2rem;
+    }
+    
+    .legal-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .legal-section h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Affiliate Page Styles */
+.affiliate-page {
+    padding: 2rem 0;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.affiliate-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo-section {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-section .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.logo-section .logo-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.affiliate-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.affiliate-subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.affiliate-panel {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.affiliate-welcome h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.affiliate-welcome p {
+    color: #495057;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.affiliate-benefits {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.affiliate-benefits h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.affiliate-benefits ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 2rem;
+    margin: 0;
+}
+
+.affiliate-benefits li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #495057;
+    font-size: 1rem;
+}
+
+.affiliate-benefits li i {
+    color: #28a745;
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.divider {
+    border: none;
+    height: 2px;
+    background: #e9ecef;
+    margin: 2rem 0;
+}
+
+.affiliate-form {
+    margin-top: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-label.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+}
+
+.checkbox-group {
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 0.75rem;
+    margin-top: 0.2rem;
+    transform: scale(1.2);
+}
+
+.checkbox-label a {
+    color: #421237;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+.recaptcha-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.affiliate-footer {
+    text-align: center;
+    color: #6c757d;
+    margin-top: 2rem;
+}
+
+.affiliate-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.affiliate-footer a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Mobile responsiveness for affiliate page */
+@media (max-width: 768px) {
+    .affiliate-panel {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .affiliate-title {
+        font-size: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .affiliate-benefits {
+        padding: 1.5rem;
+    }
+    
+    .logo-section {
+        font-size: 2rem;
+    }
+    
+    .logo-section .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Email Confirmation Page Styles */
+.confirmation-page {
+    padding: 2rem 0;
+    min-height: 80vh;
+    background: #f8f9fa;
+}
+
+.confirmation-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.confirmation-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-panel {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.confirmation-icon {
+    font-size: 4rem;
+    color: #421237;
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.confirmation-heading {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.confirmation-message {
+    margin-bottom: 2rem;
+}
+
+.confirmation-message p {
+    color: #495057;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-help {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.confirmation-help p {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.confirmation-help a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.confirmation-help a:hover {
+    text-decoration: underline;
+}
+
+.confirmation-actions {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+    min-width: 200px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+}
+
+.confirmation-footer {
+    text-align: center;
+    color: #6c757d;
+}
+
+.help-text {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.help-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.help-text a:hover {
+    text-decoration: underline;
+}
+
+.help-text i {
+    margin-right: 0.5rem;
+    color: #421237;
+}
+
+/* Mobile responsiveness for confirmation page */
+@media (max-width: 768px) {
+    .confirmation-panel {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+    
+    .confirmation-title {
+        font-size: 1.5rem;
+    }
+    
+    .confirmation-heading {
+        font-size: 1.5rem;
+    }
+    
+    .confirmation-icon {
+        font-size: 3rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-buttons .btn {
+        min-width: 250px;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .confirmation-help {
+        padding: 1rem;
+    }
+}
+
+/* Affiliate Login Page Styles */
+.affiliate-login-page {
+    padding: 2rem 0;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.affiliate-login-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.affiliate-login-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.affiliate-login-panel {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.welcome-heading {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-message {
+    color: #6c757d;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.affiliate-login-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-label.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+}
+
+.honeypot {
+    display: none;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-check-input {
+    margin-right: 0.75rem;
+    transform: scale(1.2);
+}
+
+.form-check-label {
+    color: #495057;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.login-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.forgot-password {
+    margin-bottom: 1rem;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password i {
+    margin-right: 0.5rem;
+}
+
+.signup-link {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.signup-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.affiliate-login-footer {
+    text-align: center;
+    color: #6c757d;
+}
+
+.help-text {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.help-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.help-text a:hover {
+    text-decoration: underline;
+}
+
+.help-text i {
+    margin-right: 0.5rem;
+    color: #421237;
+}
+
+/* Mobile responsiveness for affiliate login page */
+@media (max-width: 768px) {
+    .affiliate-login-panel {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+    
+    .affiliate-login-title {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-heading {
+        font-size: 1.3rem;
+    }
+    
+    .btn-large {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Affiliate Landing Page Styles */
+.affiliate-landing-page {
+    background: #f8f9fa;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+.affiliate-hero {
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    color: #1a0716;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.affiliate-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.affiliate-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.affiliate-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: #421237;
+}
+
+.affiliate-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.affiliate-stats {
+    background: white;
+    padding: 3rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #421237;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Animation for counting effect */
+.stat-number.animating {
+    transform: scale(1.05);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.affiliate-how-it-works {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #421237;
+    margin-bottom: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: #421237;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.step-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    color: #1a0716;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+}
+
+.step-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.step-content p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.affiliate-benefits {
+    padding: 4rem 0;
+    background: white;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    color: #1a0716;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+.benefit-item h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.benefit-item p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.affiliate-cta-section {
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    color: #1a0716;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Affiliate Landing Page Button Styles */
+.affiliate-landing-page .btn-large {
+    padding: 12px 24px !important;
+    font-size: 1rem !important;
+    min-width: 160px !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+.affiliate-landing-page .affiliate-cta {
+    gap: 1.5rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.affiliate-landing-page .cta-buttons {
+    gap: 1.5rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+/* Affiliate Landing Page Section Titles */
+.affiliate-landing-page .section-title {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+.affiliate-landing-page .section-subtitle {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+.affiliate-landing-page .text-center {
+    text-align: center !important;
+}
+
+/* Hero Icon Styling */
+.hero-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.affiliate-landing-page .hero-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-right: 12px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.affiliate-landing-page .affiliate-hero-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Affiliate Landing Page Benefits Grid - 3 items top row, 2 items bottom row staggered */
+.affiliate-landing-page .benefits-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 2rem !important;
+    justify-content: center !important;
+    max-width: 1000px !important;
+    margin: 3rem auto 0 auto !important;
+}
+
+.affiliate-landing-page .benefit-item:nth-child(4),
+.affiliate-landing-page .benefit-item:nth-child(5) {
+    grid-column: span 1 !important;
+    justify-self: center !important;
+}
+
+.affiliate-landing-page .benefit-item:nth-child(4) {
+    grid-column: 1 / 2 !important;
+    margin-right: 2rem !important;
+}
+
+.affiliate-landing-page .benefit-item:nth-child(5) {
+    grid-column: 3 / 4 !important;
+    margin-left: 2rem !important;
+}
+
+.affiliate-landing-page .benefit-item {
+    min-width: 200px !important;
+    padding: 1.5rem !important;
+}
+
+/* Mobile responsive adjustments for affiliate landing buttons */
+@media (max-width: 480px) {
+    .affiliate-landing-page .btn-large {
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+        min-width: 140px !important;
+    }
+    
+    .affiliate-landing-page .affiliate-cta {
+        gap: 1rem !important;
+        flex-direction: row !important;
+    }
+    
+    .affiliate-landing-page .cta-buttons {
+        gap: 1rem !important;
+        flex-direction: row !important;
+    }
+    
+    .hero-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+    }
+    
+    .affiliate-landing-page .hero-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+    }
+    
+    .resources-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .affiliate-landing-page .affiliate-hero-title {
+        gap: 12px;
+    }
+}
+
+/* Responsive adjustments for benefits grid */
+@media (max-width: 1200px) {
+    .affiliate-landing-page .benefits-grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 900px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .affiliate-landing-page .benefits-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 600px !important;
+    }
+    
+    .affiliate-landing-page .benefit-item:nth-child(4),
+    .affiliate-landing-page .benefit-item:nth-child(5) {
+        grid-column: span 1 !important;
+        margin: 0 !important;
+    }
+    
+    .affiliate-landing-page .benefit-item {
+        min-width: 180px !important;
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .affiliate-landing-page .benefits-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        max-width: 400px !important;
+    }
+    
+    .affiliate-landing-page .benefit-item:nth-child(4),
+    .affiliate-landing-page .benefit-item:nth-child(5) {
+        grid-column: span 1 !important;
+        margin: 0 !important;
+    }
+    
+    .affiliate-landing-page .benefit-item {
+        min-width: auto !important;
+        padding: 1rem !important;
+    }
+}
+
+/* Affiliate Resources Page Styles */
+.affiliate-resources-page {
+    padding: 2rem 0;
+    padding-top: 100px;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.resources-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.resources-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.resources-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.resources-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.resources-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.quick-links {
+    margin-bottom: 3rem;
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quick-link-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quick-link-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #421237;
+}
+
+.quick-link-item i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #421237;
+}
+
+.resource-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.resource-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #421237;
+    text-align: center;
+}
+
+.section-description {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.banners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.banner-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    align-items: flex-start;
+}
+
+.banner-preview {
+    flex-shrink: 0;
+}
+
+.banner-placeholder {
+    width: 120px;
+    height: 80px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.banner-placeholder span {
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.banner-placeholder small {
+    font-size: 0.8rem;
+    color: #adb5bd;
+}
+
+.banner-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.banner-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.banner-info p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.banner-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.template-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.template-preview {
+    background: #f8f9fa;
+    padding: 1rem;
+}
+
+.email-preview {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.email-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.email-body {
+    text-align: left;
+}
+
+.email-body p:has(strong) {
+    text-align: center;
+}
+
+.email-body ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.email-body li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    color: #495057;
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-body li i {
+    color: #28a745;
+    margin-right: 0.75rem;
+    font-size: 1rem;
+}
+
+.email-body p:has(a.cta-link) {
+    text-align: center;
+}
+
+.email-body p {
+    margin-bottom: 0.5rem;
+}
+
+.cta-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.template-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.template-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.template-info p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.social-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.social-post {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-preview {
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    background: #007bff;
+    border-radius: 50%;
+}
+
+.post-info span {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.post-content p {
+    margin-bottom: 0.5rem;
+}
+
+.post-hashtags {
+    color: #007bff;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.post-actions {
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+}
+
+.content-ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.content-idea {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.content-idea h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.content-idea ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-idea li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+    color: #6c757d;
+}
+
+.content-idea li:last-child {
+    border-bottom: none;
+}
+
+.tracking-section {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.tracking-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tracking-link-item label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.link-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.link-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: white;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+/* Mobile responsiveness for affiliate pages */
+@media (max-width: 768px) {
+    .affiliate-hero-title {
+        font-size: 2rem;
+    }
+    
+    .affiliate-hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .affiliate-cta {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Override for affiliate landing page */
+    .affiliate-landing-page .affiliate-cta {
+        flex-direction: row !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Override for affiliate landing page */
+    .affiliate-landing-page .cta-buttons {
+        flex-direction: row !important;
+    }
+    
+    .resource-section {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .banner-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .banner-actions {
+        justify-content: center;
+    }
+    
+    .templates-grid,
+    .social-content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-ideas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .link-container {
+        flex-direction: column;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #calendar-container {
+        padding: 0.5rem;
+    }
+    
+    .fc-toolbar-title {
+        font-size: 1rem;
+    }
+    
+    .fc-button {
+        padding: 0.375rem 0.75rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .fc-daygrid-day-number {
+        padding: 0.25rem !important;
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Additional mobile breakpoints for stats grid */
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .quick-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
     }
 }

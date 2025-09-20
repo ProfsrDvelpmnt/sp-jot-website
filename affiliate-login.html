@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Login - SavvyPro JOT™</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="affiliate-login-page">
+        <div class="container">
+            <div class="affiliate-login-content">
+                <div class="text-center mb-5">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        </div>
+                    </div>
+                    <h1 class="affiliate-login-title">Affiliate Login</h1>
+                </div>
+
+                <div class="affiliate-login-panel">
+                    <div class="text-center mb-4">
+                        <h5 class="welcome-heading">👋 Welcome back, friend.</h5>
+                        <p class="welcome-message">We're so glad to see you! Login to continue.</p>
+                    </div>
+
+                    <form class="affiliate-login-form" id="affiliateLoginForm">
+                        <div class="form-group">
+                            <label class="form-label required" for="affiliate_email">Email</label>
+                            <input 
+                                required 
+                                autofocus 
+                                placeholder="your@email.com" 
+                                class="form-control" 
+                                type="email" 
+                                name="email" 
+                                id="affiliate_email"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required" for="affiliate_password">Password</label>
+                            <input 
+                                required 
+                                autocomplete="current-password" 
+                                placeholder="Enter your password" 
+                                class="form-control" 
+                                type="password" 
+                                name="password" 
+                                id="affiliate_password"
+                            >
+                        </div>
+
+                        <!-- Honeypot field for spam protection -->
+                        <div class="honeypot">
+                            <label for="website_url">Leave blank</label>
+                            <input type="text" name="website_url" id="website_url" autocomplete="off" tabindex="-1">
+                        </div>
+
+                        <div class="form-check">
+                            <input 
+                                class="form-check-input" 
+                                type="checkbox" 
+                                value="1" 
+                                name="remember_me" 
+                                id="affiliate_remember_me"
+                            >
+                            <label class="form-check-label" for="affiliate_remember_me">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login to Dashboard
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="login-footer">
+                        <div class="forgot-password">
+                            <a href="#forgot-password" id="forgotPasswordLink">
+                                <i class="fas fa-key"></i>
+                                Forgot your password?
+                            </a>
+                        </div>
+                        
+                        <div class="signup-link">
+                            <p>Don't have an affiliate account? <a href="affiliate-signup.html">Sign up here</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="affiliate-login-footer">
+                    <p class="help-text">
+                        <i class="fas fa-info-circle"></i>
+                        Need help accessing your account? <a href="mailto:affiliates@savvyprojot.com?subject=Affiliate Login Help">Contact our affiliate team</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy-policy.html#privacy-rights">Privacy Rights</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SavvyPro JOT™. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('affiliateLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.email || !data.password) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate login process
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Simulate successful login
+                alert('Login successful! Redirecting to your Rewardful dashboard...');
+                
+                // Redirect to Rewardful Dashboard
+                // In production, this would be your actual Rewardful dashboard URL
+                window.location.href = 'https://dashboard.rewardful.com/affiliates/dashboard';
+                
+                // For demo purposes, show a message about the redirect
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1000);
+            }, 2000);
+        });
+
+        // Forgot password functionality
+        document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('affiliate_email').value;
+            
+            if (email) {
+                alert(`Password reset instructions have been sent to ${email}`);
+            } else {
+                const userEmail = prompt('Please enter your email address:');
+                if (userEmail) {
+                    alert(`Password reset instructions have been sent to ${userEmail}`);
+                }
+            }
+        });
+
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Auto-focus on email field
+        document.getElementById('affiliate_email').focus();
+    </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become an Affiliate - SavvyPro JOT™</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#pricing" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="affiliate-page">
+        <div class="container">
+            <div class="affiliate-content">
+                <div class="text-center mb-5">
+                    <div class="logo-section">
+                        <div class="logo">
+                            <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        </div>
+                    </div>
+                    <h1 class="affiliate-title">Affiliate Program</h1>
+                    <p class="affiliate-subtitle">Join our affiliate program and start earning commissions</p>
+                </div>
+
+                <div class="affiliate-panel">
+                    <div class="affiliate-welcome">
+                        <h2>Thanks for your interest in becoming an affiliate with us!</h2>
+                        <p>Sign up below for our Affiliate Program and start earning commissions for helping job seekers discover SavvyPro JOT™ - the ultimate job tracking and career management platform!</p>
+                        
+                        <div class="affiliate-benefits">
+                            <h3>Why Join Our Affiliate Program?</h3>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Earn up to 30% commission on every referral</li>
+                                <li><i class="fas fa-check-circle"></i> Recurring commissions for subscription renewals</li>
+                                <li><i class="fas fa-check-circle"></i> Marketing materials and tracking tools provided</li>
+                                <li><i class="fas fa-check-circle"></i> Dedicated affiliate support team</li>
+                                <li><i class="fas fa-check-circle"></i> Real-time analytics and reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="divider">
+
+                    <form class="affiliate-form" id="affiliateForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label required">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label required">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Doe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label required">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="website" class="form-label">Website/Blog URL (Optional)</label>
+                            <input type="url" id="website" name="website" class="form-control" placeholder="https://yourwebsite.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="socialMedia" class="form-label">Social Media Followers</label>
+                            <select id="socialMedia" name="socialMedia" class="form-control">
+                                <option value="">Select your primary platform</option>
+                                <option value="linkedin">LinkedIn (0-1K followers)</option>
+                                <option value="linkedin-1k-10k">LinkedIn (1K-10K followers)</option>
+                                <option value="linkedin-10k+">LinkedIn (10K+ followers)</option>
+                                <option value="twitter">Twitter (0-1K followers)</option>
+                                <option value="twitter-1k-10k">Twitter (1K-10K followers)</option>
+                                <option value="twitter-10k+">Twitter (10K+ followers)</option>
+                                <option value="instagram">Instagram (0-1K followers)</option>
+                                <option value="instagram-1k-10k">Instagram (1K-10K followers)</option>
+                                <option value="instagram-10k+">Instagram (10K+ followers)</option>
+                                <option value="youtube">YouTube (0-1K subscribers)</option>
+                                <option value="youtube-1k-10k">YouTube (1K-10K subscribers)</option>
+                                <option value="youtube-10k+">YouTube (10K+ subscribers)</option>
+                                <option value="other">Other Platform</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="referralSource" class="form-label">How did you hear about our affiliate program?</label>
+                            <select id="referralSource" name="referralSource" class="form-control">
+                                <option value="">Select an option</option>
+                                <option value="google">Google Search</option>
+                                <option value="social-media">Social Media</option>
+                                <option value="friend">Friend/Colleague</option>
+                                <option value="blog">Blog/Website</option>
+                                <option value="podcast">Podcast</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience" class="form-label">Affiliate Marketing Experience</label>
+                            <select id="experience" name="experience" class="form-control">
+                                <option value="">Select your experience level</option>
+                                <option value="beginner">Beginner (0-6 months)</option>
+                                <option value="intermediate">Intermediate (6 months - 2 years)</option>
+                                <option value="advanced">Advanced (2+ years)</option>
+                                <option value="expert">Expert (5+ years)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="promotionMethods" class="form-label">How do you plan to promote SavvyPro JOT™?</label>
+                            <textarea id="promotionMethods" name="promotionMethods" class="form-control" rows="3" placeholder="Describe your promotion strategy (e.g., blog posts, social media, email marketing, etc.)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monthlyTraffic" class="form-label">Estimated Monthly Website Traffic</label>
+                            <select id="monthlyTraffic" name="monthlyTraffic" class="form-control">
+                                <option value="">Select traffic range</option>
+                                <option value="0-1k">0 - 1,000 visitors</option>
+                                <option value="1k-10k">1,000 - 10,000 visitors</option>
+                                <option value="10k-50k">10,000 - 50,000 visitors</option>
+                                <option value="50k-100k">50,000 - 100,000 visitors</option>
+                                <option value="100k+">100,000+ visitors</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Terms and Conditions</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a>&nbsp;and&nbsp;<a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                                    <span class="checkmark"></span>
+                                    I would like to receive marketing emails about new features and commission opportunities
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group recaptcha-container">
+                            <div class="g-recaptcha" data-sitekey="6LfMocMUAAAAAFPlLsVDnIDUYSJh93KK_2VcAlnj"></div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-user-plus"></i>
+                                Apply to Become an Affiliate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="affiliate-footer">
+                    <p>Already have an affiliate account? <a href="#login">Login to your dashboard</a></p>
+                    <p class="contact-info">
+                        Questions about our affiliate program? 
+                        <a href="mailto:affiliates@savvyprojot.com?subject=Affiliate Program Inquiry">Contact our affiliate team</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy-policy.html#privacy-rights">Privacy Rights</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SavvyPro JOT™. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('affiliateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.email || !data.termsAgreement) {
+                alert('Please fill in all required fields and accept the terms and conditions.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Thank you for your interest in becoming an affiliate! We will review your application and contact you within 2-3 business days.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fallback Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
+    <!-- FullCalendar.js CSS - Using unpkg as fallback -->
+    <link href="https://unpkg.com/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <div class="logo">
-                    <span class="logo-text">SavvyPro JOT</span>
-                    <span class="logo-symbol">®</span>
-                </div>
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                        <span class="logo-text">SavvyPro JOT</span>
+                        <span class="logo-symbol">™</span>
+                    </div>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#features">Features</a></li>
@@ -34,11 +41,6 @@
                         aria-expanded="false">
                     Join Waitlist
                 </button>
-                <button class="btn btn-secondary"
-                        type="button"
-                        aria-label="Account">
-                    <i class="fas fa-user" aria-hidden="true"></i>
-                </button>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -55,8 +57,7 @@
                 <h1 class="hero-title">Modern Job Tracking. Visual Pipeline Management. Career Success.</h1>
                 <p class="hero-subtitle">Transform your job search with SavvyPro JOT - a holistic career management platform featuring job tracking, wellness tools, and mindset development for complete career success.</p>
                 <div class="hero-actions">
-                    <a href="/waitlist.html" class="btn btn-primary btn-large">Join Waitlist</a>
-                    <button class="btn btn-outline btn-large">View Live Demo</button>
+                    <button class="btn btn-primary btn-large" data-open="waitlistModal" aria-controls="waitlistModal" aria-expanded="false">Join Waitlist</button>
                 </div>
                 <div class="hero-features">
                     <div class="feature-item">
@@ -134,6 +135,52 @@
         </div>
     </section>
 
+    <!-- Technical Features -->
+    <section id="features" class="technical-features">
+        <div class="container">
+            <h2>Built for Modern Job Seekers</h2>
+            <p>Full-stack application with enterprise-grade features and real-time capabilities</p>
+            
+            <div class="features-container">
+                <div class="feature-box mindset-development">
+                    <i class="fas fa-brain"></i>
+                    <h3>Mindset Development</h3>
+                    <p>Integrated wellness tools for career resilience</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Works seamlessly on desktop, tablet, and mobile devices</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Real-time Updates</h3>
+                    <p>Live synchronization across all your devices</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Authentication</h3>
+                    <p>Enterprise-grade security and user authorization</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Storage</h3>
+                    <p>Secure document storage with automatic backups</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Comprehensive insights into your job search progress</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-users"></i>
+                    <h3>Team Collaboration</h3>
+                    <p>Share progress with mentors or career coaches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Feature Section 1: Kanban Board -->
     <section id="kanban" class="feature-section">
         <div class="container">
@@ -146,7 +193,6 @@
                     <li><span class="check">✓</span> Visual progress tracking</li>
                     <li><span class="check">✓</span> Real-time updates across devices</li>
                 </ul>
-                <button class="btn btn-primary">Try Kanban Board</button>
             </div>
             <div class="feature-visual">
                 <div class="kanban-interface">
@@ -186,7 +232,6 @@
                     <li><span class="check">✓</span> Application deadline tracking</li>
                     <li><span class="check">✓</span> Follow-up scheduling</li>
                 </ul>
-                <button class="btn btn-primary">Explore Calendar View</button>
             </div>
             <div class="feature-visual">
                 <div class="calendar-preview">
@@ -224,7 +269,6 @@
                     <li><span class="check">✓</span> Easy document sharing</li>
                     <li><span class="check">✓</span> Secure cloud storage</li>
                 </ul>
-                <button class="btn btn-primary">Manage Documents</button>
             </div>
             <div class="feature-visual">
                 <div class="document-manager">
@@ -263,7 +307,6 @@
                     <li><span class="check">✓</span> Interview performance metrics</li>
                     <li><span class="check">✓</span> Pipeline health indicators</li>
                 </ul>
-                <button class="btn btn-primary">View Dashboard</button>
             </div>
             <div class="feature-visual">
                 <div class="dashboard-preview">
@@ -306,7 +349,6 @@
                     <li><span class="check">✓</span> Resilience building through structured exercises</li>
                     <li><span class="check">✓</span> Values-based career alignment tools</li>
                 </ul>
-                <button class="btn btn-primary">Explore Wellness Tools</button>
             </div>
             <div class="feature-visual">
                 <div class="wellness-preview">
@@ -346,7 +388,7 @@
                     <div class="signup-preview">
                         <div class="signup-form">
                             <h3>Get Started in Minutes</h3>
-                            <a href="/waitlist.html" class="btn btn-primary">Join Waitlist</a>
+                            <button class="btn btn-primary" data-open="waitlistModal" aria-controls="waitlistModal" aria-expanded="false">Join Waitlist</button>
                         </div>
                     </div>
                 </div>
@@ -379,52 +421,6 @@
                             <p>Use insights and analytics to optimize your job search strategy</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Features -->
-    <section id="features" class="technical-features">
-        <div class="container">
-            <h2>Built for Modern Job Seekers</h2>
-            <p>Full-stack application with enterprise-grade features and real-time capabilities</p>
-            
-            <div class="features-container">
-                <div class="feature-box mindset-development">
-                    <i class="fas fa-brain"></i>
-                    <h3>Mindset Development</h3>
-                    <p>Integrated wellness tools for career resilience</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Responsive Design</h3>
-                    <p>Works seamlessly on desktop, tablet, and mobile devices</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-sync-alt"></i>
-                    <h3>Real-time Updates</h3>
-                    <p>Live synchronization across all your devices</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Secure Authentication</h3>
-                    <p>Enterprise-grade security and user authorization</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Cloud Storage</h3>
-                    <p>Secure document storage with automatic backups</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Analytics Dashboard</h3>
-                    <p>Comprehensive insights into your job search progress</p>
-                </div>
-                <div class="feature-box">
-                    <i class="fas fa-users"></i>
-                    <h3>Team Collaboration</h3>
-                    <p>Share progress with mentors or career coaches</p>
                 </div>
             </div>
         </div>
@@ -483,7 +479,7 @@
                         <li><span class="check">✓</span> Daily Check-In</li>
                         <li><span class="check">✓</span> Job Archive</li>
                     </ul>
-                    <a href="/waitlist.html" class="btn btn-primary">Join Waitlist</a>
+                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Free" aria-controls="waitlistModal" aria-expanded="false">Join for Free</button>
                 </div>
                 
                 <div class="pricing-card basic">
@@ -498,7 +494,7 @@
                         <li><span class="check">✓</span> 1 Mindfulness Activity</li>
                         <li><span class="check">✓</span> 2 Values Activities</li>
                     </ul>
-                    <button class="btn btn-primary">Get Basic</button>
+                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Basic" aria-controls="waitlistModal" aria-expanded="false">Get Basic</button>
                 </div>
                 
                 <div class="pricing-card professional">
@@ -513,7 +509,7 @@
                         <li><span class="check">✓</span> 1 Additional Values Activity</li>
                         <li><span class="check">✓</span> 2 Mindfulness Activities</li>
                     </ul>
-                    <button class="btn btn-primary">Get Professional</button>
+                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Professional" aria-controls="waitlistModal" aria-expanded="false">Get Professional</button>
                 </div>
                 
                 <div class="pricing-card executive">
@@ -528,7 +524,7 @@
                         <li><span class="check">✓</span> Growth Journey Dashboard</li>
                         <li><span class="check">✓</span> Analytics</li>
                     </ul>
-                    <button class="btn btn-primary">Get Executive</button>
+                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Executive" aria-controls="waitlistModal" aria-expanded="false">Get Executive</button>
                 </div>
             </div>
         </div>
@@ -540,8 +536,7 @@
             <h2>Experience SavvyPro JOT in Action</h2>
             <p>Experience SavvyPro JOT in action with our interactive demo</p>
             <div class="demo-actions">
-                <button class="btn btn-primary btn-large">Try Interactive Demo</button>
-                <button class="btn btn-outline btn-large">Schedule Personal Demo</button>
+                <button class="btn btn-outline btn-large" data-open="scheduleModal" aria-controls="scheduleModal" aria-expanded="false">Schedule Personal Demo</button>
             </div>
         </div>
     </section>
@@ -552,8 +547,7 @@
             <h2>Ready to Transform Your Job Search?</h2>
             <p>Join thousands of professionals who have landed their dream jobs with SavvyPro JOT</p>
             <div class="cta-actions">
-                <a href="/waitlist.html" class="btn btn-primary btn-large">Join Waitlist</a>
-                <button class="btn btn-outline btn-large">Schedule Demo</button>
+                <button class="btn btn-primary btn-large" data-open="waitlistModal" aria-controls="waitlistModal" aria-expanded="false">Join Waitlist</button>
             </div>
         </div>
     </section>
@@ -565,7 +559,7 @@
                 <div class="footer-brand">
                     <div class="logo">
                         <span class="logo-text">SavvyPro JOT</span>
-                        <span class="logo-symbol">®</span>
+                        <span class="logo-symbol">™</span>
                     </div>
                     <p>Modern job tracking and career management platform</p>
                 </div>
@@ -607,8 +601,10 @@
                         <ul>
                             <li><a href="#help">Help & Support</a></li>
                             <li><a href="#status">System Status</a></li>
-                            <li><a href="#privacy">Privacy Policy</a></li>
-                            <li><a href="#terms">Terms of Service</a></li>
+                            <li><a href="privacy-policy.html#privacy-rights">Privacy Rights</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                            <li><a href="affiliate-landing.html">Affiliate Program</a></li>
+                            <li><a href="affiliate-login.html">Affiliate Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -628,7 +624,7 @@
             <div class="modal-header">
                 <div class="modal-logo">
                     <span class="logo-text">SavvyPro JOT</span>
-                    <span class="logo-symbol">®</span>
+                    <span class="logo-symbol">™</span>
                 </div>
                 <button type="button"
                         class="close"
@@ -638,7 +634,12 @@
                 </button>
             </div>
             
-            <form class="waitlist-form" id="waitlistForm" method="post" action="/waitlist.html">
+            <div class="waitlist-intro">
+                <h3>Thank you for Your Interest!!</h3>
+                <p>We are launching soon. To get early access, Join our Waitlist!</p>
+            </div>
+            
+            <form class="waitlist-form" id="waitlistForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input
@@ -729,9 +730,13 @@
                             name="consent"
                             required
                         >
-                        I agree to the <a href="#privacy">Privacy Policy</a> and to receive waitlist emails.
+                        I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and to receive waitlist emails.
                     </label>
                 </div>
+                
+                <!-- Hidden field to track selected plan -->
+                <input type="hidden" id="selectedPlan" name="plan" value="">
+                
                 <button type="submit" class="join-waitlist-btn">
                     <i class="fas fa-rocket"></i>
                     Join the Waitlist
@@ -743,15 +748,153 @@
                 <ul>
                     <li><span class="check">✓</span> Early access to SavvyPro JOT</li>
                     <li><span class="check">✓</span> Exclusive launch pricing</li>
-                    <li><span class="check">✓</span> Priority support access</li>
-                    <li><span class="check">✓</span> Behind-the-scenes updates</li>
                     <li><span class="check">✓</span> Beta testing opportunities</li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <!-- Schedule Demo Modal -->
+    <div class="modal" id="scheduleModal" aria-hidden="true">
+        <div class="modal-content schedule-modal">
+            <div class="modal-header">
+                <div class="modal-logo">
+                    <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
+                </div>
+                <button type="button"
+                        class="close"
+                        aria-label="Close modal"
+                        data-close="scheduleModal">
+                    &times;
+                </button>
+            </div>
+            
+            <div class="schedule-form-container">
+                <h3>Schedule Your Personal Demo</h3>
+                <p>Book a personalized demo to see how SavvyPro JOT can transform your job search</p>
+                
+                <form class="schedule-form" id="scheduleForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scheduleName">Full Name *</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                id="scheduleName"
+                                name="name"
+                                placeholder="Your Name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="scheduleEmail">Email *</label>
+                            <input
+                                type="email"
+                                class="form-input"
+                                id="scheduleEmail"
+                                name="email"
+                                placeholder="your.email@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="schedulePhone">Phone Number *</label>
+                            <input
+                                type="tel"
+                                class="form-input"
+                                id="schedulePhone"
+                                name="phone"
+                                placeholder="(555) 123-4567"
+                                autocomplete="tel"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="scheduleCompany">Company (Optional)</label>
+                            <input
+                                type="text"
+                                class="form-input"
+                                id="scheduleCompany"
+                                name="company"
+                                placeholder="Your Company"
+                                autocomplete="organization"
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scheduleDate">Preferred Date *</label>
+                        <div id="calendar-container">
+                            <div id="schedule-calendar"></div>
+                        </div>
+                        <input type="hidden" id="scheduleDate" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scheduleTime">Preferred Time *</label>
+                        <select class="form-input" id="scheduleTime" name="time" required>
+                            <option value="">Select a time slot</option>
+                            <option value="10:30">10:30 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="11:30">11:30 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="14:30">2:30 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="15:30">3:30 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="scheduleMessage">Additional Notes (Optional)</label>
+                        <textarea
+                            class="form-input"
+                            id="scheduleMessage"
+                            name="message"
+                            placeholder="Tell us about your specific needs or questions..."
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input
+                                type="checkbox"
+                                id="scheduleConsent"
+                                name="consent"
+                                required
+                            >
+                            I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and to be contacted about this demo.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="schedule-demo-btn">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Demo
+                    </button>
+                </form>
+                
+                <div class="schedule-benefits">
+                    <h4>What to Expect:</h4>
+                    <ul>
+                        <li><span class="check">✓</span> 30-minute personalized demo</li>
+                        <li><span class="check">✓</span> Live Q&A session</li>
+                        <li><span class="check">✓</span> Customized recommendations</li>
+                        <li><span class="check">✓</span> Exclusive early access pricing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="config.js"></script>
+    <!-- FullCalendar.js JavaScript - Using unpkg as fallback -->
+    <script src="https://unpkg.com/fullcalendar@6.1.10/index.global.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
