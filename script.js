@@ -1,12 +1,16 @@
 // Rewardful Initialization
 document.addEventListener('DOMContentLoaded', function() {
-    // Add this to your main component
-    if (typeof window !== 'undefined' && window.rewardful) {
-        window.rewardful('ready', function() {
-            console.log('Rewardful loaded on marketing site');
-            // Rewardful is ready for tracking
-        });
-    }
+    // Wait a bit for Rewardful script to load
+    setTimeout(function() {
+        if (typeof window !== 'undefined' && window.rewardful) {
+            window.rewardful('ready', function() {
+                console.log('✅ Rewardful loaded successfully on marketing site');
+                // Rewardful is ready for tracking
+            });
+        } else {
+            console.log('⚠️ Rewardful script not loaded - check network tab for errors');
+        }
+    }, 2000); // Wait 2 seconds for script to load
 });
 
 // Mobile Navigation Toggle
