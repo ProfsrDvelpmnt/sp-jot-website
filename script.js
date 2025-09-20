@@ -1,3 +1,14 @@
+// Rewardful Initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Add this to your main component
+    if (typeof window !== 'undefined' && window.rewardful) {
+        window.rewardful('ready', function() {
+            console.log('Rewardful loaded on marketing site');
+            // Rewardful is ready for tracking
+        });
+    }
+});
+
 // Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -450,6 +461,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const waitlistForm = document.getElementById('waitlistForm');
     const successMessage = document.getElementById('successMessage');
     
+    // Check if modal exists on this page
+    if (!modal) {
+        console.log('Waitlist modal not found on this page - skipping modal setup');
+        return;
+    }
+    
     // Debug logging for modal elements
     console.log('Modal elements found:', {
         modal: modal,
@@ -457,10 +474,6 @@ document.addEventListener('DOMContentLoaded', function() {
         waitlistForm: waitlistForm,
         successMessage: successMessage
     });
-    
-    if (!modal) console.error('Modal not found!');
-    if (!waitlistForm) console.error('Waitlist form not found!');
-    if (!closeBtn) console.error('Close button not found!');
 
     // Open modal when any "Join Waitlist" button is clicked
     document.addEventListener('click', function(e) {
@@ -669,17 +682,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const scheduleForm = document.getElementById('scheduleForm');
     const scheduleDateInput = document.getElementById('scheduleDate');
     
+    // Check if schedule modal exists on this page
+    if (!scheduleModal) {
+        console.log('Schedule modal not found on this page - skipping schedule modal setup');
+        return;
+    }
+    
     // Debug modal elements
     console.log('🔍 Modal elements found:', {
         scheduleModal: scheduleModal,
         scheduleForm: scheduleForm,
         scheduleDateInput: scheduleDateInput
     });
-    
-    if (!scheduleModal) {
-        console.error('❌ Schedule modal not found! Check HTML structure.');
-        return;
-    }
     
     // FullCalendar instance
     let calendar = null;
