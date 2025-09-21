@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>SavvyPro JOT - Job Opportunity Tracker | Modern Job Tracking Platform</title>
+    <link rel="icon" type="image/png" href="spjot-48.png">
+    <link rel="shortcut icon" type="image/png" href="spjot-48.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Fallback Font Awesome CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">
-    <!-- FullCalendar.js CSS - Using unpkg as fallback -->
+    <!-- FullCalendar.js CSS - Using unpkg CDN -->
     <link href="https://unpkg.com/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet">
+    <!-- Rewardful Affiliate Tracking -->
+    <script>(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');</script>
     <script async src='https://r.wdfl.co/rw.js' data-rewardful='e4b5d8'></script>
 </head>
 <body>
@@ -21,8 +25,7 @@
                 <a href="index.html">
                     <div class="logo">
                         <img src="spjot-48.png" alt="SP-JOT" class="logo-icon">
-                        <span class="logo-text">SavvyPro JOT</span>
-                        <span class="logo-symbol">™</span>
+                        <span class="logo-text">SavvyPro JOT™</span>
                     </div>
                 </a>
             </div>
@@ -468,6 +471,7 @@
             <h2>Choose Your Plan</h2>
             <p>Start free and upgrade as your needs grow</p>
             
+            
             <div class="pricing-cards">
                 <div class="pricing-card free">
                     <h3>Free</h3>
@@ -480,7 +484,7 @@
                         <li><span class="check">✓</span> Daily Check-In</li>
                         <li><span class="check">✓</span> Job Archive</li>
                     </ul>
-                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Free" aria-controls="waitlistModal" aria-expanded="false">Join for Free</button>
+                    <a href="https://buy.stripe.com/dRm5kC4OB4hS75225wb3q05" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join for Free</a>
                 </div>
                 
                 <div class="pricing-card basic">
@@ -495,7 +499,7 @@
                         <li><span class="check">✓</span> 1 Mindfulness Activity</li>
                         <li><span class="check">✓</span> 2 Values Activities</li>
                     </ul>
-                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Basic" aria-controls="waitlistModal" aria-expanded="false">Get Basic</button>
+                    <a href="https://buy.stripe.com/3cI28qftf5lWfBybG6b3q01" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Basic</a>
                 </div>
                 
                 <div class="pricing-card professional">
@@ -510,7 +514,7 @@
                         <li><span class="check">✓</span> 1 Additional Values Activity</li>
                         <li><span class="check">✓</span> 2 Mindfulness Activities</li>
                     </ul>
-                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Professional" aria-controls="waitlistModal" aria-expanded="false">Get Professional</button>
+                    <a href="https://buy.stripe.com/cNi9AS1Cp4hSfBy39Ab3q04" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Professional</a>
                 </div>
                 
                 <div class="pricing-card executive">
@@ -525,7 +529,7 @@
                         <li><span class="check">✓</span> Growth Journey Dashboard</li>
                         <li><span class="check">✓</span> Analytics</li>
                     </ul>
-                    <button class="btn btn-primary" data-open="waitlistModal" data-plan="Executive" aria-controls="waitlistModal" aria-expanded="false">Get Executive</button>
+                    <a href="https://buy.stripe.com/8x24gygxjg0A4WU8tUb3q02" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Executive</a>
                 </div>
             </div>
         </div>
@@ -559,8 +563,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <span class="logo-text">SavvyPro JOT</span>
-                        <span class="logo-symbol">™</span>
+                        <span class="logo-text">SavvyPro JOT™</span>
                     </div>
                     <p>Modern job tracking and career management platform</p>
                 </div>
@@ -602,7 +605,7 @@
                         <ul>
                             <li><a href="#help">Help & Support</a></li>
                             <li><a href="#status">System Status</a></li>
-                            <li><a href="privacy-policy.html#privacy-rights">Privacy Rights</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
                             <li><a href="terms-of-service.html">Terms of Service</a></li>
                             <li><a href="affiliate-landing.html">Affiliate Program</a></li>
                             <li><a href="affiliate-login.html">Affiliate Login</a></li>
@@ -624,8 +627,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-logo">
-                    <span class="logo-text">SavvyPro JOT</span>
-                    <span class="logo-symbol">™</span>
+                        <span class="logo-text">SavvyPro JOT™</span>
                 </div>
                 <button type="button"
                         class="close"
@@ -894,8 +896,109 @@
     </div>
 
     <script src="config.js"></script>
-    <!-- FullCalendar.js JavaScript - Using unpkg as fallback -->
+    <!-- FullCalendar.js JavaScript - Using unpkg CDN -->
     <script src="https://unpkg.com/fullcalendar@6.1.10/index.global.min.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Mobile Enhancement Script -->
+    <script>
+        // Mobile navigation improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Toggle mobile menu
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    document.body.classList.toggle('menu-open');
+                });
+                
+                // Close menu when clicking on links
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+            
+            // Prevent zoom on input focus (iOS)
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    if (window.innerWidth <= 768) {
+                        const viewport = document.querySelector('meta[name="viewport"]');
+                        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                    }
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (window.innerWidth <= 768) {
+                        const viewport = document.querySelector('meta[name="viewport"]');
+                        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for mobile
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Touch improvements for buttons
+            const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-outline, .btn-large');
+            buttons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+        
+        // Prevent horizontal scroll on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
 </body>
 </html>

@@ -2,15 +2,20 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Wait a bit for Rewardful script to load
     setTimeout(function() {
-        if (typeof window !== 'undefined' && window.rewardful) {
-            window.rewardful('ready', function() {
-                console.log('✅ Rewardful loaded successfully on marketing site');
-                // Rewardful is ready for tracking
-            });
-        } else {
-            console.log('⚠️ Rewardful script not loaded - check network tab for errors');
+        try {
+            if (typeof window !== 'undefined' && window.rewardful) {
+                window.rewardful('ready', function() {
+                    console.log('✅ Rewardful loaded successfully on marketing site');
+                    // Rewardful is ready for tracking
+                });
+            } else {
+                console.log('⚠️ Rewardful script not loaded - check network tab for errors');
+                console.log('🔍 Available window properties:', Object.keys(window).filter(key => key.includes('reward')));
+            }
+        } catch (error) {
+            console.error('❌ Error initializing Rewardful:', error);
         }
-    }, 2000); // Wait 2 seconds for script to load
+    }, 3000); // Wait 3 seconds for script to load
 });
 
 // Mobile Navigation Toggle
