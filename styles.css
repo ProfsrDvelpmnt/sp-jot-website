@@ -4449,6 +4449,206 @@ body.modal-open {
     }
 }
 
+/* ===== COOKIE POLICY PAGE STYLES ===== */
+
+.main-content {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.policy-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.policy-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.last-updated {
+    color: #666;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+    margin-bottom: 2rem;
+}
+
+.policy-section {
+    margin-bottom: 3rem;
+}
+
+.policy-section h2 {
+    color: #6a1d58;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid #e0f0ff;
+    padding-bottom: 0.5rem;
+}
+
+.policy-section h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+}
+
+.policy-section p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.policy-section ul, .policy-section ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.policy-section li {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.policy-section a {
+    color: #6a1d58;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.policy-section a:hover {
+    color: #C99383;
+    text-decoration: underline;
+}
+
+.cookie-type, .third-party-service, .extension-section, .management-section, .retention-section, .compliance-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #6a1d58;
+}
+
+.cookie-type h3, .third-party-service h3, .extension-section h3, .management-section h3, .retention-section h3, .compliance-section h3 {
+    color: #6a1d58;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.note-box {
+    background: #e8f4fd;
+    border: 1px solid #b3d9ff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.note-box p {
+    margin: 0;
+    color: #0066cc;
+}
+
+.contact-info {
+    background: #f0f8ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+    border: 1px solid #e0f0ff;
+}
+
+.contact-info p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.policy-footer {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 2px solid #e0f0ff;
+}
+
+.policy-footer p {
+    margin: 0;
+    color: #666;
+    font-style: italic;
+}
+
+/* Mobile styles for cookie policy */
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 80px;
+    }
+    
+    .policy-header {
+        margin-bottom: 2rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .policy-header h1 {
+        font-size: 2rem;
+    }
+    
+    .policy-content {
+        padding: 2rem 1rem;
+        margin: 0 1rem 2rem;
+    }
+    
+    .policy-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .policy-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .cookie-type, .third-party-service, .extension-section, .management-section, .retention-section, .compliance-section {
+        padding: 1rem;
+    }
+    
+    .contact-info {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .policy-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .policy-content {
+        padding: 1.5rem 0.75rem;
+        margin: 0 0.5rem 2rem;
+    }
+    
+    .policy-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .policy-section h3 {
+        font-size: 1.1rem;
+    }
+}
+
 /* ===== COMPREHENSIVE MOBILE OPTIMIZATION ===== */
 
 /* Enhanced Mobile-First Responsive Design - Force Mobile Layout */
