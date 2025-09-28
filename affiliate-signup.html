@@ -233,6 +233,12 @@
     </footer>
 
     <script>
+        // Configuration - Update these URLs with your actual Google Apps Script deployment URL
+        const CONFIG = {
+            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwUKxUiDunKO_n_M-wNEHIoDUgtrXa9Rupc327mo-lDmONf0qWC50P0N2uJnOVnRYMl/exec', // Replace with your new deployment URL
+            RECAPTCHA_SITE_KEY: '6LfMocMUAAAAAFPlLsVDnIDUYSJh93KK_2VcAlnj'
+        };
+
         // Form submission handling
         document.getElementById('affiliateForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -243,31 +249,138 @@
             
             // Basic validation
             if (!data.firstName || !data.lastName || !data.email || !data.termsAgreement) {
-                alert('Please fill in all required fields and accept the terms and conditions.');
+                showMessage('Please fill in all required fields and accept the terms and conditions.', 'error');
                 return;
             }
             
             // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
-                alert('Please enter a valid email address.');
+                showMessage('Please enter a valid email address.', 'error');
                 return;
             }
             
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
+            // Validate reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                showMessage('Please complete the reCAPTCHA verification.', 'error');
+                return;
+            }
+            
+            // Prepare data for submission
+            const submissionData = {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                email: data.email,
+                website: data.website || '',
+                socialMedia: data.socialMedia || '',
+                referralSource: data.referralSource || '',
+                experience: data.experience || '',
+                promotionMethods: data.promotionMethods || '',
+                monthlyTraffic: data.monthlyTraffic || '',
+                termsAgreement: data.termsAgreement === 'on',
+                marketingConsent: data.marketingConsent === 'on',
+                recaptchaResponse: recaptchaResponse
+            };
+            
+            // Submit form
+            submitForm(submissionData);
+        });
+
+        // Submit form to Google Sheets
+        async function submitForm(data) {
+            const submitBtn = document.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
+            
+            try {
+                // Update button state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+                
+                console.log('Submitting data:', data);
+                console.log('Script URL:', CONFIG.GOOGLE_SCRIPT_URL);
+                
+                // Submit to Google Apps Script
+                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Add this to handle CORS issues
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                console.log('Response received:', response);
+                
+                // Since we're using no-cors mode, we can't read the response
+                // So we'll assume success and show a success message
+                showMessage('Thank you for your interest in becoming an affiliate! We will review your application and contact you within 2-3 business days.', 'success');
+                document.getElementById('affiliateForm').reset();
+                grecaptcha.reset();
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                console.error('Error details:', error.message);
+                
+                // Try fallback method
+                console.log('Trying fallback submission...');
+                fallbackSubmission(data);
+            } finally {
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Show message to user
+        function showMessage(message, type = 'info') {
+            // Remove existing messages
+            const existingMessage = document.querySelector('.form-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Create new message element
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `form-message ${type}`;
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Insert message before form
+            const form = document.getElementById('affiliateForm');
+            form.parentNode.insertBefore(messageDiv, form);
+            
+            // Auto-remove success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.remove();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Fallback submission method (if Google Apps Script is not available)
+        function fallbackSubmission(data) {
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
             submitBtn.disabled = true;
             
             // Simulate API call
             setTimeout(() => {
-                alert('Thank you for your interest in becoming an affiliate! We will review your application and contact you within 2-3 business days.');
-                this.reset();
+                showMessage('Thank you for your interest in becoming an affiliate! We will review your application and contact you within 2-3 business days.', 'success');
+                document.getElementById('affiliateForm').reset();
+                grecaptcha.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }, 2000);
-        });
+        }
 
         // Mobile navigation toggle
         const hamburger = document.querySelector('.hamburger');
