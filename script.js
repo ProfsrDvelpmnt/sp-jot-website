@@ -1240,17 +1240,10 @@ function animateCounter(element, target, duration = 2000, suffix = '') {
         
         if (suffix === '%') {
             element.textContent = Math.floor(current) + suffix;
-        } else if (suffix === 'K+') {
-            // Special handling for K+ - switch to actual numbers after 5K
-            if (Math.floor(current) >= 5) {
-                // Convert to actual numbers (5K = 5000, 6K = 6000, etc.)
-                const actualNumber = Math.floor(current) * 1000;
-                element.textContent = '$' + actualNumber.toLocaleString() + '+';
-            } else {
-                element.textContent = '$' + Math.floor(current) + suffix;
-            }
-        } else if (suffix === '+') {
+        } else if (suffix === ' Days') {
             element.textContent = Math.floor(current) + suffix;
+        } else if (suffix === '') {
+            element.textContent = Math.floor(current);
         } else if (suffix === '/7') {
             element.textContent = '24' + suffix;
         }
@@ -1271,8 +1264,8 @@ function initCounters() {
         
         if (statNumbers.length > 0) {
             statNumbers.forEach((stat, index) => {
-                const targets = [30, 50, 500, 24];
-                const suffixes = ['%', 'K+', '+', '/7'];
+                const targets = [60, 100, 10, 24];
+                const suffixes = [' Days', '', '%', '/7'];
                 
                 setTimeout(() => {
                     console.log('Starting fallback animation for stat', index);
@@ -1293,8 +1286,8 @@ function initCounters() {
                     console.log('Found stat numbers:', statNumbers.length);
                     
                     statNumbers.forEach((stat, index) => {
-                        const targets = [30, 5, 500, 24];
-                        const suffixes = ['%', 'K+', '+', '/7'];
+                        const targets = [60, 100, 10, 24];
+                        const suffixes = [' Days', '', '%', '/7'];
                         
                         setTimeout(() => {
                             console.log('Starting animation for stat', index);
@@ -1312,8 +1305,8 @@ function initCounters() {
         console.log('IntersectionObserver not supported, using fallback...');
         const statNumbers = statsSection.querySelectorAll('.stat-number');
         statNumbers.forEach((stat, index) => {
-            const targets = [30, 50, 500, 24];
-            const suffixes = ['%', 'K+', '+', '/7'];
+            const targets = [60, 100, 10, 24];
+            const suffixes = [' Days', '', '%', '/7'];
             
             setTimeout(() => {
                 console.log('Starting fallback animation for stat', index);
@@ -1342,16 +1335,16 @@ window.testCounters = function() {
     console.log('Found stat numbers for testing:', statNumbers.length);
     
     statNumbers.forEach((stat, index) => {
-        const targets = [30, 50, 500, 24];
-        const suffixes = ['%', 'K+', '+', '/7'];
+        const targets = [60, 100, 10, 24];
+        const suffixes = [' Days', '', '%', '/7'];
         
         // Reset to 0 first
         if (suffixes[index] === '%') {
             stat.textContent = '0%';
-        } else if (suffixes[index] === 'K+') {
-            stat.textContent = '$0K+';
-        } else if (suffixes[index] === '+') {
-            stat.textContent = '0+';
+        } else if (suffixes[index] === ' Days') {
+            stat.textContent = '0 Days';
+        } else if (suffixes[index] === '') {
+            stat.textContent = '0';
         } else if (suffixes[index] === '/7') {
             stat.textContent = '24/7';
         }
@@ -1362,3 +1355,194 @@ window.testCounters = function() {
         }, index * 200);
     });
 };
+
+// Partner Websites Scrolling Enhancement
+document.addEventListener('DOMContentLoaded', function() {
+    const logoItems = document.querySelectorAll('.logo-item');
+    const logoTrack = document.querySelector('.logo-track');
+    
+    if (logoItems.length > 0 && logoTrack) {
+        console.log('✅ Partner websites section found, setting up interactions');
+        
+        // Add click functionality to logo items
+        logoItems.forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const websiteName = this.querySelector('span').textContent;
+                
+                // Create a ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(201, 147, 131, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (rect.width / 2 - size / 2) + 'px';
+                ripple.style.top = (rect.height / 2 - size / 2) + 'px';
+                
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    if (ripple.parentNode) {
+                        ripple.parentNode.removeChild(ripple);
+                    }
+                }, 600);
+                
+                // Show tooltip with website info
+                showWebsiteTooltip(websiteName, this);
+                
+                console.log(`🌐 Website clicked: ${websiteName}`);
+            });
+            
+            // Add keyboard accessibility
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+            item.setAttribute('aria-label', `Visit ${item.querySelector('span').textContent}`);
+            
+            item.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+        
+        // Pause animation on focus for accessibility
+        logoTrack.addEventListener('focusin', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        logoTrack.addEventListener('focusout', function() {
+            this.style.animationPlayState = 'running';
+        });
+        
+        // Add intersection observer for performance optimization
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animation is already running via CSS, but we can add extra effects
+                    entry.target.style.animationPlayState = 'running';
+                } else {
+                    // Pause animation when not in view to save resources
+                    entry.target.style.animationPlayState = 'paused';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(logoTrack);
+    }
+});
+
+// Function to show website tooltip
+function showWebsiteTooltip(websiteName, element) {
+    // Remove existing tooltip
+    const existingTooltip = document.querySelector('.website-tooltip');
+    if (existingTooltip) {
+        existingTooltip.remove();
+    }
+    
+    const tooltip = document.createElement('div');
+    tooltip.className = 'website-tooltip';
+    tooltip.style.cssText = `
+        position: fixed;
+        background: rgba(66, 18, 55, 0.95);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        z-index: 1000;
+        pointer-events: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(201, 147, 131, 0.3);
+        max-width: 250px;
+        text-align: center;
+    `;
+    
+    // Website descriptions
+    const descriptions = {
+        'LinkedIn': 'Professional networking and job opportunities',
+        'Indeed': 'World\'s largest job search engine',
+        'ZipRecruiter': 'AI-powered job matching platform',
+        'Monster': 'Global job search and career resources',
+        'Workday': 'Enterprise HR and talent management',
+        'Greenhouse.io': 'Recruiting and hiring software platform',
+        'hiring.cafe': 'Curated remote job opportunities'
+    };
+    
+    tooltip.innerHTML = `
+        <div style="font-weight: 600; margin-bottom: 0.5rem; color: #C99383;">${websiteName}</div>
+        <div style="font-size: 0.8rem; opacity: 0.9;">${descriptions[websiteName] || 'Job search platform'}</div>
+    `;
+    
+    document.body.appendChild(tooltip);
+    
+    // Position tooltip
+    const rect = element.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    
+    tooltip.style.left = (rect.left + rect.width / 2 - tooltipRect.width / 2) + 'px';
+    tooltip.style.top = (rect.top - tooltipRect.height - 10) + 'px';
+    
+    // Add fade-in animation
+    tooltip.style.opacity = '0';
+    tooltip.style.transform = 'translateY(10px)';
+    tooltip.style.transition = 'all 0.3s ease';
+    
+    setTimeout(() => {
+        tooltip.style.opacity = '1';
+        tooltip.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Remove tooltip after 3 seconds
+    setTimeout(() => {
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+            if (tooltip.parentNode) {
+                tooltip.parentNode.removeChild(tooltip);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Add CSS for ripple animation
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    .logo-item:focus {
+        outline: 2px solid #C99383;
+        outline-offset: 4px;
+    }
+    
+    .website-tooltip {
+        animation: tooltipFadeIn 0.3s ease;
+    }
+    
+    @keyframes tooltipFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);

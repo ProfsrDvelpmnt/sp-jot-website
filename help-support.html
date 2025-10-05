@@ -81,9 +81,9 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3>Contact Support</h3>
-                        <p>Submit a support request and we'll get back to you within 24 hours</p>
+                        <p>Submit a support request in the app and we'll get back to you within 24 hours</p>
                         <p>Our dedicated support team is here to help you succeed</p>
-                        <button class="btn btn-primary" onclick="scrollToSection('contact-form')">Submit Request</button>
+                        <button class="btn btn-primary" onclick="window.open('https://app.sp-jot.com/help-support', '_blank')">Submit Request</button>
                     </div>
                     
                     <div class="support-card">
@@ -93,7 +93,7 @@
                         <h3>Documentation</h3>
                         <p>Comprehensive guides and tutorials to help you get the most out of SavvyPro JOT™</p>
                         <p>Step-by-step instructions for all features and functionality</p>
-                        <button class="btn btn-outline" onclick="scrollToSection('documentation')">View Docs</button>
+                        <button class="btn btn-outline" onclick="scrollToSection('documentation'); setTimeout(() => toggleGuide('getting-started'), 500)">View Docs</button>
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
                 </section>
 
                 <!-- Contact Form Section -->
-                <section id="contact-form" class="contact-form-section">
+                <section id="contact-form" class="contact-form-section" style="display: none;">
                     <a id="submit-support-request"></a>
                     <h2>Submit a Support Request</h2>
                     <p>Can't find what you're looking for? Submit a support request and our team will get back to you within 24 hours.</p>
@@ -262,60 +262,412 @@
 
                 <!-- Documentation Section -->
                 <section id="documentation" class="documentation-section">
-                    <h2>Documentation & Resources</h2>
-                    <div class="docs-grid">
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-play-circle"></i>
+                    <h2>📚 Getting Started Guide</h2>
+                    <p class="section-subtitle">Everything you need to know to get started with SavvyPro JOT™</p>
+                    
+                    <!-- Getting Started Guide -->
+                    <div class="guide-section">
+                        <div class="guide-header" data-guide="getting-started">
+                            <div class="guide-title">
+                                <div class="guide-icon">🚀</div>
+                                <h3>Getting Started Guide</h3>
                             </div>
-                            <h3>Getting Started Guide</h3>
-                            <p>Learn how to set up your account and start tracking your job applications</p>
-                            <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
                         </div>
-                        
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-columns"></i>
+                        <div class="guide-content" id="getting-started-content">
+                            <h4>Creating Your Account</h4>
+                            <ol>
+                                <li>Navigate to app.sp-jot.com in your web browser</li>
+                                <li>Click the "Sign Up" button</li>
+                                <li>Enter your email address and create a secure password</li>
+                                <li>Verify your email address by clicking the confirmation link</li>
+                                <li>Complete your profile setup, including your name and job search preferences</li>
+                            </ol>
+                            
+                            <div class="pro-tip">
+                                <strong>Pro Tip:</strong> Use a professional email address that you check regularly to ensure you don't miss important notifications about your job applications.
                             </div>
+                            
+                            <h4>Understanding Your Dashboard</h4>
+                            <p>After logging in, your personalized dashboard displays several key sections:</p>
+                            
+                            <h5>Quick Statistics</h5>
+                            <ul>
+                                <li><strong>Active Jobs:</strong> Shows the number of job applications currently in progress</li>
+                                <li><strong>Interviews This Week:</strong> Displays upcoming interviews scheduled</li>
+                                <li><strong>Applications This Month:</strong> Tracks submissions in the current month</li>
+                                <li><strong>Overall Growth:</strong> Progress indicator showing your journey</li>
+                                <li><strong>Extension Usage:</strong> Tracks your JOT Snatcher browser extension usage</li>
+                            </ul>
+                            
+                            <h5>Quick Actions</h5>
+                            <ul>
+                                <li><strong>Add & Update Jobs:</strong> Click "Manage Your Jobs" to track all applications</li>
+                                <li><strong>View Calendar:</strong> Click "View Your Week" to see upcoming interviews and deadlines</li>
+                                <li><strong>Check Archive:</strong> Click "View Archive" to review closed jobs</li>
+                            </ul>
+                            
+                            <h4>Adding Your First Job Application</h4>
+                            <ol>
+                                <li>From the Dashboard, click "Manage Your Jobs" or navigate to Board in the left sidebar</li>
+                                <li>Click the "Add Job" button in the top right corner</li>
+                                <li>Fill in the job details:
+                                    <ul>
+                                        <li>Job Title</li>
+                                        <li>Company Name</li>
+                                        <li>Location</li>
+                                        <li>Salary Range</li>
+                                        <li>Job Type (Full Time, Part-Time, etc.)</li>
+                                        <li>Environment (Remote, In-Person, Hybrid)</li>
+                                        <li>Source (LinkedIn, Indeed, Company Website, etc.)</li>
+                                    </ul>
+                                </li>
+                                <li>Add any additional notes or details</li>
+                                <li>The job will automatically be placed in the appropriate status column</li>
+                            </ol>
+                            
+                            <h4>Navigating the Main Menu</h4>
+                            <p>The left sidebar contains your main navigation, divided into three sections:</p>
+                            
+                            <h5>MAIN Section</h5>
+                            <ul>
+                                <li><strong>Dashboard:</strong> Your overview and quick statistics</li>
+                                <li><strong>Calendar:</strong> Schedule and track interviews and deadlines</li>
+                                <li><strong>Board:</strong> Visual kanban board of all your applications</li>
+                                <li><strong>Profile:</strong> Manage your personal information</li>
+                            </ul>
+                            
+                            <h5>MINDFULNESS Section</h5>
+                            <ul>
+                                <li><strong>Daily Check-In:</strong> Track your daily job search mindset</li>
+                                <li><strong>Gratitude Journal:</strong> Record things you're grateful for</li>
+                                <li><strong>Goal Setting:</strong> Set and track your job search goals</li>
+                                <li><strong>Rejection Reframe:</strong> Transform rejection into learning opportunities</li>
+                                <li><strong>Values Assessment:</strong> Identify what matters most in your career</li>
+                            </ul>
+                            
+                            <h5>PREMIUM GROWTH Section</h5>
+                            <ul>
+                                <li><strong>Growth:</strong> Access premium features for tracking progress across mindfulness activities</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Kanban Board Tutorial -->
+                    <div class="guide-section" style="display: none;">
+                        <div class="guide-header" data-guide="kanban">
+                            <div class="guide-title">
+                                <div class="guide-icon">📊</div>
                             <h3>Kanban Board Tutorial</h3>
-                            <p>Master the art of visual job pipeline management</p>
-                            <a href="#" class="doc-link">View Tutorial <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-calendar-alt"></i>
                             </div>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
+                        </div>
+                        <div class="guide-content" id="kanban-content">
+                            <h4>What is the JOT Board?</h4>
+                            <p>The JOT Board is a visual kanban board that helps you organize and track your job applications through different stages. It provides a clear visual representation of your entire job search pipeline.</p>
+                            
+                            <h4>Understanding the Pipeline Stages</h4>
+                            <p>Your job applications move through the following stages:</p>
+                            <ul>
+                                <li><strong>Saved:</strong> Jobs you're interested in applying to later; your "watchlist"</li>
+                                <li><strong>Applying:</strong> Jobs you're currently applying to but haven't submitted yet</li>
+                                <li><strong>Applied:</strong> Applications you've submitted, awaiting response</li>
+                                <li><strong>Contacted:</strong> Employers who have reached out but haven't scheduled an interview yet</li>
+                                <li><strong>Interviewing:</strong> Active interview processes, including all interview rounds</li>
+                                <li><strong>Offer:</strong> Jobs where you've received a formal job offer</li>
+                                <li><strong>Negotiating:</strong> Applications where you're actively negotiating terms, salary, or benefits</li>
+                                <li><strong>Hired:</strong> Jobs where you've accepted an offer and started working</li>
+                                <li><strong>Archived:</strong> Closed or past applications (available in higher tier plans)</li>
+                            </ul>
+                            
+                            <p><em>Note: Stage access varies by subscription plan.</em></p>
+                            
+                            <h4>Job Card Details</h4>
+                            <p>Each job card displays comprehensive information:</p>
+                            <ul>
+                                <li>Job Title (blue/cyan text at the top)</li>
+                                <li>Company Name</li>
+                                <li>Location and job type details</li>
+                                <li>Salary Range</li>
+                                <li>Employment Type</li>
+                                <li>Environment (Remote, Hybrid, In-Person)</li>
+                                <li>Source (where you found the job)</li>
+                                <li>Age of Posting</li>
+                            </ul>
+                            
+                            <h4>Moving Jobs Between Stages</h4>
+                            <ol>
+                                <li>Locate the job card in its current stage</li>
+                                <li>Click and drag the card to the new stage column</li>
+                                <li>Drop it into the appropriate section</li>
+                                <li>The status and timeline will automatically update</li>
+                            </ol>
+                            
+                            <div class="pro-tip">
+                                <strong>Pro Tip:</strong> Keep your board organized by archiving jobs you've decided not to pursue or that have been closed for more than 30 days.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Features -->
+                    <div class="guide-section" style="display: none;">
+                        <div class="guide-header" data-guide="calendar">
+                            <div class="guide-title">
+                                <div class="guide-icon">📅</div>
                             <h3>Calendar Features</h3>
-                            <p>Learn how to schedule interviews and track deadlines</p>
-                            <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
+                        </div>
+                        <div class="guide-content" id="calendar-content">
+                            <h4>Calendar Overview</h4>
+                            <p>The JOT Activities Calendar helps you track your job search activities and important deadlines. Access it by clicking Calendar in the left sidebar under the MAIN section.</p>
+                            
+                            <h4>Calendar Views</h4>
+                            <p>The calendar offers four distinct viewing options:</p>
+                            
+                            <h5>Agenda View</h5>
+                            <ul>
+                                <li>Presents a detailed schedule for an individual date</li>
+                                <li>Includes a "Jobs for [Date]" section</li>
+                                <li>Ideal for focusing on specific days</li>
+                            </ul>
+                            
+                            <h5>Day View</h5>
+                            <ul>
+                                <li>Displays a single day broken down into hourly time slots</li>
+                                <li>Perfect for detailed daily planning</li>
+                            </ul>
+                            
+                            <h5>Week View</h5>
+                            <ul>
+                                <li>Shows the entire week at a glance</li>
+                                <li>Displays date range (e.g., "Sep 28 - Oct 4, 2025")</li>
+                                <li>Best for weekly planning and comparing activities</li>
+                            </ul>
+                            
+                            <h5>Month View</h5>
+                            <ul>
+                                <li>Shows a full calendar grid covering the entire month</li>
+                                <li>Includes toggle for "1 Month" or "3 Months" views</li>
+                                <li>Excellent for broad, long-term planning</li>
+                            </ul>
+                            
+                            <h4>Adding Appointments</h4>
+                            <ol>
+                                <li>Click the "+ New Appointment" button</li>
+                                <li>Select the desired date and time</li>
+                                <li>Choose the appointment type (Interview, Deadline, Follow-up)</li>
+                                <li>Link to a specific job application if applicable</li>
+                                <li>Add location details or video call information</li>
+                                <li>Set reminders</li>
+                                <li>Save your appointment</li>
+                            </ol>
+                        </div>
                         </div>
                         
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-heart"></i>
+                    <!-- Wellness Tools -->
+                    <div class="guide-section" style="display: none;">
+                        <div class="guide-header" data-guide="wellness">
+                            <div class="guide-title">
+                                <div class="guide-icon">🧘</div>
+                                <h3>Wellness Tools</h3>
                             </div>
-                            <h3>Wellness Tools</h3>
-                            <p>Discover how to use our mindset and wellness features</p>
-                            <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
                         </div>
-                        
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-mobile-alt"></i>
+                        <div class="guide-content" id="wellness-content">
+                            <h4>Why Wellness Matters in Job Search</h4>
+                            <p>Job searching can be emotionally challenging and stressful. SavvyPro JOT™ offers a suite of mindfulness and wellness tools designed to help you stay positive, manage stress, and remain motivated throughout your journey.</p>
+                            
+                            <h4>Daily Check-In</h4>
+                            <p>Monitor your mental and emotional well-being during your job search.</p>
+                            
+                            <h5>How to Use:</h5>
+                            <ol>
+                                <li>Select Daily Check-In from the MINDFULNESS section</li>
+                                <li>Choose today's date on the calendar</li>
+                                <li>Rate three key areas on sliders (Very Low to Very High):
+                                    <ul>
+                                        <li>Your mood today</li>
+                                        <li>Your energy level</li>
+                                        <li>Your stress level</li>
+                                    </ul>
+                                </li>
+                                <li>Add optional notes about your job search</li>
+                                <li>Click "Save Check-In"</li>
+                            </ol>
+                            
+                            <h4>Gratitude Journal</h4>
+                            <p>Practicing gratitude can improve your mental health and resilience.</p>
+                            
+                            <h5>Three Gratitude Questions:</h5>
+                            <ol>
+                                <li><strong>What went well in your job search today?</strong>
+                                    <ul>
+                                        <li>Applying to jobs</li>
+                                        <li>Networking conversations</li>
+                                        <li>Learning new skills</li>
+                                        <li>Receiving positive feedback</li>
+                                    </ul>
+                                </li>
+                                <li><strong>What skills did you develop or recognize today?</strong>
+                                    <ul>
+                                        <li>Technical skills</li>
+                                        <li>Communication skills</li>
+                                        <li>Problem-solving abilities</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Who supported you in your career journey today?</strong>
+                                    <ul>
+                                        <li>Mentors, family, friends</li>
+                                        <li>Professional contacts</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            
+                            <h4>Rejection Reframe</h4>
+                            <p>Transform rejection into growth through mindful reflection.</p>
+                            
+                            <h5>The 7-Step Reframe Process:</h5>
+                            <ol>
+                                <li><strong>Describe the Rejection:</strong> State the objective facts</li>
+                                <li><strong>Emotional Response:</strong> Process your feelings</li>
+                                <li><strong>Evidence For:</strong> Identify what supports the rejection decision</li>
+                                <li><strong>Evidence Against:</strong> Consider alternative perspectives</li>
+                                <li><strong>Friend's Advice:</strong> Seek an outside viewpoint</li>
+                                <li><strong>Lessons Learned:</strong> Extract growth opportunities</li>
+                                <li><strong>Next Steps:</strong> Develop an action plan for moving forward</li>
+                            </ol>
+                            
+                            <div class="pro-tip">
+                                <strong>Pro Tip:</strong> Complete reframes within 24-48 hours of rejection, while details are fresh but emotions are manageable.
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile App Guide -->
+                    <div class="guide-section" style="display: none;">
+                        <div class="guide-header" data-guide="mobile">
+                            <div class="guide-title">
+                                <div class="guide-icon">📱</div>
                             <h3>Mobile App Guide</h3>
-                            <p>Get the most out of SavvyPro JOT™ on your mobile device</p>
-                            <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        
-                        <div class="doc-card">
-                            <div class="doc-icon">
-                                <i class="fas fa-cog"></i>
                             </div>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
+                        </div>
+                        <div class="guide-content" id="mobile-content">
+                            <h4>Accessing JOT on Mobile</h4>
+                            <p>Access SavvyPro JOT™ from your mobile device by opening your preferred mobile web browser and navigating to <strong>app.sp-jot.com</strong>. The interface is fully responsive and automatically adapts to your screen size.</p>
+                            
+                            <h4>Mobile-Optimized Features</h4>
+                            
+                            <h5>Dashboard on Mobile</h5>
+                            <ul>
+                                <li>Quick stats cards arranged vertically for easy scrolling</li>
+                                <li>All Quick Actions accessible via touch-friendly buttons</li>
+                                <li>Support for swipe gestures</li>
+                            </ul>
+                            
+                            <h5>Board View on Mobile</h5>
+                            <p><strong>Touch Interactions:</strong></p>
+                            <ul>
+                                <li>Tap on any job card to view full details</li>
+                                <li>Tap and hold to drag cards between stages</li>
+                                <li>Swipe left or right to move between pipeline stages</li>
+                                <li>Pinch to zoom on boards with high card density</li>
+                            </ul>
+                            
+                            <h5>Mobile-Specific Tips</h5>
+                            <ul>
+                                <li>Use voice-to-text for quick notes and journal entries</li>
+                                <li>Take photos of business cards after networking events</li>
+                                <li>Screenshot job postings for offline reference</li>
+                                <li>Add jobs immediately after applying from your phone</li>
+                                <li>Update job statuses right after interviews</li>
+                                <li>Complete daily check-ins during your commute</li>
+                            </ul>
+                            
+                            <div class="pro-tip">
+                                <strong>Pro Tip:</strong> Take advantage of downtime by starting job applications on your mobile device, then switch to desktop for easier form completion and document uploads.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings & Preferences -->
+                    <div class="guide-section" style="display: none;">
+                        <div class="guide-header" data-guide="settings">
+                            <div class="guide-title">
+                                <div class="guide-icon">⚙️</div>
                             <h3>Settings & Preferences</h3>
-                            <p>Customize your SavvyPro JOT™ experience</p>
-                            <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <i class="fas fa-chevron-down guide-chevron"></i>
+                        </div>
+                        <div class="guide-content" id="settings-content">
+                            <h4>Accessing Settings</h4>
+                            <p>Click <strong>Profile</strong> in the left sidebar under the MAIN section to access your settings and preferences.</p>
+                            
+                            <h4>Personal Information</h4>
+                            <p>Edit your personal details in the main panel:</p>
+                            
+                            <h5>Basic Contact Information</h5>
+                            <ul>
+                                <li>First and Last Name</li>
+                                <li>Email address</li>
+                                <li>Phone number</li>
+                                <li>Location (city and state)</li>
+                                <li>Years of experience</li>
+                            </ul>
+                            
+                            <h5>Professional Summary</h5>
+                            <ul>
+                                <li><strong>About Me:</strong> Professional bio or summary</li>
+                                <li><strong>Job Title:</strong> Current or target position</li>
+                                <li><strong>Company:</strong> Current or previous employer</li>
+                            </ul>
+                            
+                            <h4>Plan Comparison</h4>
+                            <p><strong>Free Plan ($0):</strong></p>
+                            <ul>
+                                <li>10 active jobs</li>
+                                <li>3 board stages</li>
+                                <li>1 calendar view</li>
+                                <li>5 extension uses/month</li>
+                                <li>Daily Check-In</li>
+                                <li>1 values assessment/year</li>
+                            </ul>
+                            
+                            <p><strong>Basic Plan:</strong></p>
+                            <ul>
+                                <li>50 active jobs</li>
+                                <li>6 board stages</li>
+                                <li>2 calendar views</li>
+                                <li>20 extension uses/month</li>
+                                <li>Rejection Reframe</li>
+                                <li>2 values assessments/year</li>
+                            </ul>
+                            
+                            <p><strong>Professional Plan:</strong></p>
+                            <ul>
+                                <li>150 active jobs</li>
+                                <li>8 board stages</li>
+                                <li>3 calendar views</li>
+                                <li>150 extension uses/month</li>
+                                <li>Gratitude Journal</li>
+                                <li>Growth Journey Dashboard</li>
+                                <li>3 values assessments/year</li>
+                            </ul>
+                            
+                            <p><strong>Executive Plan:</strong></p>
+                            <ul>
+                                <li>Unlimited active jobs</li>
+                                <li>All 9 board stages</li>
+                                <li>4 calendar views</li>
+                                <li>400 extension uses/month</li>
+                                <li>Excel Export</li>
+                                <li>4 values assessments/year</li>
+                            </ul>
+                            
+                            <div class="pro-tip">
+                                <strong>Pro Tip:</strong> Review your settings monthly to ensure they align with your current job search needs and preferences.
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -578,6 +930,57 @@
                 submitBtn.disabled = false;
             }, 2000);
         }
+
+        // Guide toggle functionality
+        function toggleGuide(guideId) {
+            const content = document.getElementById(guideId + '-content');
+            const header = document.querySelector(`[data-guide="${guideId}"]`);
+            const chevron = header ? header.querySelector('.guide-chevron') : null;
+            
+            console.log('Toggle guide:', guideId, 'Content:', content, 'Header:', header, 'Chevron:', chevron);
+            
+            // Check if this guide is currently open
+            const isOpen = content && content.classList.contains('show');
+            
+            // Close all guides first
+            document.querySelectorAll('.guide-content').forEach(guide => {
+                guide.classList.remove('show');
+            });
+            document.querySelectorAll('.guide-chevron').forEach(chev => {
+                chev.style.transform = 'rotate(0deg)';
+            });
+            document.querySelectorAll('.guide-header').forEach(hdr => {
+                hdr.classList.remove('active');
+            });
+            
+            // If the clicked guide wasn't open, open it now
+            if (!isOpen && content && chevron && header) {
+                content.classList.add('show');
+                chevron.style.transform = 'rotate(180deg)';
+                header.classList.add('active');
+                console.log('Opening guide:', guideId);
+            } else {
+                console.log('Guide already open or elements not found');
+            }
+        }
+
+        // Event delegation for guide headers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click listeners to all guide headers
+            document.querySelectorAll('.guide-header').forEach(header => {
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const guideId = this.getAttribute('data-guide');
+                    console.log('Header clicked:', guideId);
+                    
+                    if (guideId) {
+                        toggleGuide(guideId);
+                    }
+                });
+            });
+        });
 
         // Mobile navigation toggle
         const hamburger = document.querySelector('.hamburger');

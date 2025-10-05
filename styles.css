@@ -1909,6 +1909,774 @@ body.modal-open {
     }
 }
 
+/* Partner Websites Scrolling Section */
+.partner-websites {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.partner-websites h2 {
+    text-align: center;
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.partner-websites p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scrolling-logos {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 2rem 0;
+}
+
+.logo-track {
+    display: inline-flex;
+    align-items: center;
+    animation: scroll 30s linear infinite;
+    gap: 3rem;
+}
+
+.logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-width: 140px;
+    border: 2px solid transparent;
+}
+
+.logo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(201, 147, 131, 0.2);
+    border-color: #C99383;
+}
+
+.logo-item i {
+    font-size: 2.5rem;
+    color: #C99383;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.logo-item:hover i {
+    color: #421237;
+}
+
+.logo-item span {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Pause animation on hover */
+.scrolling-logos:hover .logo-track {
+    animation-play-state: paused;
+}
+
+/* Keyframes for scrolling animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Responsive adjustments for partner websites */
+@media (max-width: 768px) {
+    .partner-websites {
+        padding: 60px 0;
+    }
+    
+    .partner-websites h2 {
+        font-size: 2rem;
+    }
+    
+    .partner-websites p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .logo-item {
+        min-width: 120px;
+        padding: 1rem 1.5rem;
+    }
+    
+    .logo-item i {
+        font-size: 2rem;
+    }
+    
+    .logo-item span {
+        font-size: 0.8rem;
+    }
+    
+    .logo-track {
+        gap: 2rem;
+        animation-duration: 25s;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-item {
+        min-width: 100px;
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo-item i {
+        font-size: 1.8rem;
+    }
+    
+    .logo-item span {
+        font-size: 0.75rem;
+    }
+    
+    .logo-track {
+        gap: 1.5rem;
+    }
+}
+
+/* Beta Tester Page Styles */
+.beta-hero {
+    background: linear-gradient(135deg, #421237 0%, #6a1d58 50%, #C99383 100%);
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.beta-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+.beta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.beta-badge i {
+    font-size: 1rem;
+}
+
+.beta-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.beta-hero .hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #F5F5DC !important;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.hero-stats .stat-item {
+    text-align: center;
+}
+
+.hero-stats .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #C99383;
+    margin-bottom: 0.5rem;
+}
+
+.hero-stats .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+/* Beta Benefits Section */
+.beta-benefits {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.beta-benefits h2 {
+    text-align: center;
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.beta-benefits > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(66, 18, 55, 0.15);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(201, 147, 131, 0.2);
+    border-color: #C99383;
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.benefit-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.benefit-card h3 {
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.benefit-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Beta Requirements Section */
+.beta-requirements {
+    padding: 80px 0;
+    background: white;
+}
+
+.beta-requirements h2 {
+    text-align: center;
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.beta-requirements > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.requirement-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.requirement-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #421237, #6a1d58);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.requirement-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.requirement-item h3 {
+    color: #421237;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.requirement-item p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Beta Application Form */
+.beta-application {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.application-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 40px rgba(66, 18, 55, 0.15);
+}
+
+.application-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.application-header h2 {
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+.application-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.beta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.form-section {
+    padding: 2rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    color: #421237;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #C99383;
+    display: inline-block;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #C99383;
+    box-shadow: 0 0 0 3px rgba(201, 147, 131, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.checkbox-item:hover {
+    background-color: #f0f0f0;
+}
+
+.checkbox-item:hover .checkmark {
+    border-color: #C99383;
+    transform: scale(1.05);
+}
+
+.checkbox-item input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.checkmark {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #666;
+    border-radius: 6px;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.checkbox-item input[type="checkbox"]:checked + .checkmark {
+    background-color: #C99383;
+    border-color: #C99383;
+}
+
+.checkbox-item input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+}
+
+.checkbox-label .checkmark {
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #666;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background-color: #C99383;
+    border-color: #C99383;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-actions {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.form-actions .btn {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.form-note {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Beta Timeline Section */
+.beta-timeline {
+    padding: 80px 0;
+    background: white;
+}
+
+.beta-timeline h2 {
+    text-align: center;
+    color: #421237;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.beta-timeline > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #C99383, #d8b2a7);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-marker {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #C99383, #d8b2a7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.timeline-marker i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(66, 18, 55, 0.15);
+    margin: 0 2rem;
+    border: 2px solid #f8f9fa;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+}
+
+.timeline-content h3 {
+    color: #421237;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.timeline-date {
+    display: inline-block;
+    background: linear-gradient(135deg, #421237, #6a1d58);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Responsive adjustments for beta tester page */
+@media (max-width: 768px) {
+    .beta-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .beta-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .beta-hero .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .requirements-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .application-container {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+        padding-left: 60px;
+    }
+    
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .timeline-content {
+        margin: 0;
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .beta-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-stats .stat-number {
+        font-size: 2rem;
+    }
+    
+    .application-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .form-section h3 {
+        font-size: 1.2rem;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -6291,5 +7059,219 @@ body.modal-open {
     
     .faq-answer {
         padding: 0 1rem 1rem;
+    }
+}
+
+/* Guide Section Styles */
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.guide-section {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.guide-section:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.guide-header {
+    background: linear-gradient(135deg, #C99383 0%, #A67B5B 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.guide-header:focus {
+    outline: none;
+}
+
+.guide-header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.guide-header:hover {
+    background: linear-gradient(135deg, #D4A689 0%, #B88B6B 100%);
+}
+
+.guide-header.active {
+    background: linear-gradient(135deg, #A67B5B 0%, #8B6B47 100%);
+}
+
+.guide-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.guide-icon {
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+}
+
+.guide-title h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.guide-chevron {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.guide-content {
+    display: none;
+    padding: 2rem;
+    background: white;
+    border-top: 1px solid #f0f0f0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.guide-content.show {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.guide-content h4 {
+    color: #C99383;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.guide-content h4:first-child {
+    margin-top: 0;
+}
+
+.guide-content h5 {
+    color: #A67B5B;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.guide-content p {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.guide-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.guide-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.guide-content li {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.guide-content ul li {
+    list-style-type: disc;
+}
+
+.guide-content ol li {
+    list-style-type: decimal;
+}
+
+.guide-content ul ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.guide-content ul ul li {
+    list-style-type: circle;
+    color: #666;
+}
+
+.pro-tip {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #C99383;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pro-tip strong {
+    color: #C99383;
+    font-weight: 600;
+}
+
+.pro-tip p {
+    margin: 0;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness for Guide Sections */
+@media (max-width: 768px) {
+    .guide-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .guide-title h3 {
+        font-size: 1.2rem;
+    }
+    
+    .guide-icon {
+        font-size: 1.2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .guide-content {
+        padding: 1.5rem;
+    }
+    
+    .guide-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .guide-content h5 {
+        font-size: 1rem;
+    }
+    
+    .pro-tip {
+        padding: 1rem;
+        margin: 1rem 0;
     }
 }

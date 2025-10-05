@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvyPro JOT™ Help Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .guide-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .guide-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .guide-card h2 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .guide-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .guide-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .guide-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .content-section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .content-section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .content-section p {
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #5a6268;
+        }
+        
+        .pro-tip {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .pro-tip strong {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 SavvyPro JOT™ Help Guide</h1>
+            <p>Documentation & Resources for Your Job Search Journey</p>
+        </div>
+        
+        <div id="home-view">
+            <div class="guides-grid">
+                <div class="guide-card" onclick="showGuide('getting-started')">
+                    <div class="guide-icon">🚀</div>
+                    <h2>Getting Started Guide</h2>
+                    <p>Learn how to set up your account and start tracking your job applications</p>
+                    <button class="guide-btn">View Guide</button>
+                </div>
+                
+                <div class="guide-card" onclick="showGuide('kanban')">
+                    <div class="guide-icon">📊</div>
+                    <h2>Kanban Board Tutorial</h2>
+                    <p>Master the art of visual job pipeline management</p>
+                    <button class="guide-btn">View Tutorial</button>
+                </div>
+                
+                <div class="guide-card" onclick="showGuide('calendar')">
+                    <div class="guide-icon">📅</div>
+                    <h2>Calendar Features</h2>
+                    <p>Learn how to schedule interviews and track deadlines</p>
+                    <button class="guide-btn">View Guide</button>
+                </div>
+                
+                <div class="guide-card" onclick="showGuide('wellness')">
+                    <div class="guide-icon">🧘</div>
+                    <h2>Wellness Tools</h2>
+                    <p>Discover how to use our mindset and wellness features</p>
+                    <button class="guide-btn">View Guide</button>
+                </div>
+                
+                <div class="guide-card" onclick="showGuide('mobile')">
+                    <div class="guide-icon">📱</div>
+                    <h2>Mobile App Guide</h2>
+                    <p>Get the most out of SavvyPro JOT™ on your mobile device</p>
+                    <button class="guide-btn">View Guide</button>
+                </div>
+                
+                <div class="guide-card" onclick="showGuide('settings')">
+                    <div class="guide-icon">⚙️</div>
+                    <h2>Settings & Preferences</h2>
+                    <p>Customize your SavvyPro JOT™ experience</p>
+                    <button class="guide-btn">View Guide</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Getting Started Guide -->
+        <div id="getting-started" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>🚀 Getting Started Guide</h2>
+            
+            <h3>Creating Your Account</h3>
+            <ol>
+                <li>Navigate to app.sp-jot.com in your web browser</li>
+                <li>Click the "Sign Up" button</li>
+                <li>Enter your email address and create a secure password</li>
+                <li>Verify your email address by clicking the confirmation link</li>
+                <li>Complete your profile setup, including your name and job search preferences</li>
+            </ol>
+            
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Use a professional email address that you check regularly to ensure you don't miss important notifications about your job applications.
+            </div>
+            
+            <h3>Understanding Your Dashboard</h3>
+            <p>After logging in, your personalized dashboard displays several key sections:</p>
+            
+            <h4>Quick Statistics</h4>
+            <ul>
+                <li><strong>Active Jobs:</strong> Shows the number of job applications currently in progress</li>
+                <li><strong>Interviews This Week:</strong> Displays upcoming interviews scheduled</li>
+                <li><strong>Applications This Month:</strong> Tracks submissions in the current month</li>
+                <li><strong>Overall Growth:</strong> Progress indicator showing your journey</li>
+                <li><strong>Extension Usage:</strong> Tracks your JOT Snatcher browser extension usage</li>
+            </ul>
+            
+            <h4>Quick Actions</h4>
+            <ul>
+                <li><strong>Add & Update Jobs:</strong> Click "Manage Your Jobs" to track all applications</li>
+                <li><strong>View Calendar:</strong> Click "View Your Week" to see upcoming interviews and deadlines</li>
+                <li><strong>Check Archive:</strong> Click "View Archive" to review closed jobs</li>
+            </ul>
+            
+            <h3>Adding Your First Job Application</h3>
+            <ol>
+                <li>From the Dashboard, click "Manage Your Jobs" or navigate to Board in the left sidebar</li>
+                <li>Click the "Add Job" button in the top right corner</li>
+                <li>Fill in the job details:
+                    <ul>
+                        <li>Job Title</li>
+                        <li>Company Name</li>
+                        <li>Location</li>
+                        <li>Salary Range</li>
+                        <li>Job Type (Full Time, Part-Time, etc.)</li>
+                        <li>Environment (Remote, In-Person, Hybrid)</li>
+                        <li>Source (LinkedIn, Indeed, Company Website, etc.)</li>
+                    </ul>
+                </li>
+                <li>Add any additional notes or details</li>
+                <li>The job will automatically be placed in the appropriate status column</li>
+            </ol>
+            
+            <h3>Navigating the Main Menu</h3>
+            <p>The left sidebar contains your main navigation, divided into three sections:</p>
+            
+            <h4>MAIN Section</h4>
+            <ul>
+                <li><strong>Dashboard:</strong> Your overview and quick statistics</li>
+                <li><strong>Calendar:</strong> Schedule and track interviews and deadlines</li>
+                <li><strong>Board:</strong> Visual kanban board of all your applications</li>
+                <li><strong>Profile:</strong> Manage your personal information</li>
+            </ul>
+            
+            <h4>MINDFULNESS Section</h4>
+            <ul>
+                <li><strong>Daily Check-In:</strong> Track your daily job search mindset</li>
+                <li><strong>Gratitude Journal:</strong> Record things you're grateful for</li>
+                <li><strong>Goal Setting:</strong> Set and track your job search goals</li>
+                <li><strong>Rejection Reframe:</strong> Transform rejection into learning opportunities</li>
+                <li><strong>Values Assessment:</strong> Identify what matters most in your career</li>
+            </ul>
+            
+            <h4>PREMIUM GROWTH Section</h4>
+            <ul>
+                <li><strong>Growth:</strong> Access premium features for tracking progress across mindfulness activities</li>
+            </ul>
+        </div>
+        
+        <!-- Kanban Board Tutorial -->
+        <div id="kanban" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>📊 Kanban Board Tutorial</h2>
+            
+            <h3>What is the JOT Board?</h3>
+            <p>The JOT Board is a visual kanban board that helps you organize and track your job applications through different stages. It provides a clear visual representation of your entire job search pipeline.</p>
+            
+            <h3>Understanding the Pipeline Stages</h3>
+            <p>Your job applications move through the following stages:</p>
+            <ul>
+                <li><strong>Saved:</strong> Jobs you're interested in applying to later; your "watchlist"</li>
+                <li><strong>Applying:</strong> Jobs you're currently applying to but haven't submitted yet</li>
+                <li><strong>Applied:</strong> Applications you've submitted, awaiting response</li>
+                <li><strong>Contacted:</strong> Employers who have reached out but haven't scheduled an interview yet</li>
+                <li><strong>Interviewing:</strong> Active interview processes, including all interview rounds</li>
+                <li><strong>Offer:</strong> Jobs where you've received a formal job offer</li>
+                <li><strong>Negotiating:</strong> Applications where you're actively negotiating terms, salary, or benefits</li>
+                <li><strong>Hired:</strong> Jobs where you've accepted an offer and started working</li>
+                <li><strong>Archived:</strong> Closed or past applications (available in higher tier plans)</li>
+            </ul>
+            
+            <p><em>Note: Stage access varies by subscription plan.</em></p>
+            
+            <h3>Job Card Details</h3>
+            <p>Each job card displays comprehensive information:</p>
+            <ul>
+                <li>Job Title (blue/cyan text at the top)</li>
+                <li>Company Name</li>
+                <li>Location and job type details</li>
+                <li>Salary Range</li>
+                <li>Employment Type</li>
+                <li>Environment (Remote, Hybrid, In-Person)</li>
+                <li>Source (where you found the job)</li>
+                <li>Age of Posting</li>
+            </ul>
+            
+            <h3>Application Timeline</h3>
+            <p>Track your progress with visual indicators:</p>
+            <ul>
+                <li><strong>Saved:</strong> Date when you saved the job (calendar icon)</li>
+                <li><strong>Applying:</strong> Date you started the application</li>
+                <li><strong>Applied:</strong> Date you submitted the application (checkmark icon)</li>
+                <li><strong>Contacted:</strong> Date the employer reached out</li>
+                <li><strong>Interviewed:</strong> Date of interview (checkmark when completed)</li>
+            </ul>
+            
+            <h3>Moving Jobs Between Stages</h3>
+            <ol>
+                <li>Locate the job card in its current stage</li>
+                <li>Click and drag the card to the new stage column</li>
+                <li>Drop it into the appropriate section</li>
+                <li>The status and timeline will automatically update</li>
+            </ol>
+            
+            <h3>Card Actions</h3>
+            <ul>
+                <li><strong>Prev/Next:</strong> Navigate between related applications or stages</li>
+                <li><strong>Edit icon (pencil):</strong> Modify job details</li>
+                <li><strong>Copy icon:</strong> Duplicate the job entry</li>
+                <li><strong>Delete icon (trash):</strong> Remove the job from your tracker</li>
+            </ul>
+            
+            <h3>Top Bar Controls</h3>
+            <ul>
+                <li><strong>Archive:</strong> View and manage archived jobs</li>
+                <li><strong>Export:</strong> Export your job data</li>
+                <li><strong>Refresh:</strong> Reload the board with latest data</li>
+                <li><strong>Add Job:</strong> Create a new job entry</li>
+            </ul>
+            
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Keep your board organized by archiving jobs you've decided not to pursue or that have been closed for more than 30 days.
+            </div>
+        </div>
+        
+        <!-- Calendar Features -->
+        <div id="calendar" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>📅 Calendar Features</h2>
+            
+            <h3>Calendar Overview</h3>
+            <p>The JOT Activities Calendar helps you track your job search activities and important deadlines. Access it by clicking Calendar in the left sidebar under the MAIN section.</p>
+            
+            <h3>Calendar Views</h3>
+            <p>The calendar offers four distinct viewing options:</p>
+            
+            <h4>Agenda View</h4>
+            <ul>
+                <li>Presents a detailed schedule for an individual date</li>
+                <li>Includes a "Jobs for [Date]" section</li>
+                <li>Ideal for focusing on specific days</li>
+            </ul>
+            
+            <h4>Day View</h4>
+            <ul>
+                <li>Displays a single day broken down into hourly time slots</li>
+                <li>Perfect for detailed daily planning</li>
+            </ul>
+            
+            <h4>Week View</h4>
+            <ul>
+                <li>Shows the entire week at a glance</li>
+                <li>Displays date range (e.g., "Sep 28 - Oct 4, 2025")</li>
+                <li>Best for weekly planning and comparing activities</li>
+            </ul>
+            
+            <h4>Month View</h4>
+            <ul>
+                <li>Shows a full calendar grid covering the entire month</li>
+                <li>Includes toggle for "1 Month" or "3 Months" views</li>
+                <li>Excellent for broad, long-term planning</li>
+            </ul>
+            
+            <h3>Calendar Navigation</h3>
+            <ul>
+                <li>Use the Previous and Next buttons to move backward or forward in time</li>
+                <li>Click tabs at the top to switch between Agenda, Day, Week, and Month views</li>
+                <li>In Month View, toggle between 1 Month and 3 Months display</li>
+            </ul>
+            
+            <h3>Calendar Legend</h3>
+            <p>The calendar uses color coding and icons to distinguish between activities:</p>
+            
+            <h4>Job Status Colors</h4>
+            <ul>
+                <li>Saved, Applying, Applied, Contacted</li>
+                <li>Interviewing, Offer, Negotiating</li>
+                <li>Hired, Archived</li>
+            </ul>
+            
+            <h4>Mindfulness Activities</h4>
+            <ul>
+                <li>Daily Check-In</li>
+                <li>Gratitude Journal</li>
+                <li>Goal Setting</li>
+                <li>Rejection Reframe</li>
+                <li>Values Assessment</li>
+            </ul>
+            
+            <h3>Adding Appointments</h3>
+            <ol>
+                <li>Click the "+ New Appointment" button</li>
+                <li>Select the desired date and time</li>
+                <li>Choose the appointment type (Interview, Deadline, Follow-up)</li>
+                <li>Link to a specific job application if applicable</li>
+                <li>Add location details or video call information</li>
+                <li>Set reminders</li>
+                <li>Save your appointment</li>
+            </ol>
+            
+            <h3>Best Practices for Calendar Use</h3>
+            
+            <h4>For Interviews:</h4>
+            <ul>
+                <li>Add interview details immediately</li>
+                <li>Set preparation reminders 24 hours before</li>
+                <li>Include links to video calls or addresses</li>
+            </ul>
+            
+            <h4>For Deadlines:</h4>
+            <ul>
+                <li>Add application deadlines when saving a job</li>
+                <li>Schedule follow-up reminders 1-2 weeks after applying</li>
+                <li>Block calendar time for application preparation</li>
+            </ul>
+            
+            <h4>For Wellness:</h4>
+            <ul>
+                <li>Schedule daily check-ins at consistent times</li>
+                <li>Block time for goal review and reflection</li>
+                <li>Plan regular gratitude journaling sessions</li>
+            </ul>
+        </div>
+        
+        <!-- Wellness Tools -->
+        <div id="wellness" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>🧘 Wellness Tools</h2>
+            
+            <h3>Why Wellness Matters in Job Search</h3>
+            <p>Job searching can be emotionally challenging and stressful. SavvyPro JOT™ offers a suite of mindfulness and wellness tools designed to help you stay positive, manage stress, and remain motivated throughout your journey.</p>
+            
+            <h3>Daily Check-In</h3>
+            <p>Monitor your mental and emotional well-being during your job search.</p>
+            
+            <h4>How to Use:</h4>
+            <ol>
+                <li>Select Daily Check-In from the MINDFULNESS section</li>
+                <li>Choose today's date on the calendar</li>
+                <li>Rate three key areas on sliders (Very Low to Very High):
+                    <ul>
+                        <li>Your mood today</li>
+                        <li>Your energy level</li>
+                        <li>Your stress level</li>
+                    </ul>
+                </li>
+                <li>Add optional notes about your job search</li>
+                <li>Click "Save Check-In"</li>
+            </ol>
+            
+            <h4>Benefits:</h4>
+            <ul>
+                <li>Track patterns in mood and energy</li>
+                <li>Maintain self-awareness</li>
+                <li>Guide decision-making about your job search pace</li>
+            </ul>
+            
+            <h3>Gratitude Journal</h3>
+            <p>Practicing gratitude can improve your mental health and resilience.</p>
+            
+            <h4>Three Gratitude Questions:</h4>
+            <ol>
+                <li><strong>What went well in your job search today?</strong>
+                    <ul>
+                        <li>Applying to jobs</li>
+                        <li>Networking conversations</li>
+                        <li>Learning new skills</li>
+                        <li>Receiving positive feedback</li>
+                    </ul>
+                </li>
+                <li><strong>What skills did you develop or recognize today?</strong>
+                    <ul>
+                        <li>Technical skills</li>
+                        <li>Communication skills</li>
+                        <li>Problem-solving abilities</li>
+                    </ul>
+                </li>
+                <li><strong>Who supported you in your career journey today?</strong>
+                    <ul>
+                        <li>Mentors, family, friends</li>
+                        <li>Professional contacts</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h3>Goal Setting</h3>
+            <p>Setting clear, achievable goals provides structure and motivation for your job search.</p>
+            
+            <h4>Types of Goals:</h4>
+            <ul>
+                <li><strong>Short-term (Weekly):</strong> Apply to 5 jobs, update LinkedIn, reach out to contacts</li>
+                <li><strong>Medium-term (Monthly):</strong> Land interviews, expand network, master a new skill</li>
+                <li><strong>Long-term (3-6 months):</strong> Secure a job offer, develop expertise, build sustainable routine</li>
+            </ul>
+            
+            <h4>SMART Framework:</h4>
+            <ul>
+                <li><strong>S</strong>pecific</li>
+                <li><strong>M</strong>easurable</li>
+                <li><strong>A</strong>chievable</li>
+                <li><strong>R</strong>elevant</li>
+                <li><strong>T</strong>ime-bound</li>
+            </ul>
+            
+            <h3>Rejection Reframe</h3>
+            <p>Transform rejection into growth through mindful reflection.</p>
+            
+            <h4>The 7-Step Reframe Process:</h4>
+            <ol>
+                <li><strong>Describe the Rejection:</strong> State the objective facts</li>
+                <li><strong>Emotional Response:</strong> Process your feelings</li>
+                <li><strong>Evidence For:</strong> Identify what supports the rejection decision</li>
+                <li><strong>Evidence Against:</strong> Consider alternative perspectives</li>
+                <li><strong>Friend's Advice:</strong> Seek an outside viewpoint</li>
+                <li><strong>Lessons Learned:</strong> Extract growth opportunities</li>
+                <li><strong>Next Steps:</strong> Develop an action plan for moving forward</li>
+            </ol>
+            
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Complete reframes within 24-48 hours of rejection, while details are fresh but emotions are manageable.
+            </div>
+            
+            <h3>Values Assessment</h3>
+            <p>Understanding your core career values helps you target opportunities that truly align with who you are.</p>
+            
+            <h4>Value Categories:</h4>
+            <ul>
+                <li><strong>Work Environment:</strong> Work-Life Balance, Collaboration, Autonomy</li>
+                <li><strong>Compensation & Growth:</strong> Financial Security, Growth Opportunity, Recognition</li>
+                <li><strong>Purpose & Impact:</strong> Social Impact, Innovation, Creative Expression</li>
+                <li><strong>Work Content:</strong> Challenge, Variety, Expertise, Leadership</li>
+            </ul>
+            
+            <h4>How to Use Results:</h4>
+            <ul>
+                <li>Target companies aligned with your top values</li>
+                <li>Filter job opportunities based on values fit</li>
+                <li>Emphasize value alignment in applications</li>
+                <li>Prepare interview questions about company values</li>
+            </ul>
+            
+            <h3>Premium Growth Dashboard</h3>
+            <p>Track your progress across all mindfulness activities with comprehensive analytics (Professional and Executive plans).</p>
+            
+            <h4>Features:</h4>
+            <ul>
+                <li>Daily Check-In Overview (7-day averages)</li>
+                <li>Gratitude Journey tracking</li>
+                <li>Weekly Goals Overview</li>
+                <li>Reframe Journey with word clouds</li>
+                <li>Values Journey evolution</li>
+            </ul>
+        </div>
+        
+        <!-- Mobile App Guide -->
+        <div id="mobile" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>📱 Mobile App Guide</h2>
+            
+            <h3>Accessing JOT on Mobile</h3>
+            <p>Access SavvyPro JOT™ from your mobile device by opening your preferred mobile web browser and navigating to <strong>app.sp-jot.com</strong>. The interface is fully responsive and automatically adapts to your screen size.</p>
+            
+            <h3>Mobile-Optimized Features</h3>
+            
+            <h4>Dashboard on Mobile</h4>
+            <ul>
+                <li>Quick stats cards arranged vertically for easy scrolling</li>
+                <li>All Quick Actions accessible via touch-friendly buttons</li>
+                <li>Support for swipe gestures</li>
+            </ul>
+            
+            <h4>Board View on Mobile</h4>
+            <p><strong>Touch Interactions:</strong></p>
+            <ul>
+                <li>Tap on any job card to view full details</li>
+                <li>Tap and hold to drag cards between stages</li>
+                <li>Swipe left or right to move between pipeline stages</li>
+                <li>Pinch to zoom on boards with high card density</li>
+            </ul>
+            
+            <p><strong>Mobile Board Tips:</strong></p>
+            <ul>
+                <li>Switch to landscape mode for increased horizontal space</li>
+                <li>Collapse stages you're not actively using</li>
+                <li>Use search and filter functions for quick access</li>
+            </ul>
+            
+            <h4>Calendar on Mobile</h4>
+            <ul>
+                <li>Touch-optimized date picker</li>
+                <li>Swipe to move between days, weeks, or months</li>
+                <li>Tap appointments to view or edit details</li>
+                <li>Use Day or Agenda view for clearest display on smaller screens</li>
+            </ul>
+            
+            <h4>Mindfulness Tools on Mobile</h4>
+            <p>All wellness features are fully accessible:</p>
+            <ul>
+                <li>Complete Daily Check-In from anywhere</li>
+                <li>Make quick gratitude journal entries</li>
+                <li>Review goals on the go</li>
+                <li>Access Rejection Reframe tool whenever needed</li>
+            </ul>
+            
+            <h3>Mobile Notifications</h3>
+            <p>Enable notifications for:</p>
+            <ul>
+                <li>Upcoming interview reminders</li>
+                <li>Application deadline alerts</li>
+                <li>Daily check-in prompts</li>
+                <li>Goal progress updates</li>
+            </ul>
+            
+            <h3>Mobile-Specific Tips</h3>
+            
+            <h4>Quick Entry:</h4>
+            <ul>
+                <li>Use voice-to-text for quick notes and journal entries</li>
+                <li>Take photos of business cards after networking events</li>
+                <li>Screenshot job postings for offline reference</li>
+            </ul>
+            
+            <h4>Productivity:</h4>
+            <ul>
+                <li>Add jobs immediately after applying from your phone</li>
+                <li>Update job statuses right after interviews</li>
+                <li>Complete daily check-ins during your commute</li>
+            </ul>
+            
+            <h4>Organization:</h4>
+            <ul>
+                <li>Set phone reminders for application deadlines</li>
+                <li>Integrate your phone's calendar for seamless scheduling</li>
+                <li>Enable location-based reminders for in-person interviews</li>
+            </ul>
+            
+            <h3>Mobile Security</h3>
+            <p><strong>Best Practices:</strong></p>
+            <ul>
+                <li>Use a strong password or enable biometric login</li>
+                <li>Turn on two-factor authentication when possible</li>
+                <li>Always log out when using shared devices</li>
+                <li>Keep your app updated for latest security patches</li>
+            </ul>
+            
+            <h3>Syncing Between Devices</h3>
+            <p>All changes made on mobile are instantly reflected in the desktop version and vice versa. Calendar entries, mindfulness activities, and board changes are universally tracked and synced across all devices.</p>
+            
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Take advantage of downtime by starting job applications on your mobile device, then switch to desktop for easier form completion and document uploads.
+            </div>
+            
+            <h3>Mobile Limitations</h3>
+            <p>Some tasks are best performed on desktop:</p>
+            <ul>
+                <li>Bulk editing multiple jobs</li>
+                <li>Exporting detailed spreadsheets</li>
+                <li>Applying complex filters and generating reports</li>
+                <li>Uploading large document files</li>
+            </ul>
+        </div>
+        
+        <!-- Settings & Preferences -->
+        <div id="settings" class="content-section">
+            <button class="back-btn" onclick="showHome()">← Back to All Guides</button>
+            <h2>⚙️ Settings & Preferences</h2>
+            
+            <h3>Accessing Settings</h3>
+            <p>Click <strong>Profile</strong> in the left sidebar under the MAIN section to access your settings and preferences.</p>
+            
+            <h3>Profile Overview</h3>
+            <p>The left panel displays a concise overview of your account:</p>
+            
+            <h4>Profile Summary</h4>
+            <ul>
+                <li>Profile circle with your initials</li>
+                <li>Name and job title</li>
+                <li>Current or target company</li>
+                <li>Email address</li>
+                <li>Location (city and state)</li>
+                <li>Years of experience</li>
+            </ul>
+            
+            <h4>Top 5 Skills</h4>
+            <ul>
+                <li>Manage key professional skills</li>
+                <li>Set proficiency levels (1-10)</li>
+                <li>Add new skills with the "Add a Skill" button</li>
+            </ul>
+            
+            <h4>Usage Statistics</h4>
+            <ul>
+                <li><strong>Active Jobs:</strong> Number of current applications</li>
+                <li><strong>Total Jobs:</strong> All jobs tracked</li>
+                <li><strong>Current Plan:</strong> Your subscription tier</li>
+                <li><strong>Chrome Extension Usage:</strong> Monthly usage (e.g., "5/100")</li>
+            </ul>
+            
+            <h3>Personal Information</h3>
+            <p>Edit your personal details in the main panel:</p>
+            
+            <h4>Basic Contact Information</h4>
+            <ul>
+                <li>First and Last Name</li>
+                <li>Email address</li>
+                <li>Phone number</li>
+                <li>Location (city and state)</li>
+                <li>Years of experience</li>
+            </ul>
+            
+            <h4>Time Zone Settings</h4>
+            <ul>
+                <li>Select your timezone from dropdown</li>
+                <li>View current time in selected timezone</li>
+                <li>Ensures accurate calendar scheduling</li>
+            </ul>
+            
+            <h4>Professional Summary</h4>
+            <ul>
+                <li><strong>About Me:</strong> Professional bio or summary</li>
+                <li><strong>Job Title:</strong> Current or target position</li>
+                <li><strong>Company:</strong> Current or previous employer</li>
+            </ul>
+            
+            <h4>Education & Online Presence</h4>
+            <ul>
+                <li>Education (degree and field)</li>
+                <li>Website/portfolio URL</li>
+                <li>LinkedIn profile URL</li>
+                <li>GitHub profile URL</li>
+            </ul>
+            
+            <h3>Board Preferences</h3>
+            
+            <h4>Pipeline Configuration</h4>
+            <p>The default sequence of stages jobs progress through:</p>
+            <ol>
+                <li>Saved → Applying → Applied → Contacted</li>
+                <li>Interviewing → Offer → Negotiating</li>
+                <li>Hired → Archived</li>
+            </ol>
+            
+            <h4>Stage Access by Plan</h4>
+            <ul>
+                <li><strong>Free Plan:</strong> 3 stages (Saved, Applied, Hired)</li>
+                <li><strong>Basic Plan:</strong> 6 stages (adds Applying, Contacted, Offer)</li>
+                <li><strong>Professional Plan:</strong> 8 stages (adds Interviewing, Negotiating)</li>
+                <li><strong>Executive Plan:</strong> All 9 stages (includes Archived)</li>
+            </ul>
+            
+            <h3>Calendar Preferences</h3>
+            
+            <h4>Calendar Views by Plan</h4>
+            <ul>
+                <li><strong>Free Plan:</strong> 1 calendar view</li>
+                <li><strong>Basic Plan:</strong> 2 calendar views</li>
+                <li><strong>Professional Plan:</strong> 3 calendar views</li>
+                <li><strong>Executive Plan:</strong> 4 calendar views (Agenda, Day, Week, Month)</li>
+            </ul>
+            
+            <h3>Notification Settings</h3>
+            <p>Manage how you receive updates (feature coming soon):</p>
+            <ul>
+                <li>Goal Notifications</li>
+                <li>Email Notifications</li>
+                <li>Push Notifications</li>
+                <li>Weekly Newsletter</li>
+                <li>Calendar Reminders</li>
+            </ul>
+            
+            <h3>Subscription & Billing</h3>
+            
+            <h4>Plan Comparison</h4>
+            <p><strong>Free Plan ($0):</strong></p>
+            <ul>
+                <li>10 active jobs</li>
+                <li>3 board stages</li>
+                <li>1 calendar view</li>
+                <li>5 extension uses/month</li>
+                <li>Daily Check-In</li>
+                <li>1 values assessment/year</li>
+            </ul>
+            
+            <p><strong>Basic Plan:</strong></p>
+            <ul>
+                <li>50 active jobs</li>
+                <li>6 board stages</li>
+                <li>2 calendar views</li>
+                <li>20 extension uses/month</li>
+                <li>Rejection Reframe</li>
+                <li>2 values assessments/year</li>
+            </ul>
+            
+            <p><strong>Professional Plan:</strong></p>
+            <ul>
+                <li>150 active jobs</li>
+                <li>8 board stages</li>
+                <li>3 calendar views</li>
+                <li>150 extension uses/month</li>
+                <li>Gratitude Journal</li>
+                <li>Growth Journey Dashboard</li>
+                <li>3 values assessments/year</li>
+            </ul>
+            
+            <p><strong>Executive Plan:</strong></p>
+            <ul>
+                <li>Unlimited active jobs</li>
+                <li>All 9 board stages</li>
+                <li>4 calendar views</li>
+                <li>400 extension uses/month</li>
+                <li>Excel Export</li>
+                <li>4 values assessments/year</li>
+            </ul>
+            
+            <h3>Data & Privacy</h3>
+            
+            <h4>Data Management</h4>
+            <ul>
+                <li><strong>Export Options:</strong> Available for Executive plan (Excel format)</li>
+                <li>Export job applications, calendar events, mindfulness entries</li>
+                <li>Generate comprehensive activity reports</li>
+            </ul>
+            
+            <h4>Privacy Settings</h4>
+            <ul>
+                <li>Control data visibility</li>
+                <li>Manage sharing preferences</li>
+                <li>Review connected applications</li>
+            </ul>
+            
+            <h4>Data Security</h4>
+            <ul>
+                <li>Password-protected account access</li>
+                <li>Regular security updates</li>
+                <li>Secure data transmission</li>
+            </ul>
+            
+            <h3>Account Actions</h3>
+            
+            <h4>Available Actions</h4>
+            <ul>
+                <li><strong>Change Password:</strong> Update login credentials regularly</li>
+                <li><strong>Privacy Settings:</strong> Control data visibility and sharing</li>
+                <li><strong>Sign Out:</strong> Log out securely to end session</li>
+            </ul>
+            
+            <h4>Danger Zone</h4>
+            <p><strong>Warning:</strong> Critical account actions are located at the bottom of settings.</p>
+            <ul>
+                <li><strong>Delete Account:</strong> Permanently removes account and all data</li>
+                <li>This action cannot be undone</li>
+                <li>Export data first if on Executive Plan</li>
+            </ul>
+            
+            <div class="pro-tip">
+                <strong>Pro Tip:</strong> Review your settings monthly to ensure they align with your current job search needs and preferences.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showGuide(guideId) {
+            document.getElementById('home-view').style.display = 'none';
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(guideId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        
+        function showHome() {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('home-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
