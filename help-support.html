@@ -739,11 +739,8 @@
     </footer>
 
     <script>
-        // Configuration - Support System Google Apps Script URL
-        const CONFIG = {
-            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbybWXlI06LPuHiZNNKJR5SvBbuTTeCifA-8icVl0h2pE-xbXQCw5yyb8ZL00gVrgfP2Mg/exec',
-            RECAPTCHA_SITE_KEY: '6LfMocMUAAAAAFPlLsVDnIDUYSJh93KK_2VcAlnj'
-        };
+        // Use centralized config from config.js
+        // CONFIG is loaded from config.js file
 
         // Auto-populate browser information
         document.addEventListener('DOMContentLoaded', function() {
@@ -856,10 +853,10 @@
                 submitBtn.disabled = true;
                 
                 console.log('Submitting support request:', data);
-                console.log('Script URL:', CONFIG.GOOGLE_SCRIPT_URL);
+                console.log('Script URL:', CONFIG.SUPPORT_SCRIPT_URL);
                 
                 // Submit to Google Apps Script
-                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                const response = await fetch(CONFIG.SUPPORT_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors', // Add this to handle CORS issues
                     headers: {

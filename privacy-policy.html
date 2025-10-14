@@ -289,8 +289,15 @@
     </footer>
 
     <script>
-        // Set current date
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
+        // Set current date with error handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentDateElement = document.getElementById('currentDate');
+            if (currentDateElement) {
+                currentDateElement.textContent = new Date().toLocaleDateString();
+            } else {
+                console.warn('currentDate element not found in privacy-policy.html');
+            }
+        });
     </script>
 </body>
 </html>
