@@ -8,7 +8,20 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-7M9PMK2FNN');
+      gtag('config', 'G-7M9PMK2FNN', {
+        'send_page_view': true,
+        'anonymize_ip': true,
+        'allow_google_signals': true
+      });
+      
+      // Debug: Log when gtag is loaded
+      console.log('Google Analytics loaded with ID: G-7M9PMK2FNN');
+      
+      // Test gtag function
+      gtag('event', 'page_view', {
+        'page_title': document.title,
+        'page_location': window.location.href
+      });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
