@@ -1,47 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics - Direct Implementation -->
-    <script>
-      console.log('🔍 Starting Google Analytics initialization...');
-      console.log('🚨 TEST: This message should appear immediately when page loads');
-      console.log('📅 Current time:', new Date().toISOString());
-      
-      // Method 1: Direct gtag implementation
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7M9PMK2FNN');
-      
-      console.log('📊 Google Analytics configured with ID: G-7M9PMK2FNN');
-      console.log('🔧 gtag function created:', typeof gtag);
-      console.log('📋 dataLayer initialized:', window.dataLayer);
-      
-      // Load the gtag script
-      var gaScript = document.createElement('script');
-      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN';
-      gaScript.async = true;
-      
-      gaScript.onload = function() {
-        console.log('✅ Google Analytics script loaded successfully');
-        // Send a test event
-        gtag('event', 'page_view', {
-          'page_title': document.title,
-          'page_location': window.location.href
-        });
-        console.log('📤 Page view event sent');
-      };
-      
-      gaScript.onerror = function() {
-        console.warn('⚠️ Google Analytics script failed to load');
-        // Fallback: Send via image pixel
-        var img = new Image();
-        img.src = 'https://www.google-analytics.com/collect?v=1&tid=G-7M9PMK2FNN&t=pageview&dl=' + encodeURIComponent(window.location.href) + '&dt=' + encodeURIComponent(document.title);
-        console.log('🔄 Fallback pixel tracking sent');
-      };
-      
-      document.head.appendChild(gaScript);
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="facebook-domain-verification" content="0k8dgkmdck3q6bcdaz0a8e0dnav89e" />
@@ -60,6 +26,11 @@
     <script async src='https://r.wdfl.co/rw.js' data-rewardful='e4b5d8'></script>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <!-- Header -->
     <header class="header">
         <nav class="nav">
