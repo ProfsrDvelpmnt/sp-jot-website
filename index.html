@@ -4,11 +4,36 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN"></script>
     <script>
+      console.log('🔍 Google Analytics script starting...');
+      console.log('📅 Timestamp:', new Date().toISOString());
+      
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-7M9PMK2FNN');
+      
+      console.log('✅ Google Analytics configured');
+      console.log('🔧 gtag function:', typeof gtag);
+      console.log('📋 dataLayer:', window.dataLayer);
+      
+      // Test if gtag is working
+      setTimeout(function() {
+        console.log('🧪 Testing gtag after 2 seconds...');
+        console.log('gtag function exists:', typeof gtag);
+        console.log('dataLayer exists:', window.dataLayer);
+        
+        if (typeof gtag === 'function') {
+          console.log('✅ Google Analytics is working!');
+          gtag('event', 'test_event', {
+            'event_category': 'testing',
+            'event_label': 'console_test'
+          });
+          console.log('📤 Test event sent');
+        } else {
+          console.error('❌ Google Analytics failed to load');
+        }
+      }, 2000);
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
