@@ -1,0 +1,22 @@
+<!-- Alternative Implementation: Google Tag Manager -->
+<!-- This is often more reliable than direct gtag implementation -->
+
+<!-- STEP 1: Replace the Google Analytics code with this GTM code in the <head>: -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXXX';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer');</script>
+
+<!-- STEP 2: Add this immediately after the opening <body> tag: -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- SETUP INSTRUCTIONS:
+1. Go to https://tagmanager.google.com/
+2. Create a new container for your website
+3. Replace 'GTM-XXXXXXX' with your actual GTM container ID
+4. In GTM, add a Google Analytics 4 tag with measurement ID: G-7M9PMK2FNN
+5. Publish the container
+6. This method is more reliable and harder to block than direct gtag.js
+-->

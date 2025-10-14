@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics - Enhanced Implementation with Fallback -->
+    <!-- Google Analytics - Direct Implementation -->
     <script>
-      // Initialize dataLayer immediately
+      console.log('🔍 Starting Google Analytics initialization...');
+      
+      // Method 1: Direct gtag implementation
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7M9PMK2FNN');
       
-      // Load Google Analytics script
-      (function() {
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN';
-        
-        // Add error handling
-        script.onerror = function() {
-          console.warn('Google Analytics script failed to load, using fallback method');
-          // Fallback: Send data via image pixel
-          var img = new Image();
-          img.src = 'https://www.google-analytics.com/collect?v=1&tid=G-7M9PMK2FNN&t=pageview&dl=' + encodeURIComponent(window.location.href) + '&dt=' + encodeURIComponent(document.title);
-        };
-        
-        script.onload = function() {
-          console.log('✅ Google Analytics script loaded successfully');
-          gtag('js', new Date());
-          gtag('config', 'G-7M9PMK2FNN', {
-            'send_page_view': true,
-            'anonymize_ip': true,
-            'allow_google_signals': true
-          });
-          
-          // Send page view
-          gtag('event', 'page_view', {
-            'page_title': document.title,
-            'page_location': window.location.href
-          });
-        };
-        
-        document.head.appendChild(script);
-      })();
+      console.log('📊 Google Analytics configured with ID: G-7M9PMK2FNN');
+      console.log('🔧 gtag function created:', typeof gtag);
+      console.log('📋 dataLayer initialized:', window.dataLayer);
       
-      // Debug logging
-      console.log('🔍 Google Analytics initialization started');
-      console.log('📊 Tracking ID: G-7M9PMK2FNN');
+      // Load the gtag script
+      var gaScript = document.createElement('script');
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN';
+      gaScript.async = true;
+      
+      gaScript.onload = function() {
+        console.log('✅ Google Analytics script loaded successfully');
+        // Send a test event
+        gtag('event', 'page_view', {
+          'page_title': document.title,
+          'page_location': window.location.href
+        });
+        console.log('📤 Page view event sent');
+      };
+      
+      gaScript.onerror = function() {
+        console.warn('⚠️ Google Analytics script failed to load');
+        // Fallback: Send via image pixel
+        var img = new Image();
+        img.src = 'https://www.google-analytics.com/collect?v=1&tid=G-7M9PMK2FNN&t=pageview&dl=' + encodeURIComponent(window.location.href) + '&dt=' + encodeURIComponent(document.title);
+        console.log('🔄 Fallback pixel tracking sent');
+      };
+      
+      document.head.appendChild(gaScript);
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
