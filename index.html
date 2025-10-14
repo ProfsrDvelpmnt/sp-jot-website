@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN"></script>
+    <!-- Google Analytics - Enhanced Implementation with Fallback -->
     <script>
+      // Initialize dataLayer immediately
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-7M9PMK2FNN', {
-        'send_page_view': true,
-        'anonymize_ip': true,
-        'allow_google_signals': true
-      });
       
-      // Debug: Log when gtag is loaded
-      console.log('Google Analytics loaded with ID: G-7M9PMK2FNN');
+      // Load Google Analytics script
+      (function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-7M9PMK2FNN';
+        
+        // Add error handling
+        script.onerror = function() {
+          console.warn('Google Analytics script failed to load, using fallback method');
+          // Fallback: Send data via image pixel
+          var img = new Image();
+          img.src = 'https://www.google-analytics.com/collect?v=1&tid=G-7M9PMK2FNN&t=pageview&dl=' + encodeURIComponent(window.location.href) + '&dt=' + encodeURIComponent(document.title);
+        };
+        
+        script.onload = function() {
+          console.log('✅ Google Analytics script loaded successfully');
+          gtag('js', new Date());
+          gtag('config', 'G-7M9PMK2FNN', {
+            'send_page_view': true,
+            'anonymize_ip': true,
+            'allow_google_signals': true
+          });
+          
+          // Send page view
+          gtag('event', 'page_view', {
+            'page_title': document.title,
+            'page_location': window.location.href
+          });
+        };
+        
+        document.head.appendChild(script);
+      })();
       
-      // Test gtag function
-      gtag('event', 'page_view', {
-        'page_title': document.title,
-        'page_location': window.location.href
-      });
+      // Debug logging
+      console.log('🔍 Google Analytics initialization started');
+      console.log('📊 Tracking ID: G-7M9PMK2FNN');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
