@@ -31,7 +31,7 @@
         }
         
         .admin-panel {
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -90,8 +90,12 @@
             padding: 1rem;
             font-weight: bold;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr auto;
-            gap: 1rem;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 0.5rem;
+        }
+        
+        .table-header > div {
+            text-align: left;
         }
         
         .table-content {
@@ -101,11 +105,59 @@
         
         .application-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr auto;
-            gap: 1rem;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 0.5rem;
             padding: 1rem;
             border-bottom: 1px solid #eee;
             align-items: center;
+        }
+        
+        .app-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .app-info strong {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .app-info .label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .app-info .value {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.pending {
+            background: #FFF3CD;
+            color: #856404;
+        }
+        
+        .status-badge.approved {
+            background: #D4EDDA;
+            color: #155724;
+        }
+        
+        .status-badge.denied {
+            background: #F8D7DA;
+            color: #721C24;
         }
         
         .application-row:hover {
@@ -130,9 +182,41 @@
             color: #666;
         }
         
+        /* Center Terms, Marketing, Status, and Actions columns */
+        .table-header .text-center {
+            text-align: center !important;
+        }
+        
+        .app-info.text-center {
+            text-align: center !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding-left: 1.5rem !important;
+        }
+        
+        .app-info.text-center strong {
+            text-align: center !important;
+            display: block !important;
+        }
+        
+        .app-info.text-center .status-badge {
+            display: inline-block !important;
+        }
+        
+        .app-info.text-center .value {
+            text-align: center !important;
+        }
+        
+        .action-buttons.text-center {
+            align-items: center !important;
+            padding-left: 1.5rem !important;
+        }
+        
         .action-buttons {
             display: flex;
+            flex-direction: column;
             gap: 0.5rem;
+            align-items: stretch;
         }
         
         .btn-approve {
@@ -143,6 +227,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.8rem;
+            width: 100%;
         }
         
         .btn-deny {
@@ -153,6 +238,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.8rem;
+            width: 100%;
         }
         
         .btn-approve:hover {
@@ -265,7 +351,22 @@
             }
             
             .action-buttons {
+                flex-direction: column;
+                align-items: stretch;
                 justify-content: center;
+            }
+            
+            .status-badge {
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+            
+            .app-info .label {
+                font-size: 0.7rem;
+            }
+            
+            .app-info .value {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -309,7 +410,10 @@
                     <div>Contact</div>
                     <div>Platform</div>
                     <div>Experience</div>
-                    <div>Actions</div>
+                    <div class="text-center">Terms</div>
+                    <div class="text-center">Marketing</div>
+                    <div class="text-center">Status</div>
+                    <div class="text-center">Actions</div>
                 </div>
                 <div class="table-content" id="applicationsList">
                     <div class="no-applications">
@@ -356,11 +460,10 @@
         </div>
     </div>
     
+    <script src="config.js"></script>
     <script>
-        // Configuration - Update with your actual Google Apps Script URL
-        const CONFIG = {
-            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwUKxUiDunKO_n_M-wNEHIoDUgtrXa9Rupc327mo-lDmONf0qWC50P0N2uJnOVnRYMl/exec', // Replace with your new deployment URL
-        };
+        // Use CONFIG from config.js
+        // CONFIG.AFFILIATE_SCRIPT_URL should be set in config.js
         
         let currentApplicationId = null;
         let applications = [];
@@ -376,7 +479,7 @@
                 console.log('Loading applications from Google Sheets...');
                 
                 // Try to fetch from Google Apps Script
-                const response = await fetch(`${CONFIG.GOOGLE_SCRIPT_URL}?action=getApplications`, {
+                const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}?action=getApplications`, {
                     method: 'GET',
                     mode: 'cors'
                 });
@@ -494,26 +597,44 @@
             container.innerHTML = allApps.map(app => `
                 <div class="application-row">
                     <div class="app-info">
+                        <div class="label">Name</div>
                         <strong>${app.firstName} ${app.lastName}</strong>
-                        <span>ID: ${app.applicationId}</span>
+                        <div class="label">Application ID</div>
+                        <span class="value">${app.applicationId}</span>
                     </div>
                     <div class="app-info">
+                        <div class="label">Email</div>
                         <strong>${app.email}</strong>
-                        <span>${app.website || 'No website'}</span>
+                        <div class="label">Website</div>
+                        <span class="value">${app.website || 'Not provided'}</span>
                     </div>
                     <div class="app-info">
+                        <div class="label">Social Media</div>
                         <strong>${formatSocialMedia(app.socialMedia)}</strong>
-                        <span>${formatTraffic(app.monthlyTraffic)}</span>
+                        <div class="label">Monthly Traffic</div>
+                        <span class="value">${formatTraffic(app.monthlyTraffic)}</span>
                     </div>
                     <div class="app-info">
+                        <div class="label">Experience</div>
                         <strong>${formatExperience(app.experience)}</strong>
-                        <span>${formatReferralSource(app.referralSource)}</span>
+                        <div class="label">Referral Source</div>
+                        <span class="value">${formatReferralSource(app.referralSource)}</span>
                     </div>
-                    <div class="app-info">
-                        <strong>Status: ${app.status}</strong>
-                        <span>${new Date(app.timestamp).toLocaleDateString()}</span>
+                    <div class="app-info text-center">
+                        <strong style="color: ${app.termsAgreement === 'Yes' ? '#28a745' : '#dc3545'};">
+                            ${app.termsAgreement || 'No'}
+                        </strong>
                     </div>
-                    <div class="action-buttons">
+                    <div class="app-info text-center">
+                        <strong style="color: ${app.marketingConsent === 'Yes' ? '#28a745' : '#dc3545'};">
+                            ${app.marketingConsent || 'No'}
+                        </strong>
+                    </div>
+                    <div class="app-info text-center">
+                        <span class="status-badge ${app.status.toLowerCase()}">${app.status}</span>
+                        <span class="value" style="font-size: 0.8rem; color: #666; margin-top: 0.25rem;">${new Date(app.timestamp).toLocaleDateString()}</span>
+                    </div>
+                    <div class="action-buttons text-center">
                         ${app.status === 'Pending' ? `
                             <button class="btn-approve" onclick="approveApplication('${app.applicationId}')">
                                 <i class="fas fa-check"></i> Approve
@@ -605,36 +726,42 @@
                 console.log('Approving application:', currentApplicationId);
                 console.log('Notes:', notes);
                 
-                // Call Google Apps Script to approve
+                // Call Google Apps Script to approve (using GET to avoid CORS preflight)
+                const params = new URLSearchParams({
+                    action: 'approve',
+                    id: currentApplicationId,
+                    notes: notes
+                });
+                const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}?${params.toString()}`, {
+                    method: 'GET'
+                });
+                
+                console.log('Response status:', response.status);
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+                
+                let result;
                 try {
-                    const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            action: 'approve',
-                            id: currentApplicationId,
-                            notes: notes
-                        })
-                    });
-                    
-                    if (response.ok) {
-                        console.log('Approval request sent successfully');
-                        await loadApplications();
-                        closeModal('approvalModal');
-                        alert('Application approved successfully!');
-                    } else {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                } catch (error) {
-                    console.error('Error approving application:', error);
-                    alert('Failed to approve application. Please try again.');
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
+                    alert('Failed to parse response from server. Please try again.');
+                    return;
+                }
+                
+                if (result.success) {
+                    console.log('Approval successful:', result.message);
+                    await loadApplications();
+                    closeModal('approvalModal');
+                    alert('Application approved successfully!');
+                } else {
+                    console.error('Approval failed:', result.error);
+                    alert(`Failed to approve application: ${result.error || 'Unknown error'}`);
                 }
                 
             } catch (error) {
                 console.error('Error approving application:', error);
-                alert('Error approving application. Please try again.');
+                alert(`Error approving application: ${error.message}`);
             }
         }
         
@@ -651,36 +778,42 @@
                 console.log('Denying application:', currentApplicationId);
                 console.log('Reason:', reason);
                 
-                // Call Google Apps Script to deny
+                // Call Google Apps Script to deny (using GET to avoid CORS preflight)
+                const params = new URLSearchParams({
+                    action: 'deny',
+                    id: currentApplicationId,
+                    reason: reason
+                });
+                const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}?${params.toString()}`, {
+                    method: 'GET'
+                });
+                
+                console.log('Response status:', response.status);
+                const responseText = await response.text();
+                console.log('Response text:', responseText);
+                
+                let result;
                 try {
-                    const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            action: 'deny',
-                            id: currentApplicationId,
-                            reason: reason
-                        })
-                    });
-                    
-                    if (response.ok) {
-                        console.log('Denial request sent successfully');
-                        await loadApplications();
-                        closeModal('denialModal');
-                        alert('Application denied successfully!');
-                    } else {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                } catch (error) {
-                    console.error('Error denying application:', error);
-                    alert('Failed to deny application. Please try again.');
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Failed to parse JSON:', e);
+                    alert('Failed to parse response from server. Please try again.');
+                    return;
+                }
+                
+                if (result.success) {
+                    console.log('Denial successful:', result.message);
+                    await loadApplications();
+                    closeModal('denialModal');
+                    alert('Application denied successfully!');
+                } else {
+                    console.error('Denial failed:', result.error);
+                    alert(`Failed to deny application: ${result.error || 'Unknown error'}`);
                 }
                 
             } catch (error) {
                 console.error('Error denying application:', error);
-                alert('Error denying application. Please try again.');
+                alert(`Error denying application: ${error.message}`);
             }
         }
         
@@ -696,9 +829,9 @@
         async function testGoogleScript() {
             try {
                 console.log('Testing Google Script connection...');
-                console.log('Script URL:', CONFIG.GOOGLE_SCRIPT_URL);
+                console.log('Script URL:', CONFIG.AFFILIATE_SCRIPT_URL);
                 
-                const response = await fetch(`${CONFIG.GOOGLE_SCRIPT_URL}?action=test`, {
+                const response = await fetch(`${CONFIG.AFFILIATE_SCRIPT_URL}?action=test`, {
                     method: 'GET',
                     mode: 'cors'
                 });

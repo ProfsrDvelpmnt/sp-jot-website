@@ -554,15 +554,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const experienceField = document.getElementById('experience');
         const currentPositionField = document.getElementById('currentPosition');
         const interestField = document.getElementById('interest');
-        const planField = document.getElementById('selectedPlan');
         
         console.log('Form elements found:', {
             name: nameField,
             email: emailField,
             experience: experienceField,
             currentPosition: currentPositionField,
-            interest: interestField,
-            plan: planField
+            interest: interestField
         });
         
         // Get values
@@ -571,10 +569,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const experience = experienceField ? experienceField.value : '';
         const currentPosition = currentPositionField ? currentPositionField.value : '';
         const interest = interestField ? interestField.value : '';
-        const plan = planField ? planField.value : 'General Interest';
         
         // Debug logging
-        console.log('Form values:', { name, email, experience, currentPosition, interest, plan });
+        console.log('Form values:', { name, email, experience, currentPosition, interest });
         
         // Basic validation
         if (!name.trim() || !email.trim()) {
@@ -596,6 +593,10 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
         submitBtn.disabled = true;
         
+        // Get consent checkbox
+        const consentField = document.getElementById('consent');
+        const consent = consentField ? consentField.checked : false;
+        
         // Prepare data for Google Sheets
         const formData = {
             name: name.trim(),
@@ -603,7 +604,7 @@ document.addEventListener('DOMContentLoaded', function() {
             experience: experience,
             currentPosition: currentPosition.trim(),
             interest: interest,
-            plan: plan
+            consent: consent
         };
         
         // Check if Google Sheets URL is configured
@@ -726,7 +727,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to check if a time slot is booked (server-side check)
     async function isTimeSlotBooked(date, time) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec', {
+            const response = await fetch(CONFIG.DEMO_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -752,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to get booked time slots for a specific date (server-side)
     async function getBookedTimeSlotsForDate(date) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec', {
+            const response = await fetch(CONFIG.DEMO_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -1052,14 +1053,11 @@ async function saveToGoogleSheets(data) {
             timestamp: timestamp
         };
         
-        // Google Apps Script Web App URL (you'll need to replace this with your actual URL)
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxD2g9q2q3M9PvsaWnc1fr2WZWAsPgaBY5409twGuaxjimqd6ysdzF7ePOxk9zyfW-J/exec';
-        
         // Send data to Google Sheets
         console.log('🚀 Sending data to Google Sheets:', sheetData);
-        console.log('🔗 Using URL:', GOOGLE_SCRIPT_URL);
+        console.log('🔗 Using URL:', CONFIG.DEMO_SCRIPT_URL);
         
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
+        const response = await fetch(CONFIG.DEMO_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors', // Required for Google Apps Script
             headers: {

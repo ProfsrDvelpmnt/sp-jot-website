@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 jobPlatforms.push(data.jobSearchPlatforms);
             }
         }
-        processed.jobSearchPlatforms = jobPlatforms.join(', ');
+        processed.jobSearchPlatforms = jobPlatforms; // Keep as array
         
         // Handle feedback methods (checkbox array)
         const feedbackMethods = [];
@@ -118,7 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 feedbackMethods.push(data.feedbackMethod);
             }
         }
-        processed.feedbackMethod = feedbackMethods.join(', ');
+        processed.feedbackMethod = feedbackMethods; // Keep as array
+        
+        // Convert consent and newsletter checkboxes to boolean
+        processed.consent = data.consent === 'on' || data.consent === true;
+        processed.newsletter = data.newsletter === 'on' || data.newsletter === true;
         
         // Add timestamp
         processed.timestamp = new Date().toLocaleString();
@@ -131,14 +135,14 @@ document.addEventListener('DOMContentLoaded', function() {
     async function saveBetaApplication(data) {
         try {
             // Check if Google Sheets URL is configured
-            if (!CONFIG.GOOGLE_SHEETS_URL || CONFIG.GOOGLE_SHEETS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            if (!CONFIG.BETA_SCRIPT_URL || CONFIG.BETA_SCRIPT_URL === 'YOUR_BETA_URL_HERE') {
                 console.log('⚠️ Google Sheets integration not configured');
                 return Promise.resolve(); // Don't fail the form submission
             }
             
             console.log('📤 Saving beta application to Google Sheets...');
             
-            const response = await fetch(CONFIG.GOOGLE_SHEETS_URL, {
+            const response = await fetch(CONFIG.BETA_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors', // Important for Google Apps Script
                 headers: {

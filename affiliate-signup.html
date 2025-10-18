@@ -241,13 +241,10 @@
         </div>
     </footer>
 
-    <script>
-        // Configuration - Update these URLs with your actual Google Apps Script deployment URL
-        const CONFIG = {
-            GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwUKxUiDunKO_n_M-wNEHIoDUgtrXa9Rupc327mo-lDmONf0qWC50P0N2uJnOVnRYMl/exec', // Replace with your new deployment URL
-            RECAPTCHA_SITE_KEY: '6LfMocMUAAAAAFPlLsVDnIDUYSJh93KK_2VcAlnj'
-        };
+    <!-- Include configuration file -->
+    <script src="config.js"></script>
 
+    <script>
         // Form submission handling
         document.getElementById('affiliateForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -307,10 +304,10 @@
                 submitBtn.disabled = true;
                 
                 console.log('Submitting data:', data);
-                console.log('Script URL:', CONFIG.GOOGLE_SCRIPT_URL);
+                console.log('Script URL:', CONFIG.AFFILIATE_SCRIPT_URL);
                 
                 // Submit to Google Apps Script
-                const response = await fetch(CONFIG.GOOGLE_SCRIPT_URL, {
+                const response = await fetch(CONFIG.AFFILIATE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors', // Add this to handle CORS issues
                     headers: {
