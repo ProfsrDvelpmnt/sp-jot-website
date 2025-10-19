@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Screening Survey - SavvyPro JOT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/spjot-48.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/spjot-16.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/spjot-128.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .screening-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .screening-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .screening-header h1 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .screening-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100%;
+            transition: width 0.3s ease;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h3 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .checkbox-item:hover {
+            background: #e9ecef;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .form-actions {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .form-note {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .screening-container {
+                margin: 20px;
+                padding: 25px;
+            }
+            
+            .screening-header h1 {
+                font-size: 2rem;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/spjot-48.png" alt="SavvyPro JOT Logo" class="logo-img">
+                    <span class="logo-text">SavvyPro JOT™</span>
+                </div>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="beta-tester.html" class="nav-link">Beta Program</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Screening Form -->
+    <section class="screening-section">
+        <div class="container">
+            <div class="screening-container">
+                <a href="beta-tester.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Beta Program
+                </a>
+                
+                <div class="screening-header">
+                    <h1>Beta Screening Survey</h1>
+                    <p>Help us get to know you better</p>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                
+                <form class="screening-form" id="screeningForm">
+                    <input type="hidden" id="applicationId" name="applicationId">
+                    
+                    <div class="form-section">
+                        <h3>Job Search Status</h3>
+                        <div class="form-group">
+                            <label for="jobSearchStatus">Current Job Search Status *</label>
+                            <select id="jobSearchStatus" name="jobSearchStatus" class="form-input" required>
+                                <option value="">Select your status</option>
+                                <option value="actively-searching">Actively searching for a new job</option>
+                                <option value="considering-change">Considering a job change in the next 6 months</option>
+                                <option value="planning-search">Planning to start job search soon</option>
+                                <option value="career-coach">Career coach helping others</option>
+                                <option value="recruiter">Recruiter or HR professional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="jobSearchPlatforms">Which job platforms do you currently use? *</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="linkedin">
+                                    LinkedIn
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="indeed">
+                                    Indeed
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="ziprecruiter">
+                                    ZipRecruiter
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="monster">
+                                    Monster
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="workday">
+                                    Workday
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="greenhouse">
+                                    Greenhouse.io
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="hiringcafe">
+                                    hiring.cafe
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="jobSearchPlatforms" value="other">
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Beta Tester Questions</h3>
+                        <div class="form-group">
+                            <label for="timeCommitment">How much time can you dedicate to beta testing per week? *</label>
+                            <select id="timeCommitment" name="timeCommitment" class="form-input" required>
+                                <option value="">Select time commitment</option>
+                                <option value="1-2">1-2 hours per week</option>
+                                <option value="3-5">3-5 hours per week</option>
+                                <option value="5-10">5-10 hours per week</option>
+                                <option value="10+">10+ hours per week</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="feedbackMethod">How do you prefer to provide feedback? *</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="feedbackMethod" value="surveys">
+                                    Online surveys and forms
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="feedbackMethod" value="video-calls">
+                                    Video calls and interviews
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="feedbackMethod" value="discord">
+                                    Discord community discussions
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="feedbackMethod" value="email">
+                                    Email feedback
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Why do you want to become a beta tester? *</label>
+                            <textarea id="motivation" name="motivation" class="form-input" rows="4" placeholder="Tell us what excites you about SavvyPro JOT and how you'd like to contribute to its development..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousExperience">Have you been a beta tester for other products before?</label>
+                            <textarea id="previousExperience" name="previousExperience" class="form-input" rows="3" placeholder="If yes, please describe your experience. If no, that's perfectly fine too!"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Additional Information</h3>
+                        <div class="form-group">
+                            <label for="referralSource">How did you hear about our beta program?</label>
+                            <select id="referralSource" name="referralSource" class="form-input">
+                                <option value="">Select source</option>
+                                <option value="website">SavvyPro JOT Website</option>
+                                <option value="social-media">Social Media</option>
+                                <option value="email">Email Newsletter</option>
+                                <option value="friend">Friend or Colleague</option>
+                                <option value="search">Search Engine</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additionalInfo">Anything else you'd like us to know?</label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-input" rows="3" placeholder="Share any additional information that might be relevant..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                I'd like to receive updates about SavvyPro JOT development and future features.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-check-circle"></i>
+                            Complete Screening Survey
+                        </button>
+                        <p class="form-note">Your responses help us better understand your needs and match you with the right beta testing opportunities.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">SavvyPro JOT™</span>
+                    </div>
+                    <p>Modern job tracking and career management platform</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#pricing">Pricing</a></li>
+                            <li><a href="index.html#demo">Live Demo</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Programs</h4>
+                        <ul>
+                            <li><a href="beta-tester.html">Beta Tester Program</a></li>
+                            <li><a href="affiliate-landing.html">Affiliate Program</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help-support.html">Help & Support</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/savvypro-jot/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/savvyprojot" target="_blank" rel="noopener noreferrer" class="social-link">𝕏</a>
+                    <a href="https://www.facebook.com/savvyprojot/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/savvyprojot/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="beta-screening-script.js"></script>
+</body>
+</html>
+

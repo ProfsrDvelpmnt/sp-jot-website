@@ -313,151 +313,11 @@
                     </div>
                     
                     <div class="form-section">
-                        <h3>Job Search Status</h3>
-                        <div class="form-group">
-                            <label for="jobSearchStatus">Current Job Search Status *</label>
-                            <select id="jobSearchStatus" name="jobSearchStatus" class="form-input" required>
-                                <option value="">Select your status</option>
-                                <option value="actively-searching">Actively searching for a new job</option>
-                                <option value="considering-change">Considering a job change in the next 6 months</option>
-                                <option value="planning-search">Planning to start job search soon</option>
-                                <option value="career-coach">Career coach helping others</option>
-                                <option value="recruiter">Recruiter or HR professional</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="jobSearchPlatforms">Which job platforms do you currently use? *</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="linkedin">
-                                    <span class="checkmark"></span>
-                                    LinkedIn
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="indeed">
-                                    <span class="checkmark"></span>
-                                    Indeed
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="ziprecruiter">
-                                    <span class="checkmark"></span>
-                                    ZipRecruiter
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="monster">
-                                    <span class="checkmark"></span>
-                                    Monster
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="workday">
-                                    <span class="checkmark"></span>
-                                    Workday
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="greenhouse">
-                                    <span class="checkmark"></span>
-                                    Greenhouse.io
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="hiringcafe">
-                                    <span class="checkmark"></span>
-                                    hiring.cafe
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="jobSearchPlatforms" value="other">
-                                    <span class="checkmark"></span>
-                                    Other
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h3>Beta Tester Questions</h3>
-                        <div class="form-group">
-                            <label for="timeCommitment">How much time can you dedicate to beta testing per week? *</label>
-                            <select id="timeCommitment" name="timeCommitment" class="form-input" required>
-                                <option value="">Select time commitment</option>
-                                <option value="1-2">1-2 hours per week</option>
-                                <option value="3-5">3-5 hours per week</option>
-                                <option value="5-10">5-10 hours per week</option>
-                                <option value="10+">10+ hours per week</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="feedbackMethod">How do you prefer to provide feedback? *</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="feedbackMethod" value="surveys">
-                                    <span class="checkmark"></span>
-                                    Online surveys and forms
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="feedbackMethod" value="video-calls">
-                                    <span class="checkmark"></span>
-                                    Video calls and interviews
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="feedbackMethod" value="discord">
-                                    <span class="checkmark"></span>
-                                    Discord community discussions
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="feedbackMethod" value="email">
-                                    <span class="checkmark"></span>
-                                    Email feedback
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="motivation">Why do you want to become a beta tester? *</label>
-                            <textarea id="motivation" name="motivation" class="form-input" rows="4" placeholder="Tell us what excites you about SavvyPro JOT and how you'd like to contribute to its development..." required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="previousExperience">Have you been a beta tester for other products before?</label>
-                            <textarea id="previousExperience" name="previousExperience" class="form-input" rows="3" placeholder="If yes, please describe your experience. If no, that's perfectly fine too!"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
-                        <h3>Additional Information</h3>
-                        <div class="form-group">
-                            <label for="referralSource">How did you hear about our beta program?</label>
-                            <select id="referralSource" name="referralSource" class="form-input">
-                                <option value="">Select source</option>
-                                <option value="website">SavvyPro JOT Website</option>
-                                <option value="social-media">Social Media</option>
-                                <option value="email">Email Newsletter</option>
-                                <option value="friend">Friend or Colleague</option>
-                                <option value="search">Search Engine</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="additionalInfo">Anything else you'd like us to know?</label>
-                            <textarea id="additionalInfo" name="additionalInfo" class="form-input" rows="3" placeholder="Share any additional information that might be relevant..."></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="form-section">
                         <div class="form-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="consent" name="consent" required>
                                 <span class="checkmark"></span>
                                 I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to being contacted about the beta program. *
-                            </label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
-                                I'd like to receive updates about SavvyPro JOT development and future features.
                             </label>
                         </div>
                     </div>
@@ -467,7 +327,7 @@
                             <i class="fas fa-paper-plane"></i>
                             Submit Beta Application
                         </button>
-                        <p class="form-note">Applications will be reviewed within 5-7 business days. Selected beta testers will be notified via email.</p>
+                        <p class="form-note">After submitting, you'll be redirected to a brief screening survey to help us better understand your needs.</p>
                     </div>
                 </form>
             </div>

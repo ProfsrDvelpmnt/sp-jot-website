@@ -55,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateBetaForm(data) {
         const requiredFields = [
             'firstName', 'lastName', 'email', 'currentRole', 
-            'experience', 'industry', 'jobSearchStatus', 'timeCommitment', 
-            'motivation', 'consent'
+            'experience', 'industry', 'consent'
         ];
         
         const missingFields = [];
@@ -66,18 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 missingFields.push(field);
             }
         });
-        
-        // Check if at least one job search platform is selected
-        const jobSearchPlatforms = data.jobSearchPlatforms;
-        if (!jobSearchPlatforms || (Array.isArray(jobSearchPlatforms) && jobSearchPlatforms.length === 0)) {
-            missingFields.push('jobSearchPlatforms');
-        }
-        
-        // Check if at least one feedback method is selected
-        const feedbackMethod = data.feedbackMethod;
-        if (!feedbackMethod || (Array.isArray(feedbackMethod) && feedbackMethod.length === 0)) {
-            missingFields.push('feedbackMethod');
-        }
         
         if (missingFields.length > 0) {
             alert('Please fill in all required fields. Missing: ' + missingFields.join(', '));
@@ -94,35 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
     
-    // Process form data to handle checkbox arrays
+    // Process form data
     function processFormData(data) {
         const processed = { ...data };
         
-        // Handle job search platforms (checkbox array)
-        const jobPlatforms = [];
-        if (data.jobSearchPlatforms) {
-            if (Array.isArray(data.jobSearchPlatforms)) {
-                jobPlatforms.push(...data.jobSearchPlatforms);
-            } else {
-                jobPlatforms.push(data.jobSearchPlatforms);
-            }
-        }
-        processed.jobSearchPlatforms = jobPlatforms; // Keep as array
-        
-        // Handle feedback methods (checkbox array)
-        const feedbackMethods = [];
-        if (data.feedbackMethod) {
-            if (Array.isArray(data.feedbackMethod)) {
-                feedbackMethods.push(...data.feedbackMethod);
-            } else {
-                feedbackMethods.push(data.feedbackMethod);
-            }
-        }
-        processed.feedbackMethod = feedbackMethods; // Keep as array
-        
-        // Convert consent and newsletter checkboxes to boolean
+        // Convert consent checkbox to boolean
         processed.consent = data.consent === 'on' || data.consent === true;
-        processed.newsletter = data.newsletter === 'on' || data.newsletter === true;
         
         // Add timestamp
         processed.timestamp = new Date().toLocaleString();
@@ -161,12 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Show application success message
+    // Show application success message and redirect to screening survey
     function showApplicationSuccess(data) {
+        // Generate a simple application ID
+        const applicationId = 'BETA-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        
         // Hide the form
         betaForm.style.display = 'none';
         
-        // Create success message
+        // Create success message with redirect
         const successMessage = document.createElement('div');
         successMessage.className = 'application-success';
         successMessage.innerHTML = `
@@ -175,32 +142,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <h2 style="color: #421237; margin-bottom: 1rem; font-size: 2.2rem;">
-                    Application Submitted Successfully!
+                    Step 1 Complete!
                 </h2>
                 <p style="color: #666; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">
-                    Thank you, ${data.firstName}! Your beta tester application has been received and will be reviewed within 5-7 business days.
+                    Thank you, ${data.firstName}! Your initial application has been received.
                 </p>
                 <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #C99383;">
-                    <h3 style="color: #421237; margin-bottom: 1rem; font-size: 1.3rem;">What happens next?</h3>
-                    <ul style="text-align: left; color: #666; line-height: 1.8; margin: 0; padding-left: 1.5rem;">
-                        <li>Our team will review your application carefully</li>
-                        <li>Selected beta testers will receive an email within 5-7 business days</li>
-                        <li>You'll get access to SavvyPro JOT with all premium features</li>
-                        <li>Join our exclusive Discord community for beta testers</li>
-                    </ul>
+                    <h3 style="color: #421237; margin-bottom: 1rem; font-size: 1.3rem;">Next Step: Screening Survey</h3>
+                    <p style="text-align: left; color: #666; line-height: 1.8; margin: 0;">
+                        To help us better understand your needs and match you with the right beta testing opportunities, 
+                        please complete a brief screening survey. This will only take a few minutes.
+                    </p>
                 </div>
-                <p style="color: #666; margin-bottom: 2rem; font-size: 0.95rem;">
-                    Keep an eye on your email for updates. If you have any questions, feel free to contact us at 
-                    <a href="mailto:beta@savvypro.com" style="color: #C99383; text-decoration: none;">beta@savvypro.com</a>
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="index.html" class="btn btn-primary" style="text-decoration: none;">
-                        <i class="fas fa-home"></i> Back to Home
+                <div style="margin-top: 2rem;">
+                    <a href="beta-screening.html?applicationId=${applicationId}" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
+                        <i class="fas fa-arrow-right"></i> Continue to Screening Survey
                     </a>
-                    <button onclick="resetApplicationForm()" class="btn btn-outline">
-                        <i class="fas fa-redo"></i> Submit Another Application
-                    </button>
                 </div>
+                <p style="color: #999; margin-top: 2rem; font-size: 0.9rem;">
+                    <a href="index.html" style="color: #667eea; text-decoration: none;">Skip for now</a> (you can complete it later)
+                </p>
             </div>
         `;
         
