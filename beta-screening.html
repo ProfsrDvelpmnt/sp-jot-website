@@ -99,32 +99,43 @@
         
         /* Footer Styles */
         .footer {
-            background: #1a1a2e;
+            background: #2c3e50;
             color: white;
-            padding: 3rem 0 1.5rem;
+            padding: 60px 0 20px;
             margin-top: 4rem;
         }
         
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
-            margin-bottom: 2rem;
+        }
+        
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-brand .logo-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
         .footer-brand p {
-            color: #ccc;
+            color: #bdc3c7;
+            font-weight: 500;
             margin-top: 0.5rem;
         }
         
         .footer-links {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
         
         .footer-column h4 {
-            margin-bottom: 1rem;
+            color: #ecf0f1;
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
         
@@ -133,13 +144,13 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         
         .footer-column ul li a {
-            color: #ccc;
+            color: #bdc3c7;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
         
         .footer-column ul li a:hover {
@@ -148,14 +159,15 @@
         
         .social-links {
             display: flex;
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
         
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s ease, transform 0.3s;
         }
         
         .social-links a:hover {
@@ -341,14 +353,13 @@
                 gap: 1rem;
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .footer {
+                padding: 2rem 1rem;
             }
             
             .footer-links {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
             
             .screening-container {
@@ -362,6 +373,13 @@
             
             .checkbox-group {
                 grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
             }
         }
     </style>
