@@ -488,7 +488,10 @@ function denyApplication(applicationId, reason) {
         
         return ContentService
           .createTextOutput(JSON.stringify({ success: true, message: 'Application denied successfully' }))
-          .setMimeType(ContentService.MimeType.JSON);
+          .setMimeType(ContentService.MimeType.JSON)
+          .setHeaders({
+            'Access-Control-Allow-Origin': '*'
+          });
       }
     }
     
