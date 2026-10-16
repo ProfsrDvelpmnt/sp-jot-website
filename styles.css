@@ -1281,7 +1281,7 @@ p {
 .features-list li {
     margin-bottom: 0.5rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
     font-size: 0.9rem;
 }
@@ -1289,6 +1289,8 @@ p {
 .features-list .check {
     color: #4caf50;
     font-weight: bold;
+    flex-shrink: 0;
+    line-height: 1.4;
 }
 
 /* Feature List */
