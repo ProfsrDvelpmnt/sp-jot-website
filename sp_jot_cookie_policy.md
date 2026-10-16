@@ -1,6 +1,6 @@
 # Cookie Policy
 
-**Last updated: September 19, 2025**
+**Last updated: October 16, 2026**
 
 ## What Are Cookies
 
@@ -10,75 +10,50 @@ Cookies are small text files that are stored on your computer or mobile device w
 
 ## How We Use Cookies
 
-SP-JOT uses cookies and similar technologies for several purposes:
+On October 16, 2026, a visit to sp-jot.com set only the cookies listed below. The site did not set any strictly necessary cookies, such as authentication, security, or session cookies.
 
-### Essential Cookies
-These cookies are necessary for the proper functioning of our services and cannot be disabled in our systems. They are usually only set in response to actions made by you, such as:
-- **Authentication cookies**: To keep you logged in to your SP-JOT account
-- **Security cookies**: To detect authentication abuse and protect user data
-- **Session cookies**: To maintain your session state across page requests
+### Website statistics
 
-### Analytics Cookies
-We use analytics cookies to understand how visitors interact with our website and application:
-- **Usage analytics**: To track page views, user interactions, and feature usage
-- **Performance monitoring**: To identify and resolve technical issues
-- **Conversion tracking**: To measure the effectiveness of our marketing efforts
+Google Analytics uses these cookies to understand how visitors use the marketing website. They do not include your name or email address.
 
-### Functional Cookies
-These cookies enable enhanced functionality and personalization:
-- **Preference cookies**: To remember your settings and preferences
-- **Theme cookies**: To remember your selected theme (light/dark mode)
-- **Language cookies**: To remember your language preferences
+- **Cookie**: _ga
+- **Purpose**: website statistics
+- **Provider**: Google
+- **Lifetime**: 400 days
 
-### Marketing and Advertising Cookies
-We use marketing cookies to deliver relevant advertisements and measure campaign effectiveness:
-- **Affiliate tracking**: To track referrals from our affiliate partners via Rewardful
-- **Advertising cookies**: To show you relevant ads on other websites
-- **Social media cookies**: When you interact with social media features on our site
+- **Cookie**: _ga_7M9PMK2FNN
+- **Purpose**: website statistics
+- **Provider**: Google
+- **Lifetime**: 400 days
+
+### Affiliate referral credit
+
+Rewardful's script is loaded on the marketing website. It sets a cookie only when Rewardful accepts an affiliate referral, so that affiliate can be credited if you subscribe. It does not track you on other websites. On October 16, 2026 a visit did not set this cookie, so a lifetime was not observed.
+
+- **Cookie**: rewardful.referral
+- **Purpose**: affiliate referral credit
+- **Provider**: Rewardful
+- **Lifetime**: Set by Rewardful when a referral is accepted. Not observed on October 16, 2026.
 
 ## Third-Party Cookies
 
-SP-JOT works with third-party service providers who may also set cookies on your device:
+These providers set the cookies named above:
 
-### Rewardful (Affiliate Tracking)
-- **Purpose**: To track affiliate referrals and calculate commissions
-- **Duration**: 60 days
-- **Data collected**: Referral source, click timestamps, conversion data
+### Google (website statistics)
+- **Cookies**: _ga, _ga_7M9PMK2FNN
+- **Purpose**: website statistics
+- **Lifetime**: 400 days
+- **Privacy policy**: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+
+### Rewardful (affiliate referral credit)
+- **Cookie**: rewardful.referral
+- **Purpose**: affiliate referral credit
+- **Lifetime**: Set by Rewardful when a referral is accepted. A lifetime was not observed on October 16, 2026, because no cookie was set.
 - **Privacy policy**: [https://www.getrewardful.com/privacy](https://www.getrewardful.com/privacy)
-
-### Stripe (Payment Processing)
-- **Purpose**: To process payments and prevent fraud
-- **Duration**: Session and persistent cookies as needed
-- **Data collected**: Payment verification data, fraud prevention signals
-- **Privacy policy**: [https://stripe.com/privacy](https://stripe.com/privacy)
-
-### Vercel (Hosting and Analytics)
-- **Purpose**: To provide hosting services and basic analytics
-- **Duration**: Various durations
-- **Data collected**: Performance metrics, geographic data
-- **Privacy policy**: [https://vercel.com/legal/privacy-policy](https://vercel.com/legal/privacy-policy)
-
-### Supabase (Database and Authentication)
-- **Purpose**: To manage user authentication and database connections
-- **Duration**: Session-based
-- **Data collected**: Authentication tokens, session data
-- **Privacy policy**: [https://supabase.com/privacy](https://supabase.com/privacy)
 
 ## JOT Snatcher Browser Extension
 
-Our JOT Snatcher browser extension may also use local storage and cookies for:
-
-### Local Storage
-- **Job data**: Temporarily storing job postings you've collected before syncing with your SP-JOT account
-- **Authentication**: Maintaining your login session with SP-JOT
-- **Preferences**: Storing extension settings and preferences
-
-### Extension-Specific Data Collection
-- **Website interaction**: The extension may access job posting data from supported job sites
-- **Sync data**: Information needed to synchronize collected jobs with your SP-JOT account
-- **Usage analytics**: Anonymous data about extension usage to improve functionality
-
-**Note**: The JOT Snatcher extension only collects job posting data from supported job sites and does not access personal browsing data from other websites.
+The JOT Snatcher browser extension does not set cookies on sp-jot.com, and it does not use analytics. What the extension collects is described in the Privacy Policy.
 
 ## Cookie Management and Your Choices
 
@@ -90,26 +65,15 @@ Most web browsers automatically accept cookies, but you can modify your browser 
 - **Safari**: Preferences > Privacy > Manage Website Data
 - **Edge**: Settings > Site permissions > Cookies and site data
 
-### SP-JOT Cookie Preferences
-You can manage your cookie preferences for non-essential cookies by:
-1. Visiting our Cookie Preferences Center (link in website footer)
-2. Adjusting your account settings in the SP-JOT application
-3. Contacting us at privacy@sp-jot.com
-
 ### Opt-Out Options
-- **Affiliate tracking**: You can opt out of Rewardful tracking by clearing your cookies or using incognito/private browsing mode
-- **Marketing cookies**: You can disable marketing cookies through our Cookie Preferences Center
-- **Analytics**: You can opt out of analytics tracking in your account settings
+- **Website statistics**: Block cookies in your browser settings, or install Google's opt-out browser add-on (https://tools.google.com/dlpage/gaoptout).
+- **Affiliate referral credit**: Clear your cookies, or use a private browsing window, before you follow an affiliate link.
 
 ## Data Retention
 
 ### Cookie Lifespan
-- **Session cookies**: Deleted when you close your browser
-- **Persistent cookies**: Stored for varying periods:
-  - Authentication cookies: Until you log out or they expire (typically 30 days)
-  - Preference cookies: Until you change settings or clear cookies (typically 1 year)
-  - Analytics cookies: Typically 2 years
-  - Affiliate tracking cookies: 60 days (Rewardful)
+- **_ga and _ga_7M9PMK2FNN**: 400 days. Purpose: website statistics. Provider: Google.
+- **rewardful.referral**: Set by Rewardful when a referral is accepted. Purpose: affiliate referral credit. A lifetime was not observed on October 16, 2026.
 
 ### Data Deletion
 You can delete cookies at any time by:
@@ -145,7 +109,7 @@ If you have questions about this Cookie Policy or our privacy practices, please 
 
 **SavvyPro Holdings Inc.**  
 **Email**: info@sp-jot.com  
-**Address**: 717 N. Union Street, Suite 10, Wilmington, DE 19805, United States  
+**Address**: 1601 Concord Pike, Suite 29AA, Wilmington, DE 19803, United States  
 
 For technical support inquiries, please also contact: info@sp-jot.com
 
@@ -160,9 +124,7 @@ The "Last updated" date at the top of this policy indicates when it was last rev
 
 ## Consent
 
-By continuing to use SP-JOT's website, application, and browser extension, you consent to our use of cookies as described in this policy. If you do not agree with our use of cookies, you should adjust your browser settings accordingly or discontinue use of our services.
-
-For non-essential cookies, we will obtain your explicit consent through our cookie consent banner or Cookie Preferences Center before placing these cookies on your device.
+By continuing to use sp-jot.com, you accept the cookies described in this policy. If you do not want these cookies, block them in your browser settings or use Google's opt-out browser add-on, or stop using the site.
 
 ---
 

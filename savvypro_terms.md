@@ -1,7 +1,7 @@
 # Terms of Service
 **SavvyPro (JOT) Job Opportunity Tracker**
 
-*Last Updated: September 19, 2025*
+*Last Updated: October 16, 2026*
 
 ## Introduction
 
@@ -291,8 +291,8 @@ For questions about these Terms of Service or to resolve complaints, please cont
 
 **SavvyPro Holdings Inc.**  
 Email: info@sp-jot.com  
-Address: 717 N. Union Street, Suite 10, Wilmington, DE 19805, United States
+Address: 1601 Concord Pike, Suite 29AA, Wilmington, DE 19803, United States
 
 ---
 
-*This document was last updated on September 19, 2025. Please review regularly for updates.*
+*This document was last updated on October 16, 2026. Please review regularly for updates.*

@@ -8,7 +8,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-7M9PMK2FNN');
+      gtag('config', 'G-7M9PMK2FNN', {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,7 +65,7 @@
         <div class="container">
             <div class="legal-content">
                 <h1>Privacy Policy</h1>
-                <p class="last-updated">Last updated: September 19, 2025</p>
+                <p class="last-updated">Last updated: October 16, 2026</p>
 
                 <section class="legal-section">
                     <h2>Introduction</h2>
@@ -78,7 +81,11 @@
                 <section class="legal-section">
                     <h2>Table of Contents</h2>
                     <ol>
-                        <li><a href="#information-collect">What Information Do We Collect?</a></li>
+                        <li><a href="#information-collect">What Information Do We Collect?</a>
+                            <ol>
+                                <li><a href="#jot-snatcher">JOT Snatcher browser extension</a></li>
+                            </ol>
+                        </li>
                         <li><a href="#use-information">How Do We Use Your Information?</a></li>
                         <li><a href="#share-information">Will Your Information Be Shared With Anyone?</a></li>
                         <li><a href="#who-share">Who Will Your Information Be Shared With?</a></li>
@@ -104,7 +111,7 @@
                     
                     <p>The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make and the products and features you use. The personal information we collect may include the following:</p>
                     
-                    <p><strong>Personal Information Provided by You.</strong> We collect information including names; phone numbers; email addresses; mailing addresses; usernames; passwords; contact preferences; contact or authentication data; billing addresses; debit/credit card numbers; employment information, job application details, interview schedules, salary expectations, career goals, skills and qualifications, work experience, education information, and other job-related information provided by you directly. We may collect information including date of birth, age, geographic location, address, and information available on your LinkedIn profile or on your resume provided by you. We may also store job opportunity information you track including company names, job titles, application dates, application status, contact information for recruiters and hiring managers, interview notes, and follow-up reminders.</p>
+                    <p><strong>Personal Information Provided by You.</strong> We collect information including names; phone numbers; email addresses; mailing addresses; usernames; passwords; contact preferences; contact or authentication data; billing addresses; debit/credit card numbers; employment information, job application details, interview schedules, salary expectations, career goals, skills and qualifications, work experience, education information, and other job-related information provided by you directly. We may collect information including date of birth, age, geographic location, address, and information available on your resume provided by you. We may also store job opportunity information you track including company names, job titles, application dates, application status, contact information for recruiters and hiring managers, interview notes, and follow-up reminders.</p>
                     
                     <p><strong>Payment Data.</strong> Through our payment processing vendors, we may collect payment card information necessary to process your payment if you make purchases, such as your payment instrument number (such as a credit card number), and the security code associated with your payment instrument. All payment data is stored directly by our payment processor; we do not store any payment card data directly.</p>
                     
@@ -117,16 +124,19 @@
                     
                     <p><strong>Website Delivery and Appearance</strong> – We may use third-party providers to enable certain customer interaction opportunities, content delivery (like audio or video), or other service capabilities. For example, we partner with service providers to host our Services and deliver specific content in support of our Services.</p>
                     
-                    <p><strong>Website Analytics and Session Replay</strong> – We use analytics and session replay services that use cookies and other technologies that collect your Personal Information, to assist us with analyzing our traffic and usage to optimize, maintain, and secure our Services and inform subsequent business decisions. These may include Google Analytics and similar services.</p>
-                    
-                    <p><strong>Interest-Based Advertising</strong> – We may also allow or enable third parties to collect personal information to provide their interest-based advertising on behalf of our products and services, or their own. Interest-based advertising occurs when advertisements are shown to you based on information collected from your online interactions over time and across multiple websites, devices, or online services that you visit or use.</p>
+                    <h3>Website analytics</h3>
+                    <p>Our marketing website, sp-jot.com, uses Google Analytics to understand how visitors use the site. It records page visits, the referring page, browser and device type, and approximate location (country and city) based on your IP address, and it counts when a waitlist or beta application form is submitted, along with the option selected in that form. We do not send your name, email address, or other form entries to Google, and we have turned off Google's advertising and cross-device features. Google Analytics uses cookies, described in our <a href="cookie-policy.html">Cookie Policy</a>. You can block these cookies in your browser settings or with <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google's opt-out browser add-on</a>.</p>
+                    <p>We do not use session replay tools, and we do not use analytics in the SP-JOT app or the JOT Snatcher browser extension.</p>
+
+                    <h3>Affiliate referrals</h3>
+                    <p>If you arrive at sp-jot.com through an affiliate's link, our affiliate partner service, Rewardful, sets a cookie that records which affiliate referred you, so they can be credited if you subscribe. It does not track you on other websites.</p>
                     
                     <p><strong>Cookie Choices</strong> – To manage your preferences with respect to these technologies, you can change your cookie preferences by customizing your browser settings to refuse all or some browser cookies, or to alert you when websites set or access cookies. If you disable certain cookies, please note that some parts of our Services may not function properly.</p>
                     
-                    <h3>Browser Extension Data Collection</h3>
-                    <p><strong>In Short:</strong> Our browser extension collects job posting information only when you actively choose to capture job listings.</p>
-                    
-                    <p>Our browser extension collects job posting information from authorized job sites (LinkedIn, Indeed, etc.) only when users actively choose to capture job listings. The extension requires authentication with your SavvyPro JOT account to ensure data syncs securely to your personal job tracking pipeline. We do not automatically collect or store job posting data without your explicit action to capture specific job listings.</p>
+                    <h3 id="jot-snatcher">JOT Snatcher browser extension</h3>
+                    <p>When you click Collect, the extension reads the job posting on the page you are viewing, such as the job title, company, location, salary, and description, and fills in a form for you to review. Nothing is saved to your account until you click Send. The extension does not read pages unless you open it, and it does not track your browsing.</p>
+                    <p>If the extension cannot identify the job title or company on its own, it may send the visible text of that job posting to our servers, which use an AI service provider (Anthropic) to extract the job details. Only the job posting's text and web address are sent, not your account details, browsing history, or other pages. Our AI provider processes this text to return the extracted fields and does not use it to train its models under our agreement.</p>
+                    <p>To improve reliability, the extension records anonymous diagnostics about each capture: the job site, which fields were found, the extension version, and how long it took. These records do not include your identity, the job's content, or the page address.</p>
                 </section>
 
                 <section class="legal-section" id="use-information">
@@ -135,7 +145,7 @@
                     
                     <p>We use the information we collect or receive:</p>
                     <ul>
-                        <li><strong>To facilitate account creation and logon process.</strong> If you choose to link your account with us to a third-party account (such as your Google or LinkedIn account), we use the information you allowed us to collect from those third parties to facilitate the account creation and logon process.</li>
+                        <li><strong>To facilitate account creation and logon process.</strong> We use the email address you provide to create your account and sign you in.</li>
                         <li><strong>To provide job tracking services.</strong> We use your information to enable you to track job opportunities, manage applications, schedule interviews, set reminders, and organize your job search activities.</li>
                         <li><strong>To enable data synchronization.</strong> We may use your information to synchronize your job tracking data across multiple devices and platforms where you access our Services.</li>
                         <li><strong>To post testimonials.</strong> We post testimonials on our Services that may contain personal information. Prior to posting a testimonial, we will obtain your consent to use your name and the content of the testimonial.</li>
@@ -171,17 +181,15 @@
 
                 <section class="legal-section" id="who-share">
                     <h2>4. Who Will Your Information Be Shared With?</h2>
-                    <p><strong>In Short:</strong> We only share information with the following categories of third parties.</p>
+                    <p><strong>In Short:</strong> We share information with the service providers listed below.</p>
                     
-                    <p>We only share and disclose your information with the following categories of third parties:</p>
+                    <p>We share information with these service providers:</p>
                     <ul>
-                        <li>Cloud Computing Services</li>
-                        <li>Communication & Collaboration Tools</li>
-                        <li>Payment Processors</li>
-                        <li>Sales & Marketing Tools</li>
-                        <li>User Account Registration & Authentication Services</li>
-                        <li>Analytics Providers</li>
-                        <li>Job Board and Career Service Platforms (with your consent)</li>
+                        <li>Google (website analytics)</li>
+                        <li>Rewardful (affiliate referrals)</li>
+                        <li>Anthropic (extension AI fallback)</li>
+                        <li>Supabase (hosting and database)</li>
+                        <li>Stripe (payments)</li>
                     </ul>
                 </section>
 
@@ -237,7 +245,7 @@
                     <h2>10. Do We Link To Or Integrate With Third-Party Websites?</h2>
                     <p>We are not responsible for the practices employed by any websites or services linked to or from our Services, including the information or content contained within them. We encourage you to investigate and ask questions before disclosing personal information to third parties.</p>
                     
-                    <p>We may integrate with other websites and services to provide enhanced job tracking capabilities, such as LinkedIn profile synchronization, job board integrations, and calendar applications. These integrations are governed by the terms and privacy policies of the respective third-party services.</p>
+                    <p>We may integrate with other websites and services to provide enhanced job tracking capabilities, such as job board integrations and calendar applications. These integrations are governed by the terms and privacy policies of the respective third-party services.</p>
                 </section>
 
                 <section class="legal-section" id="transfer-information">
@@ -258,8 +266,8 @@
                     
                     <p><strong>SavvyPro Holdings Inc.</strong><br>
                     SavvyPro Job Opportunity Tracker<br>
-                    717 N. Union Street, Suite 10<br>
-                    Wilmington, DE 19805<br>
+                    1601 Concord Pike, Suite 29AA<br>
+                    Wilmington, DE 19803<br>
                     United States</p>
                     
                     <p>For general support inquiries, you may also contact us at <a href="mailto:info@sp-jot.com?subject=General Information Inquiry-PP">Send Email</a>.</p>
