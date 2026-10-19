@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/beta-tester",
+      "destination": "https://app.sp-jot.com/beta",
+      "permanent": true
+    },
+    {
+      "source": "/beta-tester/",
+      "destination": "https://app.sp-jot.com/beta",
+      "permanent": true
+    },
+    {
+      "source": "/beta-tester.html",
+      "destination": "https://app.sp-jot.com/beta",
+      "permanent": true
+    }
+  ]
+}
