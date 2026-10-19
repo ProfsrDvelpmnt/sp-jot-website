@@ -81,7 +81,7 @@ function showSuccessMessage() {
                 Your screening survey has been submitted successfully. We'll review your responses and get back to you soon.
             </p>
             <div style="margin-top: 40px;">
-                <a href="beta-tester.html" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
+                <a href="https://app.sp-jot.com/beta" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
                     <i class="fas fa-home"></i> Back to Beta Program
                 </a>
             </div>
