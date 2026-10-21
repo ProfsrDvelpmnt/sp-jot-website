@@ -979,6 +979,11 @@ p {
     line-height: 1.6;
 }
 
+.founding-members .btn {
+    width: auto;
+    padding: 16px 32px;
+}
+
 /* Value Proposition */
 .value-proposition {
     padding: 80px 0;
