@@ -960,6 +960,25 @@ p {
     background: #f8f9fa;
 }
 
+/* Founding members */
+.founding-members {
+    padding: 80px 0;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.founding-members h2 {
+    margin-bottom: 1rem;
+}
+
+.founding-members p {
+    max-width: 40rem;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
 /* Value Proposition */
 .value-proposition {
     padding: 80px 0;
