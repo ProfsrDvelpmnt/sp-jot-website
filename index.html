@@ -546,7 +546,11 @@
         <div class="container">
             <h2>Choose Your Plan</h2>
             <p>Start free and upgrade as your needs grow</p>
-            
+
+            <div class="billing-toggle" role="group" aria-label="Billing period">
+                <button type="button" class="billing-option is-active" data-interval="month" aria-pressed="true">Monthly</button>
+                <button type="button" class="billing-option" data-interval="year" aria-pressed="false">Annual</button>
+            </div>
             
             <div class="pricing-cards">
                 <div class="pricing-card free">
@@ -560,7 +564,7 @@
                         <li><span class="check">✓</span> Daily Check-In</li>
                         <li><span class="check">✓</span> Job Archive</li>
                     </ul>
-                    <a href="https://buy.stripe.com/dRm5kC4OB4hS75225wb3q05" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Join for Free</a>
+                    <a href="https://app.sp-jot.com/signup" class="btn btn-primary">Join for Free</a>
                 </div>
                 
                 <div class="pricing-card basic">
@@ -577,7 +581,7 @@
                         <li><span class="check">✓</span> Growth Journey Dashboard</li>
                         <li><span class="check">✓</span> Documents</li>
                     </ul>
-                    <a href="https://buy.stripe.com/3cI28qftf5lWfBybG6b3q01" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Basic</a>
+                    <a href="https://app.sp-jot.com/signup?plan=basic&interval=month" class="btn btn-primary" data-plan="basic">Get Basic</a>
                 </div>
                 
                 <div class="pricing-card professional">
@@ -594,7 +598,7 @@
                         <li><span class="check">✓</span> Analytics</li>
                         <li><span class="check">✓</span> Excel/CSV Export</li>
                     </ul>
-                    <a href="https://buy.stripe.com/cNi9AS1Cp4hSfBy39Ab3q04" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Professional</a>
+                    <a href="https://app.sp-jot.com/signup?plan=professional&interval=month" class="btn btn-primary" data-plan="professional">Get Professional</a>
                 </div>
                 
                 <div class="pricing-card executive">
@@ -609,7 +613,7 @@
                         <li><span class="check">✓</span> Profile Optimizer: LinkedIn, photo and banner</li>
                         <li><span class="check">✓</span> Reports with PDF Export</li>
                     </ul>
-                    <a href="https://buy.stripe.com/8x24gygxjg0A4WU8tUb3q02" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Get Executive</a>
+                    <a href="https://app.sp-jot.com/signup?plan=executive&interval=month" class="btn btn-primary" data-plan="executive">Get Executive</a>
                 </div>
             </div>
         </div>
@@ -995,6 +999,35 @@
     <!-- FullCalendar.js JavaScript - Using unpkg CDN -->
     <script src="https://unpkg.com/fullcalendar@6.1.10/index.global.min.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.querySelector('.billing-toggle');
+            if (!toggle) return;
+
+            const options = toggle.querySelectorAll('.billing-option');
+            const planLinks = document.querySelectorAll('a[data-plan]');
+
+            function setBillingInterval(interval) {
+                options.forEach(function(option) {
+                    const active = option.getAttribute('data-interval') === interval;
+                    option.classList.toggle('is-active', active);
+                    option.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+
+                planLinks.forEach(function(link) {
+                    const plan = link.getAttribute('data-plan');
+                    link.href = 'https://app.sp-jot.com/signup?plan=' + encodeURIComponent(plan) + '&interval=' + encodeURIComponent(interval);
+                });
+            }
+
+            options.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    setBillingInterval(option.getAttribute('data-interval'));
+                });
+            });
+        });
+    </script>
     
     <!-- Mobile Enhancement Script -->
     <script>
