@@ -555,7 +555,7 @@
             <div class="pricing-cards">
                 <div class="pricing-card free">
                     <h3>Free</h3>
-                    <div class="price">$0<span>/month</span></div>
+                    <div class="price" data-monthly="0" data-annual="0">$0<span>/month</span></div>
                     <ul class="features-list">
                         <li><span class="check">✓</span> 10 Active Jobs</li>
                         <li><span class="check">✓</span> 3 Kanban Stages</li>
@@ -569,7 +569,7 @@
                 
                 <div class="pricing-card basic">
                     <h3>Basic</h3>
-                    <div class="price">$9.99<span>/month</span></div>
+                    <div class="price" data-monthly="9.99" data-annual="99">$9.99<span>/month</span></div>
                     <div class="tier-includes">FREE Features +</div>
                     <ul class="features-list">
                         <li><span class="check">✓</span> 50 Active Jobs</li>
@@ -586,7 +586,7 @@
                 
                 <div class="pricing-card professional">
                     <h3>Professional</h3>
-                    <div class="price">$19.99<span>/month</span></div>
+                    <div class="price" data-monthly="19.99" data-annual="199">$19.99<span>/month</span></div>
                     <div class="tier-includes">BASIC Features +</div>
                     <ul class="features-list">
                         <li><span class="check">✓</span> 50 Additional Active Jobs (100 total)</li>
@@ -603,7 +603,7 @@
                 
                 <div class="pricing-card executive">
                     <h3>Executive</h3>
-                    <div class="price">$29.99<span>/month</span></div>
+                    <div class="price" data-monthly="39.99" data-annual="399">$39.99<span>/month</span></div>
                     <div class="tier-includes">PRO Features +</div>
                     <ul class="features-list">
                         <li><span class="check">✓</span> Unlimited Active Jobs</li>
@@ -1007,8 +1007,17 @@
 
             const options = toggle.querySelectorAll('.billing-option');
             const planLinks = document.querySelectorAll('a[data-plan]');
+            const prices = document.querySelectorAll('.pricing-card .price');
+
+            function formatAmount(value) {
+                const amount = Number(value);
+                if (amount === 0) return '$0';
+                return Number.isInteger(amount) ? '$' + amount : '$' + amount.toFixed(2);
+            }
 
             function setBillingInterval(interval) {
+                const annual = interval === 'year';
+
                 options.forEach(function(option) {
                     const active = option.getAttribute('data-interval') === interval;
                     option.classList.toggle('is-active', active);
@@ -1018,6 +1027,13 @@
                 planLinks.forEach(function(link) {
                     const plan = link.getAttribute('data-plan');
                     link.href = 'https://app.sp-jot.com/signup?plan=' + encodeURIComponent(plan) + '&interval=' + encodeURIComponent(interval);
+                });
+
+                prices.forEach(function(price) {
+                    const amount = annual ? price.getAttribute('data-annual') : price.getAttribute('data-monthly');
+                    const period = price.querySelector('span');
+                    price.firstChild.nodeValue = formatAmount(amount);
+                    if (period) period.textContent = annual ? '/year' : '/month';
                 });
             }
 
