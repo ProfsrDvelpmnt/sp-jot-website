@@ -1397,6 +1397,38 @@ p {
     flex-wrap: wrap;
 }
 
+.modal-content.tour-video-modal {
+    max-width: 960px;
+    width: min(960px, 92vw);
+    margin: 4vh auto;
+    background: #111;
+    padding: 2.75rem 0.75rem 0.75rem;
+    border-radius: 16px;
+}
+
+.modal-content.tour-video-modal .tour-video-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.85rem;
+    color: #fff;
+    background: transparent;
+    border: none;
+    line-height: 1;
+}
+
+.modal-content.tour-video-modal .tour-video-close:hover,
+.modal-content.tour-video-modal .tour-video-close:focus {
+    color: #d8b2a7;
+}
+
+.tour-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    background: #000;
+}
+
 /* CTA Section */
 .cta-section {
     padding: 80px 0;
