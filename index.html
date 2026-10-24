@@ -623,9 +623,9 @@
     <section id="demo" class="demo-section">
         <div class="container">
             <h2>Experience SavvyPro JOT in Action</h2>
-            <p>Experience SavvyPro JOT in action with our interactive demo</p>
+            <p>Experience SavvyPro JOT in action with a quick video tour</p>
             <div class="demo-actions">
-                <button class="btn btn-outline btn-large" data-open="scheduleModal" aria-controls="scheduleModal" aria-expanded="false">Schedule Personal Demo</button>
+                <button type="button" class="btn btn-outline btn-large" id="openTourVideo" aria-controls="tourVideoModal" aria-expanded="false">See It in Action ▶</button>
             </div>
         </div>
     </section>
@@ -857,6 +857,15 @@
         </div>
     </div>
 
+    <div class="modal" id="tourVideoModal" aria-hidden="true">
+        <div class="modal-content tour-video-modal" role="dialog" aria-modal="true" aria-label="SavvyPro JOT video tour">
+            <button type="button" class="close tour-video-close" aria-label="Close video">&times;</button>
+            <video class="tour-video" controls playsinline preload="metadata">
+                <source src="videos/free-plan-walkthrough_clean_16x9.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <!-- Schedule Demo Modal -->
     <div class="modal" id="scheduleModal" aria-hidden="true">
         <div class="modal-content schedule-modal">
@@ -999,6 +1008,47 @@
     <!-- FullCalendar.js JavaScript - Using unpkg CDN -->
     <script src="https://unpkg.com/fullcalendar@6.1.10/index.global.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openButton = document.getElementById('openTourVideo');
+            const modal = document.getElementById('tourVideoModal');
+            if (!openButton || !modal) return;
+
+            const video = modal.querySelector('video');
+            const closeButton = modal.querySelector('.tour-video-close');
+
+            function openTour() {
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                openButton.setAttribute('aria-expanded', 'true');
+                document.body.classList.add('modal-open');
+                if (video) {
+                    video.play().catch(function() {});
+                }
+            }
+
+            function closeTour() {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                openButton.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('modal-open');
+                if (video) {
+                    video.pause();
+                }
+            }
+
+            openButton.addEventListener('click', openTour);
+            closeButton.addEventListener('click', closeTour);
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) closeTour();
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeTour();
+                }
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
