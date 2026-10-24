@@ -1423,10 +1423,12 @@ p {
 
 .tour-video {
     width: 100%;
+    aspect-ratio: 16 / 9;
     height: auto;
     display: block;
     border-radius: 12px;
     background: #000;
+    object-fit: contain;
 }
 
 /* CTA Section */
